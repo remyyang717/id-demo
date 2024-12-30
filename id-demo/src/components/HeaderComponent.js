@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Drawer, List, Flex, Typography, Divider } from 'antd';
 import { useSelector, useDispatch } from 'react-redux';
 import { setOrgValue } from '../store/orgSlice';
+import { setLocationValue } from '../store/locationSlice'
 import
 {
     EnvironmentOutlined,
@@ -15,16 +16,17 @@ import
 
 function HeaderComponent()
 {
-    // Start > Handling Org change -----------------------------------------------------------------
     const dispatch = useDispatch();
+
+    // Start > Handling Org change -----------------------------------------------------------------
     const orgName = useSelector((state) => state.orgValue.value);
     const [orgNamePickerOpen, setOrgNamePickerOpen] = React.useState(false);
     const [orgNamePickerloading, setOrgNamePickerLoading] = React.useState(true);
     const [orgSearchQuery, setOrgSearchQuery] = useState("");
 
-    const handleOrgClick = (e) =>
+    const handleOrgClick = (org) =>
     {
-        dispatch(setOrgValue(e));
+        dispatch(setOrgValue(org));
         setOrgNamePickerOpen(false)
     };
 
@@ -86,6 +88,7 @@ function HeaderComponent()
 
 
     // Start > Handling Location change -----------------------------------------------------------------
+    const locationName = useSelector((state) => state.locationValue.value);
     const [locationPickerOpen, setLocationPickerOpen] = React.useState(false);
     const [locationPickerOpenLoading, setLocationPickerOpenLoading] = React.useState(true);
     const [locationSearchQuery, setLocationSearchQuery] = useState("");
@@ -103,10 +106,9 @@ function HeaderComponent()
     };
 
 
-    const [locationText, setLocationText] = useState("Auckland");
-    const handleLocationClick = (location) =>
+    const handleLocationClick = (locations) =>
     {
-        setLocationText(location); // Update the Button text with the selected location
+        dispatch(setLocationValue(locations));
         setLocationPickerOpen(false); // Close the Drawer
     };
 
@@ -226,7 +228,7 @@ function HeaderComponent()
                             alignSelf: 'center',
                             marginRight: '16px'
                         }}>
-                        {locationText}
+                        {locationName}
                     </a>
                 </button>
                 <button
@@ -254,9 +256,9 @@ function HeaderComponent()
 
 
 
-
+            {/* Location list drawer */}
             <Drawer
-                getContainer={() => document.getElementById('drawer-container')}
+                getContainer={() => document.getElementById('location-picker-drawer-container')}
                 placement="left"
                 title="Pick Location"
                 closable={false}
@@ -291,9 +293,9 @@ function HeaderComponent()
                 </List>
             </Drawer>
 
-
+            {/* Org list drawer */}
             <Drawer
-                getContainer={() => document.getElementById('org-name-picker-drawer-container')}
+                getContainer={() => document.getElementById('org-picker-drawer-container')}
                 title="Pick Organisation"
                 placement="left"
                 closable={false}
