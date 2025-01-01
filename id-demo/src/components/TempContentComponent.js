@@ -4,7 +4,7 @@ import { Col, Row, Card, List } from 'antd';
 import { useSelector } from 'react-redux';
 import rainData_json from '../Data/rainData.json';
 import moment from 'moment';
-import FormInfiniteScrollListComponent from './FormInfiniteScrollListComponent'
+import { Line } from '@ant-design/plots';
 
 
 
@@ -13,8 +13,6 @@ function TempContentComponent()
 {
     const org = useSelector((state) => state.orgValue.value)
     const location = useSelector((state) => state.locationValue.value)
-    const module = useSelector((state) => state.moduleValue.value)
-
 
     const config = {
         colorField: 'location',
@@ -45,10 +43,8 @@ function TempContentComponent()
                 domain: [0, 100],
             }
         }
-
-
-
     };
+
 
 
     return (
@@ -71,8 +67,7 @@ function TempContentComponent()
                             {location}
                         </Card>
                     </Row>
-                    {/* <Row >   <Line {...config} /></Row>
-                    <Row >   <Column {...config} /></Row> */}
+                    <Row ><Line {...config} /></Row>
 
                 </Col>
                 <Col flex={4}>

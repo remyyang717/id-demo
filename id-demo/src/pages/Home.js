@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Layout } from 'antd';
 import HeaderComponent from '../components/HeaderComponent';
-import LeftSiderComponent from '../components/LeftSiderComponent';
 import TempContentComponent from '../components/TempContentComponent';
 
 

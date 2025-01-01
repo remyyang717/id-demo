@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import FormInfiniteScrollListComponent from './FormInfiniteScrollListComponent'
+import { List } from 'antd';
 
 
 
@@ -16,7 +17,28 @@ function LeftSiderComponent()
         Forms: (
             <FormInfiniteScrollListComponent />
         ),
-        // Add more modules as needed
+        Dashboards: (
+            <div
+                id="scrollableDiv"
+                style={{
+                    width: 800,
+                    overflow: 'auto',
+                    height: '100vh',
+                    padding: '0 16px',
+                    border: '1px solid rgba(140, 140, 140, 0.35)',
+                    paddingTop: '64px',
+                }}
+            >
+                <List>
+                    <List.Item>
+                        <Link to="/Dashboards/DashboardsDemo1">DashboardsDemo1</Link>
+                    </List.Item>
+
+                </List>
+
+            </div>
+
+        )
     };
 
 

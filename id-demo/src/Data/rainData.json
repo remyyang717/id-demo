@@ -1,451 +1,451 @@
 [
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "01-01-2024",
         "rain": 90.2
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "02-01-2024",
         "rain": 26.8
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "03-01-2024",
         "rain": 5.2
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "04-01-2024",
         "rain": 95.2
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "05-01-2024",
         "rain": 9.0
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "06-01-2024",
         "rain": 28.7
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "07-01-2024",
         "rain": 50.3
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "08-01-2024",
         "rain": 3.2
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "09-01-2024",
         "rain": 43.4
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "10-01-2024",
         "rain": 96.0
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "11-01-2024",
         "rain": 37.7
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "12-01-2024",
         "rain": 32.4
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "13-01-2024",
         "rain": 32.9
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "14-01-2024",
         "rain": 46.1
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "15-01-2024",
         "rain": 83.0
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "16-01-2024",
         "rain": 34.1
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "17-01-2024",
         "rain": 95.1
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "18-01-2024",
         "rain": 83.3
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "19-01-2024",
         "rain": 15.8
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "20-01-2024",
         "rain": 80.3
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "21-01-2024",
         "rain": 44.0
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "22-01-2024",
         "rain": 69.6
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "23-01-2024",
         "rain": 50.3
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "24-01-2024",
         "rain": 6.5
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "25-01-2024",
         "rain": 63.1
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "26-01-2024",
         "rain": 15.0
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "27-01-2024",
         "rain": 55.8
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "28-01-2024",
         "rain": 45.1
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "29-01-2024",
         "rain": 14.4
     },
     {
-        "location": "New York",
+        "location": "Auckland",
         "date": "30-01-2024",
         "rain": 1.9
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "01-01-2024",
         "rain": 90.4
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "02-01-2024",
         "rain": 32.2
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "03-01-2024",
         "rain": 0.1
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "04-01-2024",
         "rain": 87.3
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "05-01-2024",
         "rain": 17.7
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "06-01-2024",
         "rain": 7.1
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "07-01-2024",
         "rain": 22.0
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "08-01-2024",
         "rain": 30.8
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "09-01-2024",
         "rain": 15.5
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "10-01-2024",
         "rain": 92.8
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "11-01-2024",
         "rain": 60.4
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "12-01-2024",
         "rain": 77.8
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "13-01-2024",
         "rain": 42.5
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "14-01-2024",
         "rain": 60.0
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "15-01-2024",
         "rain": 33.4
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "16-01-2024",
         "rain": 37.2
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "17-01-2024",
         "rain": 65.5
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "18-01-2024",
         "rain": 94.1
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "19-01-2024",
         "rain": 42.2
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "20-01-2024",
         "rain": 96.2
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "21-01-2024",
         "rain": 30.7
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "22-01-2024",
         "rain": 4.7
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "23-01-2024",
         "rain": 93.7
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "24-01-2024",
         "rain": 95.5
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "25-01-2024",
         "rain": 89.7
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "26-01-2024",
         "rain": 57.1
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "27-01-2024",
         "rain": 42.7
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "28-01-2024",
         "rain": 73.0
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "29-01-2024",
         "rain": 41.4
     },
     {
-        "location": "Tokyo",
+        "location": "Wellington",
         "date": "30-01-2024",
         "rain": 97.3
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "01-01-2024",
         "rain": 52.9
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "02-01-2024",
         "rain": 77.8
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "03-01-2024",
         "rain": 17.0
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "04-01-2024",
         "rain": 7.5
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "05-01-2024",
         "rain": 78.3
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "06-01-2024",
         "rain": 6.5
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "07-01-2024",
         "rain": 0.8
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "08-01-2024",
         "rain": 45.9
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "09-01-2024",
         "rain": 28.0
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "10-01-2024",
         "rain": 90.7
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "11-01-2024",
         "rain": 52.8
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "12-01-2024",
         "rain": 36.7
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "13-01-2024",
         "rain": 66.1
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "14-01-2024",
         "rain": 75.6
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "15-01-2024",
         "rain": 4.7
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "16-01-2024",
         "rain": 64.8
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "17-01-2024",
         "rain": 68.7
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "18-01-2024",
         "rain": 33.9
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "19-01-2024",
         "rain": 9999.0
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "20-01-2024",
         "rain": 44.5
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "21-01-2024",
         "rain": 44.7
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "22-01-2024",
         "rain": 4.6
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "23-01-2024",
         "rain": 42.4
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "24-01-2024",
         "rain": 91.8
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "25-01-2024",
         "rain": 17.8
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "26-01-2024",
         "rain": 33.1
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "27-01-2024",
         "rain": 12.0
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "28-01-2024",
         "rain": 87.7
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "29-01-2024",
         "rain": 99.6
     },
     {
-        "location": "Paris",
+        "location": "Hamilton",
         "date": "30-01-2024",
         "rain": 79.1
     }

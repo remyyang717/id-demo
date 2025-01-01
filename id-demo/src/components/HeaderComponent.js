@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { Drawer, List, Flex, Divider, Input } from 'antd';
+import { Drawer, List, Divider, Input, Avatar, message } from 'antd';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setOrgValue } from '../store/orgSlice';
 import { setLocationValue } from '../store/locationSlice'
 import { setModuleValue } from '../store/moduleSlice'
 import { SearchOutlined } from '@ant-design/icons';
-
+import { UserOutlined } from '@ant-design/icons';
 
 import
 {
@@ -267,6 +267,7 @@ function HeaderComponent()
                     {locationName}
                 </a>
             </button>
+
             <button
                 className='HeaderPrimary-Button'>
                 <BlockOutlined style={{
@@ -288,13 +289,31 @@ function HeaderComponent()
                 </a>
             </button>
 
+            <div
+                style={{ marginLeft: 'auto' }}>
+
+                <Avatar
+                    onClick={showModuleLoading}
+                    size={38}
+                    style={{
+                        backgroundColor: '#306CE3',
+                        cursor: 'pointer'
+                    }}
+                    icon={<UserOutlined />}
+                />
+
+
+            </div >
+
+
 
 
 
 
             {/* Location list drawer */}
-            <Drawer
-                getContainer={() => document.getElementById('location-picker-drawer-container')}
+            < Drawer
+                getContainer={() => document.getElementById('location-picker-drawer-container')
+                }
                 placement="left"
                 title="Pick Location"
                 closable={false}
