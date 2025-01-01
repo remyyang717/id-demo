@@ -3,6 +3,7 @@ import { Divider, List, Skeleton, Badge, Card, Input, Space } from 'antd';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import formListData from '../Data/formListData.json';
 import { ScheduleOutlined, SearchOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 function FormInfiniteScrollListComponent()
 {
@@ -59,29 +60,39 @@ function FormInfiniteScrollListComponent()
                 height: '100vh',
                 padding: '0 16px',
                 border: '1px solid rgba(140, 140, 140, 0.35)',
-                paddingTop: '64px'
+                paddingTop: '64px',
             }}
         >
-            {/* Search Bar */}
+            {/* Sticky Search Bar and Count */}
+            <div style={{
+                position: 'sticky',
+                top: -2,
+                background: '#eef0f0',
+                zIndex: 1000,
+                paddingTop: 16,
+                paddingBottom: 16,
+                paddingLeft: 16,
+            }}>
+                <Input
+                    style={{
+                        width: 740,
+                        marginBottom: 16,
+                        fontWeight: 'bold',
+                        fontSize: 50,
+                    }}
+                    addonBefore={<SearchOutlined />}
+                    placeholder="Search by form name"
+                    value={searchTerm}
+                    onChange={handleSearchChange}
+                    size="large"
+                    allowClear
+                />
 
-            <Input
-                style={{
-                    width: 740,
-                    marginBottom: 16,
-                    marginTop: 16,
-                    fontWeight: 'bold',
-                    fontSize: 50
-                }}
-                addonBefore={<SearchOutlined />}
-                placeholder="Search by form name"
-                value={searchTerm}
-                onChange={handleSearchChange}
-                size="large"
-                allowClear
-
-            />
-
-
+                {/* Display the count of displayed items */}
+                <div style={{ marginBottom: 16 }}>
+                    <strong>{filteredData.length} / {localData.length}</strong> items displayed
+                </div>
+            </div>
             <InfiniteScroll
                 dataLength={filteredData.length} // Use filtered data length
                 next={loadMoreData}
@@ -107,66 +118,71 @@ function FormInfiniteScrollListComponent()
                                 text={<span style={{ color: item.status === 'Active' ? '#7A5449' : '#3D504A' }}><strong>{item.status}</strong> </span>}
                                 color={item.status === 'Active' ? '#19FAB6' : '#FA4919'}
                             >
-                                <Card title={
-                                    <div style={{
-                                        display: 'block',
-                                        overflow: 'hidden',
-                                        textOverflow: 'ellipsis',
-                                        whiteSpace: 'normal',
-                                        lineHeight: '1.2em',
-                                        maxHeight: '2.4em',
-                                        paddingRight: '40px',
-                                        marginTop: '5px',
-                                    }}>
+                                <Link to={item.link} style={{ display: 'block', width: '100%', height: '100%' }}>
+                                    <Card
+                                        hoverable
+                                        title={
+                                            <div style={{
+                                                display: 'block',
+                                                overflow: 'hidden',
+                                                textOverflow: 'ellipsis',
+                                                whiteSpace: 'normal',
+                                                lineHeight: '1.2em',
+                                                maxHeight: '2.4em',
+                                                paddingRight: '40px',
+                                                marginTop: '5px',
+                                            }}>
 
-                                        {item.formName}
-                                    </div>}
-                                    style={{ width: 740 }}
-                                >
+                                                {item.formName}
+                                            </div>}
+                                        style={{ width: 740 }}
+                                    >
 
-                                    <div style={{
-                                        display: 'block',
-                                        overflow: 'hidden',
-                                        textOverflow: 'ellipsis',
-                                        whiteSpace: 'normal',
-                                        lineHeight: '1.2em',
-                                        maxHeight: '3.6em',
-                                        paddingRight: '40px',
-                                    }}>
+                                        <div style={{
+                                            display: 'block',
+                                            overflow: 'hidden',
+                                            textOverflow: 'ellipsis',
+                                            whiteSpace: 'normal',
+                                            lineHeight: '1.2em',
+                                            maxHeight: '3.6em',
+                                            paddingRight: '40px',
+                                        }}>
 
-                                        {item.formAbout}
-                                    </div>
+                                            {item.formAbout}
+                                        </div>
 
-                                    {
-                                        (() =>
                                         {
-                                            if (item.scheduled === true)
+                                            (() =>
                                             {
-                                                if (item.critical)
+                                                if (item.scheduled === true)
                                                 {
-                                                    return <ScheduleOutlined style={{
-                                                        position: 'absolute',
-                                                        top: '50%',
-                                                        right: '0',
-                                                        padding: '10px',
-                                                        fontSize: '2.5em',
-                                                        color: '#FA4A19'
-                                                    }} />;
-                                                } else
-                                                {
-                                                    return <ScheduleOutlined style={{
-                                                        position: 'absolute',
-                                                        top: '50%',
-                                                        right: '0',
-                                                        padding: '10px',
-                                                        fontSize: '2.5em',
-                                                    }} />;
+                                                    if (item.critical)
+                                                    {
+                                                        return <ScheduleOutlined style={{
+                                                            position: 'absolute',
+                                                            top: '50%',
+                                                            right: '0',
+                                                            padding: '10px',
+                                                            fontSize: '2.5em',
+                                                            color: '#FA4A19'
+                                                        }} />;
+                                                    } else
+                                                    {
+                                                        return <ScheduleOutlined style={{
+                                                            position: 'absolute',
+                                                            top: '50%',
+                                                            right: '0',
+                                                            padding: '10px',
+                                                            fontSize: '2.5em',
+                                                        }} />;
+                                                    }
                                                 }
-                                            }
-                                        })()
-                                    }
+                                            })()
+                                        }
 
-                                </Card>
+                                    </Card>
+                                </Link>
+
                             </Badge.Ribbon>
                         </List.Item>
                     )}

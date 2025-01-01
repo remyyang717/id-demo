@@ -13,11 +13,6 @@ function LeftSiderComponent()
 {
 
     const moduleContent = {
-        Home: (
-            <div>
-                <h2>Welcome to Home</h2>
-            </div>
-        ),
         Forms: (
             <FormInfiniteScrollListComponent />
         ),
