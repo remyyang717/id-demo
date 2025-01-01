@@ -214,81 +214,80 @@ function HeaderComponent()
 
     return (
         <>
-            <Flex>
-                <Flex>
-                    <svg className="id_icon_left_top" data-name="Layer 1"
-                        xmlns="http://www.w3.org/2000/svg" width="1000.17" height="1000.17"
-                        viewBox="0 0 1000.17 1000.17">
-                        <path
-                            d="m500.09,0c-26.59,0-52.67,2.11-78.14,6.11v314.98c23.94-10.47,50.34-16.36,78.14-16.36,107.89,0,195.34,87.45,195.34,195.35s-87.45,195.35-195.34,195.35c-27.8,0-54.2-5.9-78.14-16.36v314.99c25.46,4,51.55,6.12,78.14,6.12,276.2,0,500.08-223.9,500.08-500.09S776.29,0,500.09,0Z"
-                            style={{ fill: '#54F7C6', strokeWidth: 0 }}></path>
-                        <path
-                            d="m0,500.08c0,206.88,125.62,384.39,304.74,460.47V382.87H13.88C4.84,420.47,0,459.7,0,500.08Z"
-                            style={{ fill: '#fefefe', strokeWidth: 0 }}></path>
-                        <path d="m304.74,39.6C180.24,92.49,81.64,194.4,33.05,321.1h271.69V39.6Z"
-                            style={{ fill: '#fefefe', strokeWidth: 0 }}></path>
 
-                    </svg>
+            <svg className="id_icon_left_top" data-name="Layer 1"
+                xmlns="http://www.w3.org/2000/svg" width="1000.17" height="1000.17"
+                viewBox="0 0 1000.17 1000.17">
+                <path
+                    d="m500.09,0c-26.59,0-52.67,2.11-78.14,6.11v314.98c23.94-10.47,50.34-16.36,78.14-16.36,107.89,0,195.34,87.45,195.34,195.35s-87.45,195.35-195.34,195.35c-27.8,0-54.2-5.9-78.14-16.36v314.99c25.46,4,51.55,6.12,78.14,6.12,276.2,0,500.08-223.9,500.08-500.09S776.29,0,500.09,0Z"
+                    style={{ fill: '#54F7C6', strokeWidth: 0 }}></path>
+                <path
+                    d="m0,500.08c0,206.88,125.62,384.39,304.74,460.47V382.87H13.88C4.84,420.47,0,459.7,0,500.08Z"
+                    style={{ fill: '#fefefe', strokeWidth: 0 }}></path>
+                <path d="m304.74,39.6C180.24,92.49,81.64,194.4,33.05,321.1h271.69V39.6Z"
+                    style={{ fill: '#fefefe', strokeWidth: 0 }}></path>
 
-                    <a
-                        onClick={showOrgNamePicker}
-                        className="scrollable-text"
-                        style={{
-                            color: '#fefefe',
-                            fontSize: '24px',
-                            fontWeight: 'bold',
-                            alignSelf: 'center',
-                            marginRight: '64px',
-                            maxWidth: '280px', // Set the max-width you want
-                            whiteSpace: 'nowrap',
-                            overflow: 'hidden',
-                            textOverflow: 'ellipsis',
-                            display: 'inline-block', // Ensure it behaves like an inline element but can have width
-                            cursor: 'pointer', // Optional, to indicate interactivity
-                        }}>
-                        {/* Display Org Name */}
-                        {orgName}</a>
-                </Flex>
-                <button
-                    className='HeaderPrimary-Button'>
-                    <EnvironmentOutlined style={{
-                        color: 'gray',
-                        fontSize: '1.5em',
-                        marginRight: '8px'
-                    }} />
-                    <a
-                        onClick={showLocationLoading}
-                        style={{
-                            color: '#fefefe',
-                            fontSize: '20px',
-                            fontWeight: 'bold',
-                            alignSelf: 'center',
-                            marginRight: '16px'
-                        }}>
-                        {locationName}
-                    </a>
-                </button>
-                <button
-                    className='HeaderPrimary-Button'>
-                    <BlockOutlined style={{
-                        color: 'gray',
-                        fontSize: '1.7em',
-                        marginRight: '8px'
-                    }} />
-                    <a
+            </svg>
 
-                        onClick={showModuleLoading}
-                        style={{
-                            color: '#fefefe',
-                            fontSize: '20px',
-                            fontWeight: 'bold',
-                            alignSelf: 'center',
-                            marginRight: '16px'
-                        }}>
-                        {moduleName}
-                    </a>
-                </button>
-            </Flex>
+            <a
+                onClick={showOrgNamePicker}
+                className="scrollable-text"
+                style={{
+                    color: '#fefefe',
+                    fontSize: '24px',
+                    fontWeight: 'bold',
+                    alignSelf: 'center',
+                    marginRight: '64px',
+                    maxWidth: '280px', // Set the max-width you want
+                    whiteSpace: 'nowrap',
+                    overflow: 'hidden',
+                    textOverflow: 'ellipsis',
+                    display: 'inline-block', // Ensure it behaves like an inline element but can have width
+                    cursor: 'pointer', // Optional, to indicate interactivity
+                }}>
+                {/* Display Org Name */}
+                {orgName}</a>
+
+            <button
+                className='HeaderPrimary-Button'>
+                <EnvironmentOutlined style={{
+                    color: 'gray',
+                    fontSize: '1.5em',
+                    marginRight: '8px'
+                }} />
+                <a
+                    onClick={showLocationLoading}
+                    style={{
+                        color: '#fefefe',
+                        fontSize: '20px',
+                        fontWeight: 'bold',
+                        alignSelf: 'center',
+                        marginRight: '16px'
+                    }}>
+                    {locationName}
+                </a>
+            </button>
+            <button
+                className='HeaderPrimary-Button'>
+                <BlockOutlined style={{
+                    color: 'gray',
+                    fontSize: '1.7em',
+                    marginRight: '8px'
+                }} />
+                <a
+
+                    onClick={showModuleLoading}
+                    style={{
+                        color: '#fefefe',
+                        fontSize: '20px',
+                        fontWeight: 'bold',
+                        alignSelf: 'center',
+                        marginRight: '16px'
+                    }}>
+                    {moduleName}
+                </a>
+            </button>
+
 
 
 
