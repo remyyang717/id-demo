@@ -15,16 +15,16 @@
         "status": "Active",
         "scheduled": true,
         "critical": true,
-        "link": "/Forms/asgfjahskfhakshdakjsg"
+        "link": "/Forms"
     },
     {
         "formId": "003",
         "formName": "Hood Aerodrome - 6-monthly Review Reminder - Terminal Evacuation Plan",
-        "formAbout": "This is the Hood Aerodrome - 6-monthly Review Reminder - Terminal Evacuation Plan form. Just for display.",
+        "formAbout": "Click this go to not created form page.",
         "status": "Inactive",
         "scheduled": false,
         "critical": false,
-        "link": "/Forms"
+        "link": "/Forms/asgfjahskfhakshdakjsg"
     },
     {
         "formId": "004",
@@ -38,11 +38,11 @@
     {
         "formId": "005",
         "formName": "Hood Aerodrome - Annual Review Reminder - Business Continuity Plan (June)",
-        "formAbout": "This is the Hood Aerodrome - Annual Review Reminder - Business Continuity Plan (June) form. Just for display.",
+        "formAbout": "Click this and go to home page",
         "status": "Active",
         "scheduled": true,
         "critical": false,
-        "link": "/Forms"
+        "link": "/Home"
     },
     {
         "formId": "006",
