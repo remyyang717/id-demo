@@ -1,24 +1,26 @@
 import React, { useState } from 'react';
-import { Drawer, List, Flex, Typography, Divider } from 'antd';
+import { Drawer, List, Flex, Divider, Input } from 'antd';
+import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setOrgValue } from '../store/orgSlice';
 import { setLocationValue } from '../store/locationSlice'
+import { setModuleValue } from '../store/moduleSlice'
+import { SearchOutlined } from '@ant-design/icons';
+
+
 import
 {
     EnvironmentOutlined,
     BlockOutlined
 } from '@ant-design/icons';
 
-
-
-
-
+const { Search } = Input;
 
 function HeaderComponent()
 {
     const dispatch = useDispatch();
 
-    // Start > Handling Org change -----------------------------------------------------------------
+    //#region   Start > Handling Org Change -----------------------------------------------------------------
     const orgName = useSelector((state) => state.orgValue.value);
     const [orgNamePickerOpen, setOrgNamePickerOpen] = React.useState(false);
     const [orgNamePickerloading, setOrgNamePickerLoading] = React.useState(true);
@@ -82,12 +84,9 @@ function HeaderComponent()
         organisation.toLowerCase().includes(orgSearchQuery.toLowerCase())
     );
 
-    // End > Handling Org change 
+    //#endregion    End > Handling Org Change  
 
-
-
-
-    // Start > Handling Location change -----------------------------------------------------------------
+    //#region   Start > Handling Location Change ------------------------------------------------------------
     const locationName = useSelector((state) => state.locationValue.value);
     const [locationPickerOpen, setLocationPickerOpen] = React.useState(false);
     const [locationPickerOpenLoading, setLocationPickerOpenLoading] = React.useState(true);
@@ -170,8 +169,46 @@ function HeaderComponent()
         location.toLowerCase().includes(locationSearchQuery.toLowerCase())
     );
 
-    // End > Handling Location change
+    //#endregion    End > Handling Location Change
 
+    //#region   Start > Handling Modal Change ----------------------------------------------------------------
+    const moduleName = useSelector((state) => state.moduleValue.value);
+    const [modulePickerOpen, setModulePickerOpen] = React.useState(false);
+    const [modulePickerOpenLoading, setModulePickerOpenLoading] = React.useState(true);
+    const showModuleLoading = () =>
+    {
+        setModulePickerOpen(true);
+        setModulePickerOpenLoading(true);
+
+        setTimeout(() =>
+        {
+            setModulePickerOpenLoading(false);
+        }, 400);
+    };
+
+
+    const handleModuleClick = (modules) =>
+    {
+        dispatch(setModuleValue(modules));
+        setModulePickerOpen(false); // Close the Drawer
+    };
+
+    const modules = [
+        'Home',
+        'Alarms',
+        'Consents',
+        'Licences',
+        'Dashboards',
+        'Devices',
+        'Soft Sensors',
+        'Forms',
+        'Geospatial',
+        'Messaging',
+        'Sample Manager',
+        'Tasks'
+
+    ];
+    //#endregion    End > Handling Modal Change
 
 
 
@@ -184,7 +221,7 @@ function HeaderComponent()
                         viewBox="0 0 1000.17 1000.17">
                         <path
                             d="m500.09,0c-26.59,0-52.67,2.11-78.14,6.11v314.98c23.94-10.47,50.34-16.36,78.14-16.36,107.89,0,195.34,87.45,195.34,195.35s-87.45,195.35-195.34,195.35c-27.8,0-54.2-5.9-78.14-16.36v314.99c25.46,4,51.55,6.12,78.14,6.12,276.2,0,500.08-223.9,500.08-500.09S776.29,0,500.09,0Z"
-                            style={{ fill: '#00997a', strokeWidth: 0 }}></path>
+                            style={{ fill: '#54F7C6', strokeWidth: 0 }}></path>
                         <path
                             d="m0,500.08c0,206.88,125.62,384.39,304.74,460.47V382.87H13.88C4.84,420.47,0,459.7,0,500.08Z"
                             style={{ fill: '#fefefe', strokeWidth: 0 }}></path>
@@ -235,12 +272,12 @@ function HeaderComponent()
                     className='HeaderPrimary-Button'>
                     <BlockOutlined style={{
                         color: 'gray',
-                        fontSize: '24px',
+                        fontSize: '1.7em',
                         marginRight: '8px'
                     }} />
                     <a
 
-                        // onClick={showLoading}
+                        onClick={showModuleLoading}
                         style={{
                             color: '#fefefe',
                             fontSize: '20px',
@@ -248,7 +285,7 @@ function HeaderComponent()
                             alignSelf: 'center',
                             marginRight: '16px'
                         }}>
-                        Alarms
+                        {moduleName}
                     </a>
                 </button>
             </Flex>
@@ -266,36 +303,37 @@ function HeaderComponent()
                 onClose={() => setLocationPickerOpen(false)}
                 open={locationPickerOpen}
             >
-                <input
+                <Input
+                    addonBefore={<SearchOutlined />}
                     className="locationSearchBox"
                     type="text"
                     placeholder="Search locations..."
                     value={locationSearchQuery}
-                    onChange={(e) => setLocationSearchQuery(e.target.value)} // Updates searchQuery
+                    onChange={(e) => setLocationSearchQuery(e.target.value)}
                 />
 
-                <Divider />
-                <List>
-                    <div>
 
-                        <List>
-                            {filteredLocations.length > 0 ? (
-                                filteredLocations.map((location) => (
-                                    <List.Item key={location}>
-                                        <button onClick={() => handleLocationClick(location)}>{location}</button>
-                                    </List.Item>
-                                ))
-                            ) : (
-                                <List.Item>No locations found</List.Item> // If no location matches the query
-                            )}
-                        </List>
-                    </div>
+                <Divider />
+
+
+                <List>
+                    {filteredLocations.length > 0 ? (
+                        filteredLocations.map((location) => (
+                            <List.Item key={location}>
+                                <a onClick={() => handleLocationClick(location)}><strong>{location}</strong></a>
+                            </List.Item>
+                        ))
+                    ) : (
+                        <List.Item>No locations found</List.Item> // If no location matches the query
+                    )}
                 </List>
-            </Drawer>
+
+            </Drawer >
 
             {/* Org list drawer */}
-            <Drawer
-                getContainer={() => document.getElementById('org-picker-drawer-container')}
+            < Drawer
+                getContainer={() => document.getElementById('org-picker-drawer-container')
+                }
                 title="Pick Organisation"
                 placement="left"
                 closable={false}
@@ -303,34 +341,54 @@ function HeaderComponent()
                 onClose={() => setOrgNamePickerOpen(false)}
                 open={orgNamePickerOpen}
             >
-                <input
+                <Input
+                    addonBefore={<SearchOutlined />}
                     className="orgSearchBox"
                     type="text"
                     placeholder="Search orgs..."
                     value={orgSearchQuery}
-                    onChange={(e) => setOrgSearchQuery(e.target.value)} // Updates searchQuery
+                    onChange={(e) => setOrgSearchQuery(e.target.value)}
                 />
 
+
                 <Divider />
+
                 <List>
-                    <div>
-                        <List>
-                            {filteredOrgs.length > 0 ? (
-                                filteredOrgs.map((org) => (
-                                    <List.Item key={org}>
-                                        <button onClick={() => handleOrgClick(org)}>{org}</button>
-                                    </List.Item>
-                                ))
-                            ) : (
-                                <List.Item>No orgs found</List.Item> // If no location matches the query
-                            )}
-                        </List>
-                    </div>
+                    {filteredOrgs.length > 0 ? (
+                        filteredOrgs.map((org) => (
+                            <List.Item key={org}>
+                                <a onClick={() => handleOrgClick(org)}><strong>{org}</strong></a>
+                            </List.Item>
+                        ))
+                    ) : (
+                        <List.Item>No orgs found</List.Item> // If no location matches the query
+                    )}
                 </List>
 
 
+            </Drawer >
 
-            </Drawer>
+            {/* Module list drawer */}
+            < Drawer
+                getContainer={() => document.getElementById('module-picker-drawer-container')}
+                title="Pick Module"
+                placement="left"
+                closable={false}
+                loading={modulePickerOpenLoading}
+                onClose={() => setModulePickerOpen(false)}
+                open={modulePickerOpen}
+            >
+                <List>
+                    {modules.map((module) => (
+                        < List.Item key={module} >
+                            <Link to={"/" + module} onClick={() => handleModuleClick(module)}>{module}</Link>
+                        </List.Item>
+                    ))}
+
+                </List>
+
+
+            </Drawer >
         </>
 
 

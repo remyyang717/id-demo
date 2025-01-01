@@ -1,0 +1,452 @@
+[
+    {
+        "location": "New York",
+        "date": "01-01-2024",
+        "rain": 90.2
+    },
+    {
+        "location": "New York",
+        "date": "02-01-2024",
+        "rain": 26.8
+    },
+    {
+        "location": "New York",
+        "date": "03-01-2024",
+        "rain": 5.2
+    },
+    {
+        "location": "New York",
+        "date": "04-01-2024",
+        "rain": 95.2
+    },
+    {
+        "location": "New York",
+        "date": "05-01-2024",
+        "rain": 9.0
+    },
+    {
+        "location": "New York",
+        "date": "06-01-2024",
+        "rain": 28.7
+    },
+    {
+        "location": "New York",
+        "date": "07-01-2024",
+        "rain": 50.3
+    },
+    {
+        "location": "New York",
+        "date": "08-01-2024",
+        "rain": 3.2
+    },
+    {
+        "location": "New York",
+        "date": "09-01-2024",
+        "rain": 43.4
+    },
+    {
+        "location": "New York",
+        "date": "10-01-2024",
+        "rain": 96.0
+    },
+    {
+        "location": "New York",
+        "date": "11-01-2024",
+        "rain": 37.7
+    },
+    {
+        "location": "New York",
+        "date": "12-01-2024",
+        "rain": 32.4
+    },
+    {
+        "location": "New York",
+        "date": "13-01-2024",
+        "rain": 32.9
+    },
+    {
+        "location": "New York",
+        "date": "14-01-2024",
+        "rain": 46.1
+    },
+    {
+        "location": "New York",
+        "date": "15-01-2024",
+        "rain": 83.0
+    },
+    {
+        "location": "New York",
+        "date": "16-01-2024",
+        "rain": 34.1
+    },
+    {
+        "location": "New York",
+        "date": "17-01-2024",
+        "rain": 95.1
+    },
+    {
+        "location": "New York",
+        "date": "18-01-2024",
+        "rain": 83.3
+    },
+    {
+        "location": "New York",
+        "date": "19-01-2024",
+        "rain": 15.8
+    },
+    {
+        "location": "New York",
+        "date": "20-01-2024",
+        "rain": 80.3
+    },
+    {
+        "location": "New York",
+        "date": "21-01-2024",
+        "rain": 44.0
+    },
+    {
+        "location": "New York",
+        "date": "22-01-2024",
+        "rain": 69.6
+    },
+    {
+        "location": "New York",
+        "date": "23-01-2024",
+        "rain": 50.3
+    },
+    {
+        "location": "New York",
+        "date": "24-01-2024",
+        "rain": 6.5
+    },
+    {
+        "location": "New York",
+        "date": "25-01-2024",
+        "rain": 63.1
+    },
+    {
+        "location": "New York",
+        "date": "26-01-2024",
+        "rain": 15.0
+    },
+    {
+        "location": "New York",
+        "date": "27-01-2024",
+        "rain": 55.8
+    },
+    {
+        "location": "New York",
+        "date": "28-01-2024",
+        "rain": 45.1
+    },
+    {
+        "location": "New York",
+        "date": "29-01-2024",
+        "rain": 14.4
+    },
+    {
+        "location": "New York",
+        "date": "30-01-2024",
+        "rain": 1.9
+    },
+    {
+        "location": "Tokyo",
+        "date": "01-01-2024",
+        "rain": 90.4
+    },
+    {
+        "location": "Tokyo",
+        "date": "02-01-2024",
+        "rain": 32.2
+    },
+    {
+        "location": "Tokyo",
+        "date": "03-01-2024",
+        "rain": 0.1
+    },
+    {
+        "location": "Tokyo",
+        "date": "04-01-2024",
+        "rain": 87.3
+    },
+    {
+        "location": "Tokyo",
+        "date": "05-01-2024",
+        "rain": 17.7
+    },
+    {
+        "location": "Tokyo",
+        "date": "06-01-2024",
+        "rain": 7.1
+    },
+    {
+        "location": "Tokyo",
+        "date": "07-01-2024",
+        "rain": 22.0
+    },
+    {
+        "location": "Tokyo",
+        "date": "08-01-2024",
+        "rain": 30.8
+    },
+    {
+        "location": "Tokyo",
+        "date": "09-01-2024",
+        "rain": 15.5
+    },
+    {
+        "location": "Tokyo",
+        "date": "10-01-2024",
+        "rain": 92.8
+    },
+    {
+        "location": "Tokyo",
+        "date": "11-01-2024",
+        "rain": 60.4
+    },
+    {
+        "location": "Tokyo",
+        "date": "12-01-2024",
+        "rain": 77.8
+    },
+    {
+        "location": "Tokyo",
+        "date": "13-01-2024",
+        "rain": 42.5
+    },
+    {
+        "location": "Tokyo",
+        "date": "14-01-2024",
+        "rain": 60.0
+    },
+    {
+        "location": "Tokyo",
+        "date": "15-01-2024",
+        "rain": 33.4
+    },
+    {
+        "location": "Tokyo",
+        "date": "16-01-2024",
+        "rain": 37.2
+    },
+    {
+        "location": "Tokyo",
+        "date": "17-01-2024",
+        "rain": 65.5
+    },
+    {
+        "location": "Tokyo",
+        "date": "18-01-2024",
+        "rain": 94.1
+    },
+    {
+        "location": "Tokyo",
+        "date": "19-01-2024",
+        "rain": 42.2
+    },
+    {
+        "location": "Tokyo",
+        "date": "20-01-2024",
+        "rain": 96.2
+    },
+    {
+        "location": "Tokyo",
+        "date": "21-01-2024",
+        "rain": 30.7
+    },
+    {
+        "location": "Tokyo",
+        "date": "22-01-2024",
+        "rain": 4.7
+    },
+    {
+        "location": "Tokyo",
+        "date": "23-01-2024",
+        "rain": 93.7
+    },
+    {
+        "location": "Tokyo",
+        "date": "24-01-2024",
+        "rain": 95.5
+    },
+    {
+        "location": "Tokyo",
+        "date": "25-01-2024",
+        "rain": 89.7
+    },
+    {
+        "location": "Tokyo",
+        "date": "26-01-2024",
+        "rain": 57.1
+    },
+    {
+        "location": "Tokyo",
+        "date": "27-01-2024",
+        "rain": 42.7
+    },
+    {
+        "location": "Tokyo",
+        "date": "28-01-2024",
+        "rain": 73.0
+    },
+    {
+        "location": "Tokyo",
+        "date": "29-01-2024",
+        "rain": 41.4
+    },
+    {
+        "location": "Tokyo",
+        "date": "30-01-2024",
+        "rain": 97.3
+    },
+    {
+        "location": "Paris",
+        "date": "01-01-2024",
+        "rain": 52.9
+    },
+    {
+        "location": "Paris",
+        "date": "02-01-2024",
+        "rain": 77.8
+    },
+    {
+        "location": "Paris",
+        "date": "03-01-2024",
+        "rain": 17.0
+    },
+    {
+        "location": "Paris",
+        "date": "04-01-2024",
+        "rain": 7.5
+    },
+    {
+        "location": "Paris",
+        "date": "05-01-2024",
+        "rain": 78.3
+    },
+    {
+        "location": "Paris",
+        "date": "06-01-2024",
+        "rain": 6.5
+    },
+    {
+        "location": "Paris",
+        "date": "07-01-2024",
+        "rain": 0.8
+    },
+    {
+        "location": "Paris",
+        "date": "08-01-2024",
+        "rain": 45.9
+    },
+    {
+        "location": "Paris",
+        "date": "09-01-2024",
+        "rain": 28.0
+    },
+    {
+        "location": "Paris",
+        "date": "10-01-2024",
+        "rain": 90.7
+    },
+    {
+        "location": "Paris",
+        "date": "11-01-2024",
+        "rain": 52.8
+    },
+    {
+        "location": "Paris",
+        "date": "12-01-2024",
+        "rain": 36.7
+    },
+    {
+        "location": "Paris",
+        "date": "13-01-2024",
+        "rain": 66.1
+    },
+    {
+        "location": "Paris",
+        "date": "14-01-2024",
+        "rain": 75.6
+    },
+    {
+        "location": "Paris",
+        "date": "15-01-2024",
+        "rain": 4.7
+    },
+    {
+        "location": "Paris",
+        "date": "16-01-2024",
+        "rain": 64.8
+    },
+    {
+        "location": "Paris",
+        "date": "17-01-2024",
+        "rain": 68.7
+    },
+    {
+        "location": "Paris",
+        "date": "18-01-2024",
+        "rain": 33.9
+    },
+    {
+        "location": "Paris",
+        "date": "19-01-2024",
+        "rain": 9999.0
+    },
+    {
+        "location": "Paris",
+        "date": "20-01-2024",
+        "rain": 44.5
+    },
+    {
+        "location": "Paris",
+        "date": "21-01-2024",
+        "rain": 44.7
+    },
+    {
+        "location": "Paris",
+        "date": "22-01-2024",
+        "rain": 4.6
+    },
+    {
+        "location": "Paris",
+        "date": "23-01-2024",
+        "rain": 42.4
+    },
+    {
+        "location": "Paris",
+        "date": "24-01-2024",
+        "rain": 91.8
+    },
+    {
+        "location": "Paris",
+        "date": "25-01-2024",
+        "rain": 17.8
+    },
+    {
+        "location": "Paris",
+        "date": "26-01-2024",
+        "rain": 33.1
+    },
+    {
+        "location": "Paris",
+        "date": "27-01-2024",
+        "rain": 12.0
+    },
+    {
+        "location": "Paris",
+        "date": "28-01-2024",
+        "rain": 87.7
+    },
+    {
+        "location": "Paris",
+        "date": "29-01-2024",
+        "rain": 99.6
+    },
+    {
+        "location": "Paris",
+        "date": "30-01-2024",
+        "rain": 79.1
+    }
+]

@@ -1,8 +1,8 @@
 import React from 'react';
 import './App.css'
 import { Route, Routes } from "react-router-dom";
-import { ConfigProvider, theme } from 'antd';
-import Home from './pages/Home'
+import Home from './pages/Home';
+import FormsPage from './pages/FormsPage';
 
 
 function App()
@@ -22,6 +22,8 @@ function App()
     <div className="app">
       <Routes>
         <Route path='/' element={<Home />} />
+        <Route path='/Home' element={<Home />} />
+        <Route path='/Forms' element={<FormsPage />} />
       </Routes>
     </div>
 

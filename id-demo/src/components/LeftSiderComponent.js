@@ -1,34 +1,51 @@
 // LeftSiderComponent.js
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import FormInfiniteScrollListComponent from './FormInfiniteScrollListComponent'
+
+
+
 
 
 
 function LeftSiderComponent()
 {
 
+    const moduleContent = {
+        Home: (
+            <div>
+                <h2>Welcome to Home</h2>
+            </div>
+        ),
+        Forms: (
+            <FormInfiniteScrollListComponent />
+        ),
+        // Add more modules as needed
+    };
+
+
+
+
+    // Default to an unknown page if no match
+    const moduleName = useSelector((state) => state.moduleValue.value);
+    const content = moduleContent[moduleName] || <div><h2>Unknown Page</h2></div>;
 
     return (
         <>
-            <div class="trigger-bar"
+            <div className="trigger-bar"
                 style={{
-                    background: 'linear-gradient(to right, #e1e5e5 50%, transparent 50%)',
+                    background: ' #e1e5e5',
                     position: 'absolute',
                     top: 0,
                     left: '100%',
                     height: '100%',
-                    width: '64px',
+                    width: '32px',
                     cursor: 'pointer'
                 }}></div>
-            <div class="sider-content"
-                style={{
-                    padding: '20px'
-                }}>
-                <ul>
-                    <li>菜单项 1</li>
-                    <li>菜单项 2</li>
-                    <li>菜单项 3</li>
-                </ul>
-            </div>
+
+            {content}
+
         </>
     )
 };

@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const locationValueSlice = createSlice({
     name: 'locationValue',
     initialState: {
-        value: 'Location',
+        value: 'Auckland',
     },
     reducers: {
         setLocationValue: (state, action) =>
