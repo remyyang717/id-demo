@@ -1,5 +1,5 @@
 // ScatterComponent.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { Scatter } from '@ant-design/plots';
 
@@ -7,14 +7,37 @@ import { Scatter } from '@ant-design/plots';
 function ScatterComponent({ name, graphData, height = 1, width = 2, yDomainMin = 0, yDomainMax = 200, yLabel })
 {
 
+    const [graphWidth, setGraphWidth] = useState(window.innerWidth * width * 0.3);
+    const [graphHeight, setGraphHeight] = useState(window.innerHeight * height * 0.3);
 
+    // Resize handler that updates chart dimensions based on window size
+    useEffect(() =>
+    {
+        const handleResize = () =>
+        {
+            setGraphWidth(window.innerWidth * width * 0.3);
+            setGraphHeight(window.innerHeight * height * 0.3);
+        };
+
+        // Attach the resize event listener
+        window.addEventListener('resize', handleResize);
+
+        // Call the handler once to set initial sizes
+        handleResize();
+
+        // Cleanup the event listener on component unmount
+        return () =>
+        {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [height, width]);
 
     const config = {
         colorField: 'location',
         data: graphData,
         title: name,
-        width: window.innerWidth * width * 0.3,
-        height: window.innerHeight * height * 0.3,
+        width: graphWidth,
+        height: graphHeight,
         xField: 'date',
         yField: 'rain',
         sizeField: 'rain',
@@ -46,9 +69,19 @@ function ScatterComponent({ name, graphData, height = 1, width = 2, yDomainMin =
 
 
     return (
-        <div style={{ padding: '16px' }} >
+        <div
+            style={{
+                padding: 0, // Reset padding
+                margin: 0,  // Reset margin
+                display: 'flex', // Use flexbox for centering
+                justifyContent: 'center', // Center horizontally
+                alignItems: 'center', // Center vertically if necessary
+            }}
+        >
             <Scatter {...config} />
-        </div >
+        </div>
+
+
     )
 };
 

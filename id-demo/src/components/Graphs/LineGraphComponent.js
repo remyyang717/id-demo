@@ -1,19 +1,41 @@
 // LineGraphComponent.js
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { Line } from '@ant-design/plots';
 
 
-
-
 function LineGraphComponent({ name, graphData, height, width, yDomainMin = 0, yDomainMax = 0, yLabel })
 {
+    const [graphWidth, setGraphWidth] = useState(window.innerWidth * width * 0.3);
+    const [graphHeight, setGraphHeight] = useState(window.innerHeight * height * 0.3);
+
+    // Resize handler that updates chart dimensions based on window size
+    useEffect(() =>
+    {
+        const handleResize = () =>
+        {
+            setGraphWidth(window.innerWidth * width * 0.3);
+            setGraphHeight(window.innerHeight * height * 0.3);
+        };
+
+        // Attach the resize event listener
+        window.addEventListener('resize', handleResize);
+
+        // Call the handler once to set initial sizes
+        handleResize();
+
+        // Cleanup the event listener on component unmount
+        return () =>
+        {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, [height, width]);
 
     const config = {
         colorField: 'location',
         group: true,
-        width: window.innerWidth * width * 0.3,
-        height: window.innerHeight * height * 0.3,
+        width: graphWidth,
+        height: graphHeight,
         title: name,
         data: graphData,
         xField: 'date',
@@ -52,9 +74,19 @@ function LineGraphComponent({ name, graphData, height, width, yDomainMin = 0, yD
     };
 
     return (
-        <div style={{ padding: '16px' }}>
+
+        <div
+            style={{
+                padding: 0, // Reset padding
+                margin: 0,  // Reset margin
+                display: 'flex', // Use flexbox for centering
+                justifyContent: 'center', // Center horizontally
+                alignItems: 'center', // Center vertically if necessary
+            }}
+        >
             <Line {...config} />
         </div>
+
     )
 };
 

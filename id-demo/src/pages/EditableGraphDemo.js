@@ -1,5 +1,5 @@
 //EditableGraphDemo.js
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import rainData_json from '../Data/rainData.json';
 import { Flex, Input, Col, Row, Select } from 'antd';
 import BarChartComponent from '../Components/Graphs/BarChartComponent'
@@ -100,7 +100,7 @@ function EditableGraphDemo()
         <>
             <Row style={{ margin: '10px' }}>
                 <Col flex={1} style={{ margin: '15px' }}>
-                    <label> First Graph (Bar)</label>
+                    <label> Bar  Graph</label>
                 </Col>
                 <Col flex={4} style={{ margin: '10px' }}>
                     <Input
@@ -223,7 +223,7 @@ function EditableGraphDemo()
             </Row >
             <Row style={{ margin: '10px' }}>
                 <Col flex={1} style={{ margin: '15px' }}>
-                    <label> Second Graph (Line)</label>
+                    <label> Line Graph</label>
                 </Col>
                 <Col flex={4} style={{ margin: '10px' }}>
                     <Input
@@ -346,10 +346,11 @@ function EditableGraphDemo()
 
 
 
-            <Flex wrap>
+            <Flex wrap style={{ justifyContent: 'space-around' }}>
                 <BarChartComponent name={graphName1} graphData={rainData_json} width={graphWidth1} height={graphHeight1} yDomainMin={graphYMin1} yDomainMax={graphYMax1} yLabel={graphYLabel1} />
                 <LineGraphComponent name={graphName2} graphData={rainData_json} width={graphWidth2} height={graphHeight2} yDomainMin={graphYMin2} yDomainMax={graphYMax2} yLabel={graphYLabel2} />
-                {/* <ScatterComponent /> */}
+                <ScatterComponent graphData={rainData_json} width={1} height={1} />
+                <ScatterComponent graphData={rainData_json} width={2} height={2} />
             </Flex>
         </>
     )
