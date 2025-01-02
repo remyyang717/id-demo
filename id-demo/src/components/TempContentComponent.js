@@ -2,6 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Row, Card, List } from 'antd';
 import { useSelector } from 'react-redux';
+import ScatterComponent from '../Components/Graphs/ScatterComponent'
+import rainData_json from '../Data/rainData.json';
 
 
 
@@ -34,7 +36,7 @@ function TempContentComponent()
                             {location}
                         </Card>
                     </Row>
-
+                    <ScatterComponent graphData={rainData_json} />
                 </Col>
                 <Col flex={4}>
 

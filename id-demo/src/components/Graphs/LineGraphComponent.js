@@ -6,7 +6,7 @@ import { Line } from '@ant-design/plots';
 
 
 
-function LineGraphComponent({ name, graphData, height, width, yDomainMin = 0, yDomainMax = 0 })
+function LineGraphComponent({ name, graphData, height, width, yDomainMin = 0, yDomainMax = 0, yLabel })
 {
 
     const config = {
@@ -38,7 +38,7 @@ function LineGraphComponent({ name, graphData, height, width, yDomainMin = 0, yD
                 },
             },
             y: {
-                title: 'Volume',
+                title: yLabel,
 
             }
         },

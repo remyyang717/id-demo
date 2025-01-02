@@ -4,7 +4,7 @@ import moment from 'moment';
 import { Column } from '@ant-design/plots';
 
 
-function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin = 0, yDomainMax = 0 })
+function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin = 0, yDomainMax = 0, yLabel })
 {
 
 
@@ -38,7 +38,7 @@ function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin 
                 },
             },
             y: {
-                title: 'Volume',
+                title: yLabel,
 
             }
         },
