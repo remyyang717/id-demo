@@ -4,17 +4,30 @@ import moment from 'moment';
 import { Line } from '@ant-design/plots';
 
 
-function LineGraphComponent({ graphData, height, width })
+
+
+function LineGraphComponent({ name, graphData, height, width, yDomainMin = 0, yDomainMax = 0 })
 {
+
     const config = {
         colorField: 'location',
         group: true,
-        width: window.innerWidth * width * 0.1,
-        height: window.innerHeight * height * 0.1,
-        title: 'Rain data ',
+        width: window.innerWidth * width * 0.3,
+        height: window.innerHeight * height * 0.3,
+        title: name,
         data: graphData,
         xField: 'date',
         yField: 'rain',
+        tooltip: {
+            title: (d) =>
+            {
+                const startDate = moment(d.date, 'DD/MM/YYYY').startOf('day').format('DD-MMM HH:mm');
+                const endDate = moment(d.date, 'DD/MM/YYYY').endOf('day').format('DD-MMM HH:mm');
+                return `${startDate} to ${endDate}`;
+            },
+            items: [{ channel: 'y' }]
+
+        },
         axis: {
             x: {
                 labelFormatter: (val) =>
@@ -32,9 +45,10 @@ function LineGraphComponent({ graphData, height, width })
         scale: {
             y: {
                 type: 'linear',
-                domain: [0, 100],
+                ...(yDomainMax !== 0 ? { domain: [yDomainMin, yDomainMax] } : {}),
+
             }
-        }
+        },
     };
 
     return (

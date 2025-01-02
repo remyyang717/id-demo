@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Layout } from 'antd';
-import HeaderComponent from '../components/HeaderComponent';
-import LeftSiderComponent from '../components/LeftSiderComponent';
+import HeaderComponent from '../Components/HeaderComponent';
+import LeftSiderComponent from '../Components/LeftSiderComponent';
 import { setModuleValue } from '../store/moduleSlice'
 import { useDispatch } from 'react-redux';
+import FormDemo from '../Asset/FormDemo.jpg'
 
 
 const siderStyle = {
@@ -72,7 +73,7 @@ function FormsPage()
                 <Content
                     display='block'
                     style={{
-                        height: '100vh',
+                        minHeight: '100vh',
                         padding: 12,
                         margin: 0,
                         marginLeft: 32,
@@ -81,7 +82,7 @@ function FormsPage()
 
                     }}
                 >
-                    <a>this is form page</a>
+                    <img src={FormDemo} alt='Form Demo' />
                 </Content>
 
 

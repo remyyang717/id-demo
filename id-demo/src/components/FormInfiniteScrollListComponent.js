@@ -9,7 +9,7 @@ function FormInfiniteScrollListComponent()
 {
     const [loading, setLoading] = useState(false);
     const [data, setData] = useState([]);
-    const [searchTerm, setSearchTerm] = useState(''); // New state for search term
+    const [searchTerm, setSearchTerm] = useState('');
     const localData = formListData;
 
     // First load the first 50 items

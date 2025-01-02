@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { Layout } from 'antd';
-import HeaderComponent from '../components/HeaderComponent';
-import TempContentComponent from '../components/TempContentComponent';
+import HeaderComponent from '../Components/HeaderComponent';
+import TempContentComponent from '../Components/TempContentComponent';
 
 
 
 
-const { Sider, Header, Content } = Layout;
+const { Header, Content } = Layout;
 
 
 function Home()
@@ -37,16 +37,18 @@ function Home()
                 <Content
                     display='block'
                     style={{
-                        height: '100vh',
+                        minHeight: '100vh',
                         padding: 12,
                         margin: 0,
                         marginLeft: 32,
                         transform: isHovered ? 'translateX(560px)' : 'translateX(0px)',
                         transition: 'transform 0.3s ease-in-out',
-
                     }}
                 >
+
                     <TempContentComponent />
+
+
                 </Content>
 
 

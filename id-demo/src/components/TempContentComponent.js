@@ -2,9 +2,8 @@
 import React, { useEffect, useState } from 'react';
 import { Col, Row, Card, List } from 'antd';
 import { useSelector } from 'react-redux';
-import rainData_json from '../Data/rainData.json';
-import moment from 'moment';
-import { Line } from '@ant-design/plots';
+
+
 
 
 
@@ -13,38 +12,6 @@ function TempContentComponent()
 {
     const org = useSelector((state) => state.orgValue.value)
     const location = useSelector((state) => state.locationValue.value)
-
-    const config = {
-        colorField: 'location',
-        group: true,
-        width: window.innerWidth * 0.9,
-        height: window.innerHeight * 0.3,
-        title: 'Rain data ',
-        data: rainData_json,
-        xField: 'date',
-        yField: 'rain',
-        axis: {
-            x: {
-                labelFormatter: (val) =>
-                {
-                    const day = parseInt(moment(val, 'DD-MM-YYYY').format('DD'), 10);
-                    const month = moment(val, 'DD-MM-YYYY').format('MMM').toUpperCase();
-                    return day % 5 === 0 ? `${month} \n${day}` : '';
-                },
-            },
-            y: {
-                title: 'Volume',
-
-            }
-        },
-        scale: {
-            y: {
-                type: 'linear',
-                domain: [0, 100],
-            }
-        }
-    };
-
 
 
     return (
@@ -67,7 +34,6 @@ function TempContentComponent()
                             {location}
                         </Card>
                     </Row>
-                    <Row ><Line {...config} /></Row>
 
                 </Col>
                 <Col flex={4}>

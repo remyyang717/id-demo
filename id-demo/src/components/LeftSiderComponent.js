@@ -7,9 +7,6 @@ import { List } from 'antd';
 
 
 
-
-
-
 function LeftSiderComponent()
 {
 
@@ -19,7 +16,7 @@ function LeftSiderComponent()
         ),
         Dashboards: (
             <div
-                id="scrollableDiv"
+                id='scrollableDiv'
                 style={{
                     width: 800,
                     overflow: 'auto',
@@ -27,11 +24,19 @@ function LeftSiderComponent()
                     padding: '0 16px',
                     border: '1px solid rgba(140, 140, 140, 0.35)',
                     paddingTop: '64px',
+                    Layout: 'vertical'
                 }}
             >
                 <List>
                     <List.Item>
-                        <Link to="/Dashboards/DashboardsDemo1">DashboardsDemo1</Link>
+                        <Link to="/Dashboards/DashboardsDemo1">Line Graph & Bar Chart Demo</Link>
+                    </List.Item>
+
+                    <List.Item>
+                        <Link to="/Dashboards/BatchReportDemo1">Batch Report Table Demo</Link>
+                    </List.Item>
+                    <List.Item>
+                        <Link to="/Dashboards/EditableGraphDemo">Editable Graph Demo</Link>
                     </List.Item>
 
                 </List>

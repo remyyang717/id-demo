@@ -392,7 +392,7 @@
     {
         "location": "Hamilton",
         "date": "19-01-2024",
-        "rain": 9999.0
+        "rain": 99.0
     },
     {
         "location": "Hamilton",
@@ -437,7 +437,7 @@
     {
         "location": "Hamilton",
         "date": "28-01-2024",
-        "rain": 87.7
+        "rain": 999
     },
     {
         "location": "Hamilton",
@@ -448,5 +448,1090 @@
         "location": "Hamilton",
         "date": "30-01-2024",
         "rain": 79.1
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "01-01-2024",
+        "rain": 39.8
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "02-01-2024",
+        "rain": 66.6
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "03-01-2024",
+        "rain": 15.9
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "04-01-2024",
+        "rain": 54.2
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "05-01-2024",
+        "rain": 16.8
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "06-01-2024",
+        "rain": 70.2
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "07-01-2024",
+        "rain": 99.3
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "08-01-2024",
+        "rain": 83.2
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "09-01-2024",
+        "rain": 16.7
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "10-01-2024",
+        "rain": 45.9
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "11-01-2024",
+        "rain": 35.1
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "12-01-2024",
+        "rain": 54.7
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "13-01-2024",
+        "rain": 0.3
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "14-01-2024",
+        "rain": 57.0
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "15-01-2024",
+        "rain": 42.9
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "16-01-2024",
+        "rain": 60.9
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "17-01-2024",
+        "rain": 8.4
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "18-01-2024",
+        "rain": 41.3
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "19-01-2024",
+        "rain": 17.8
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "20-01-2024",
+        "rain": 79.0
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "21-01-2024",
+        "rain": 1.6
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "22-01-2024",
+        "rain": 35.5
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "23-01-2024",
+        "rain": 61.3
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "24-01-2024",
+        "rain": 89.7
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "25-01-2024",
+        "rain": 3.0
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "26-01-2024",
+        "rain": 78.8
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "27-01-2024",
+        "rain": 92.9
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "28-01-2024",
+        "rain": 74.6
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "29-01-2024",
+        "rain": 9999999
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "30-01-2024",
+        "rain": 17.0
+    },
+    {
+        "location": "Lower Hutt",
+        "date": "31-01-2024",
+        "rain": 51.4
+    },
+    {
+        "location": "Queenstown",
+        "date": "01-01-2024",
+        "rain": 151.8
+    },
+    {
+        "location": "Queenstown",
+        "date": "02-01-2024",
+        "rain": 180.0
+    },
+    {
+        "location": "Queenstown",
+        "date": "03-01-2024",
+        "rain": 175.0
+    },
+    {
+        "location": "Queenstown",
+        "date": "04-01-2024",
+        "rain": 120.3
+    },
+    {
+        "location": "Queenstown",
+        "date": "05-01-2024",
+        "rain": 94.3
+    },
+    {
+        "location": "Queenstown",
+        "date": "06-01-2024",
+        "rain": 129.4
+    },
+    {
+        "location": "Queenstown",
+        "date": "07-01-2024",
+        "rain": 167.7
+    },
+    {
+        "location": "Queenstown",
+        "date": "08-01-2024",
+        "rain": 151.7
+    },
+    {
+        "location": "Queenstown",
+        "date": "09-01-2024",
+        "rain": 49.3
+    },
+    {
+        "location": "Queenstown",
+        "date": "10-01-2024",
+        "rain": 25.6
+    },
+    {
+        "location": "Queenstown",
+        "date": "11-01-2024",
+        "rain": 123.9
+    },
+    {
+        "location": "Queenstown",
+        "date": "12-01-2024",
+        "rain": 76.0
+    },
+    {
+        "location": "Queenstown",
+        "date": "13-01-2024",
+        "rain": 136.3
+    },
+    {
+        "location": "Queenstown",
+        "date": "14-01-2024",
+        "rain": 152.8
+    },
+    {
+        "location": "Queenstown",
+        "date": "15-01-2024",
+        "rain": 184.6
+    },
+    {
+        "location": "Queenstown",
+        "date": "16-01-2024",
+        "rain": 4.8
+    },
+    {
+        "location": "Queenstown",
+        "date": "17-01-2024",
+        "rain": 78.5
+    },
+    {
+        "location": "Queenstown",
+        "date": "18-01-2024",
+        "rain": 185.9
+    },
+    {
+        "location": "Queenstown",
+        "date": "19-01-2024",
+        "rain": 192.7
+    },
+    {
+        "location": "Queenstown",
+        "date": "20-01-2024",
+        "rain": 151.3
+    },
+    {
+        "location": "Queenstown",
+        "date": "21-01-2024",
+        "rain": 92.1
+    },
+    {
+        "location": "Queenstown",
+        "date": "22-01-2024",
+        "rain": 5.6
+    },
+    {
+        "location": "Queenstown",
+        "date": "23-01-2024",
+        "rain": 127.0
+    },
+    {
+        "location": "Queenstown",
+        "date": "24-01-2024",
+        "rain": 69.8
+    },
+    {
+        "location": "Queenstown",
+        "date": "25-01-2024",
+        "rain": 67.8
+    },
+    {
+        "location": "Queenstown",
+        "date": "26-01-2024",
+        "rain": 112.0
+    },
+    {
+        "location": "Queenstown",
+        "date": "27-01-2024",
+        "rain": 74.3
+    },
+    {
+        "location": "Queenstown",
+        "date": "28-01-2024",
+        "rain": 198.8
+    },
+    {
+        "location": "Queenstown",
+        "date": "29-01-2024",
+        "rain": 183.0
+    },
+    {
+        "location": "Queenstown",
+        "date": "30-01-2024",
+        "rain": 72.2
+    },
+    {
+        "location": "Queenstown",
+        "date": "31-01-2024",
+        "rain": 59.7
+    },
+    {
+        "location": "New Plymouth",
+        "date": "01-01-2024",
+        "rain": 77.6
+    },
+    {
+        "location": "New Plymouth",
+        "date": "02-01-2024",
+        "rain": 196.4
+    },
+    {
+        "location": "New Plymouth",
+        "date": "03-01-2024",
+        "rain": 136.1
+    },
+    {
+        "location": "New Plymouth",
+        "date": "04-01-2024",
+        "rain": 64.9
+    },
+    {
+        "location": "New Plymouth",
+        "date": "05-01-2024",
+        "rain": 0.5
+    },
+    {
+        "location": "New Plymouth",
+        "date": "06-01-2024",
+        "rain": 77.6
+    },
+    {
+        "location": "New Plymouth",
+        "date": "07-01-2024",
+        "rain": 33.9
+    },
+    {
+        "location": "New Plymouth",
+        "date": "08-01-2024",
+        "rain": 146.9
+    },
+    {
+        "location": "New Plymouth",
+        "date": "09-01-2024",
+        "rain": 167.6
+    },
+    {
+        "location": "New Plymouth",
+        "date": "10-01-2024",
+        "rain": 199.1
+    },
+    {
+        "location": "New Plymouth",
+        "date": "11-01-2024",
+        "rain": 163.0
+    },
+    {
+        "location": "New Plymouth",
+        "date": "12-01-2024",
+        "rain": 14.0
+    },
+    {
+        "location": "New Plymouth",
+        "date": "13-01-2024",
+        "rain": 125.9
+    },
+    {
+        "location": "New Plymouth",
+        "date": "14-01-2024",
+        "rain": 36.4
+    },
+    {
+        "location": "New Plymouth",
+        "date": "15-01-2024",
+        "rain": 63.0
+    },
+    {
+        "location": "New Plymouth",
+        "date": "16-01-2024",
+        "rain": 88.1
+    },
+    {
+        "location": "New Plymouth",
+        "date": "17-01-2024",
+        "rain": 57.2
+    },
+    {
+        "location": "New Plymouth",
+        "date": "18-01-2024",
+        "rain": 89.9
+    },
+    {
+        "location": "New Plymouth",
+        "date": "19-01-2024",
+        "rain": 147.3
+    },
+    {
+        "location": "New Plymouth",
+        "date": "20-01-2024",
+        "rain": 145.9
+    },
+    {
+        "location": "New Plymouth",
+        "date": "21-01-2024",
+        "rain": 109.4
+    },
+    {
+        "location": "New Plymouth",
+        "date": "22-01-2024",
+        "rain": 18.7
+    },
+    {
+        "location": "New Plymouth",
+        "date": "23-01-2024",
+        "rain": 196.8
+    },
+    {
+        "location": "New Plymouth",
+        "date": "24-01-2024",
+        "rain": 21.1
+    },
+    {
+        "location": "New Plymouth",
+        "date": "25-01-2024",
+        "rain": 20.3
+    },
+    {
+        "location": "New Plymouth",
+        "date": "26-01-2024",
+        "rain": 35.5
+    },
+    {
+        "location": "New Plymouth",
+        "date": "27-01-2024",
+        "rain": 99.5
+    },
+    {
+        "location": "New Plymouth",
+        "date": "28-01-2024",
+        "rain": 83.1
+    },
+    {
+        "location": "New Plymouth",
+        "date": "29-01-2024",
+        "rain": 83.0
+    },
+    {
+        "location": "New Plymouth",
+        "date": "30-01-2024",
+        "rain": 56.1
+    },
+    {
+        "location": "New Plymouth",
+        "date": "31-01-2024",
+        "rain": 104.5
+    },
+    {
+        "location": "Rotorua",
+        "date": "01-01-2024",
+        "rain": 116.2
+    },
+    {
+        "location": "Rotorua",
+        "date": "02-01-2024",
+        "rain": 169.7
+    },
+    {
+        "location": "Rotorua",
+        "date": "03-01-2024",
+        "rain": 189.2
+    },
+    {
+        "location": "Rotorua",
+        "date": "04-01-2024",
+        "rain": 92.8
+    },
+    {
+        "location": "Rotorua",
+        "date": "05-01-2024",
+        "rain": 0.6
+    },
+    {
+        "location": "Rotorua",
+        "date": "06-01-2024",
+        "rain": 192.3
+    },
+    {
+        "location": "Rotorua",
+        "date": "07-01-2024",
+        "rain": 12.3
+    },
+    {
+        "location": "Rotorua",
+        "date": "08-01-2024",
+        "rain": 132.3
+    },
+    {
+        "location": "Rotorua",
+        "date": "09-01-2024",
+        "rain": 183.3
+    },
+    {
+        "location": "Rotorua",
+        "date": "10-01-2024",
+        "rain": 177.9
+    },
+    {
+        "location": "Rotorua",
+        "date": "11-01-2024",
+        "rain": 131.8
+    },
+    {
+        "location": "Rotorua",
+        "date": "12-01-2024",
+        "rain": 8.7
+    },
+    {
+        "location": "Rotorua",
+        "date": "13-01-2024",
+        "rain": 33.2
+    },
+    {
+        "location": "Rotorua",
+        "date": "14-01-2024",
+        "rain": 194.5
+    },
+    {
+        "location": "Rotorua",
+        "date": "15-01-2024",
+        "rain": 115.1
+    },
+    {
+        "location": "Rotorua",
+        "date": "16-01-2024",
+        "rain": 1.7
+    },
+    {
+        "location": "Rotorua",
+        "date": "17-01-2024",
+        "rain": 118.4
+    },
+    {
+        "location": "Rotorua",
+        "date": "18-01-2024",
+        "rain": 140.1
+    },
+    {
+        "location": "Rotorua",
+        "date": "19-01-2024",
+        "rain": 38.5
+    },
+    {
+        "location": "Rotorua",
+        "date": "20-01-2024",
+        "rain": 6.8
+    },
+    {
+        "location": "Rotorua",
+        "date": "21-01-2024",
+        "rain": 135.0
+    },
+    {
+        "location": "Rotorua",
+        "date": "22-01-2024",
+        "rain": 161.5
+    },
+    {
+        "location": "Rotorua",
+        "date": "23-01-2024",
+        "rain": 52.7
+    },
+    {
+        "location": "Rotorua",
+        "date": "24-01-2024",
+        "rain": 158.9
+    },
+    {
+        "location": "Rotorua",
+        "date": "25-01-2024",
+        "rain": 120.9
+    },
+    {
+        "location": "Rotorua",
+        "date": "26-01-2024",
+        "rain": 84.9
+    },
+    {
+        "location": "Rotorua",
+        "date": "27-01-2024",
+        "rain": 6.2
+    },
+    {
+        "location": "Rotorua",
+        "date": "28-01-2024",
+        "rain": 199.1
+    },
+    {
+        "location": "Rotorua",
+        "date": "29-01-2024",
+        "rain": 66.3
+    },
+    {
+        "location": "Rotorua",
+        "date": "30-01-2024",
+        "rain": 42.7
+    },
+    {
+        "location": "Rotorua",
+        "date": "31-01-2024",
+        "rain": 21.6
+    },
+    {
+        "location": "Tauranga",
+        "date": "01-01-2024",
+        "rain": 79.8
+    },
+    {
+        "location": "Tauranga",
+        "date": "02-01-2024",
+        "rain": 25.2
+    },
+    {
+        "location": "Tauranga",
+        "date": "03-01-2024",
+        "rain": 26.2
+    },
+    {
+        "location": "Tauranga",
+        "date": "04-01-2024",
+        "rain": 178.5
+    },
+    {
+        "location": "Tauranga",
+        "date": "05-01-2024",
+        "rain": 185.5
+    },
+    {
+        "location": "Tauranga",
+        "date": "06-01-2024",
+        "rain": 86.5
+    },
+    {
+        "location": "Tauranga",
+        "date": "07-01-2024",
+        "rain": 114.2
+    },
+    {
+        "location": "Tauranga",
+        "date": "08-01-2024",
+        "rain": 149.4
+    },
+    {
+        "location": "Tauranga",
+        "date": "09-01-2024",
+        "rain": 82.1
+    },
+    {
+        "location": "Tauranga",
+        "date": "10-01-2024",
+        "rain": 43.9
+    },
+    {
+        "location": "Tauranga",
+        "date": "11-01-2024",
+        "rain": 5.9
+    },
+    {
+        "location": "Tauranga",
+        "date": "12-01-2024",
+        "rain": 56.7
+    },
+    {
+        "location": "Tauranga",
+        "date": "13-01-2024",
+        "rain": 8.5
+    },
+    {
+        "location": "Tauranga",
+        "date": "14-01-2024",
+        "rain": 47.3
+    },
+    {
+        "location": "Tauranga",
+        "date": "15-01-2024",
+        "rain": 82.2
+    },
+    {
+        "location": "Tauranga",
+        "date": "16-01-2024",
+        "rain": 49.2
+    },
+    {
+        "location": "Tauranga",
+        "date": "17-01-2024",
+        "rain": 118.9
+    },
+    {
+        "location": "Tauranga",
+        "date": "18-01-2024",
+        "rain": 187.5
+    },
+    {
+        "location": "Tauranga",
+        "date": "19-01-2024",
+        "rain": 96.8
+    },
+    {
+        "location": "Tauranga",
+        "date": "20-01-2024",
+        "rain": 79.5
+    },
+    {
+        "location": "Tauranga",
+        "date": "21-01-2024",
+        "rain": 76.7
+    },
+    {
+        "location": "Tauranga",
+        "date": "22-01-2024",
+        "rain": 197.4
+    },
+    {
+        "location": "Tauranga",
+        "date": "23-01-2024",
+        "rain": 22.9
+    },
+    {
+        "location": "Tauranga",
+        "date": "24-01-2024",
+        "rain": 153.4
+    },
+    {
+        "location": "Tauranga",
+        "date": "25-01-2024",
+        "rain": 75.6
+    },
+    {
+        "location": "Tauranga",
+        "date": "26-01-2024",
+        "rain": 37.1
+    },
+    {
+        "location": "Tauranga",
+        "date": "27-01-2024",
+        "rain": 61.2
+    },
+    {
+        "location": "Tauranga",
+        "date": "28-01-2024",
+        "rain": 39.5
+    },
+    {
+        "location": "Tauranga",
+        "date": "29-01-2024",
+        "rain": 101.0
+    },
+    {
+        "location": "Tauranga",
+        "date": "30-01-2024",
+        "rain": 5.3
+    },
+    {
+        "location": "Tauranga",
+        "date": "31-01-2024",
+        "rain": 166.9
+    },
+    {
+        "location": "Palmerston North",
+        "date": "01-01-2024",
+        "rain": 156.2
+    },
+    {
+        "location": "Palmerston North",
+        "date": "02-01-2024",
+        "rain": 51.8
+    },
+    {
+        "location": "Palmerston North",
+        "date": "03-01-2024",
+        "rain": 50.6
+    },
+    {
+        "location": "Palmerston North",
+        "date": "04-01-2024",
+        "rain": 9.4
+    },
+    {
+        "location": "Palmerston North",
+        "date": "05-01-2024",
+        "rain": 57.4
+    },
+    {
+        "location": "Palmerston North",
+        "date": "06-01-2024",
+        "rain": 52.3
+    },
+    {
+        "location": "Palmerston North",
+        "date": "07-01-2024",
+        "rain": 73.8
+    },
+    {
+        "location": "Palmerston North",
+        "date": "08-01-2024",
+        "rain": 164.5
+    },
+    {
+        "location": "Palmerston North",
+        "date": "09-01-2024",
+        "rain": 87.0
+    },
+    {
+        "location": "Palmerston North",
+        "date": "10-01-2024",
+        "rain": 127.0
+    },
+    {
+        "location": "Palmerston North",
+        "date": "11-01-2024",
+        "rain": 159.7
+    },
+    {
+        "location": "Palmerston North",
+        "date": "12-01-2024",
+        "rain": 93.9
+    },
+    {
+        "location": "Palmerston North",
+        "date": "13-01-2024",
+        "rain": 199.0
+    },
+    {
+        "location": "Palmerston North",
+        "date": "14-01-2024",
+        "rain": 80.1
+    },
+    {
+        "location": "Palmerston North",
+        "date": "15-01-2024",
+        "rain": 40.8
+    },
+    {
+        "location": "Palmerston North",
+        "date": "16-01-2024",
+        "rain": 82.1
+    },
+    {
+        "location": "Palmerston North",
+        "date": "17-01-2024",
+        "rain": 132.7
+    },
+    {
+        "location": "Palmerston North",
+        "date": "18-01-2024",
+        "rain": 172.4
+    },
+    {
+        "location": "Palmerston North",
+        "date": "19-01-2024",
+        "rain": 128.0
+    },
+    {
+        "location": "Palmerston North",
+        "date": "20-01-2024",
+        "rain": 189.5
+    },
+    {
+        "location": "Palmerston North",
+        "date": "21-01-2024",
+        "rain": 191.2
+    },
+    {
+        "location": "Palmerston North",
+        "date": "22-01-2024",
+        "rain": 121.8
+    },
+    {
+        "location": "Palmerston North",
+        "date": "23-01-2024",
+        "rain": 25.0
+    },
+    {
+        "location": "Palmerston North",
+        "date": "24-01-2024",
+        "rain": 106.2
+    },
+    {
+        "location": "Palmerston North",
+        "date": "25-01-2024",
+        "rain": 199.3
+    },
+    {
+        "location": "Palmerston North",
+        "date": "26-01-2024",
+        "rain": 142.2
+    },
+    {
+        "location": "Palmerston North",
+        "date": "27-01-2024",
+        "rain": 37.5
+    },
+    {
+        "location": "Palmerston North",
+        "date": "28-01-2024",
+        "rain": 86.6
+    },
+    {
+        "location": "Palmerston North",
+        "date": "29-01-2024",
+        "rain": 25.8
+    },
+    {
+        "location": "Palmerston North",
+        "date": "30-01-2024",
+        "rain": 32.5
+    },
+    {
+        "location": "Palmerston North",
+        "date": "31-01-2024",
+        "rain": 19.4
+    },
+    {
+        "location": "Gisborne",
+        "date": "01-01-2024",
+        "rain": 145.3
+    },
+    {
+        "location": "Gisborne",
+        "date": "02-01-2024",
+        "rain": 100.5
+    },
+    {
+        "location": "Gisborne",
+        "date": "03-01-2024",
+        "rain": 175.5
+    },
+    {
+        "location": "Gisborne",
+        "date": "04-01-2024",
+        "rain": 199.3
+    },
+    {
+        "location": "Gisborne",
+        "date": "05-01-2024",
+        "rain": 123.7
+    },
+    {
+        "location": "Gisborne",
+        "date": "06-01-2024",
+        "rain": 138.6
+    },
+    {
+        "location": "Gisborne",
+        "date": "07-01-2024",
+        "rain": 66.4
+    },
+    {
+        "location": "Gisborne",
+        "date": "08-01-2024",
+        "rain": 43.0
+    },
+    {
+        "location": "Gisborne",
+        "date": "09-01-2024",
+        "rain": 91.6
+    },
+    {
+        "location": "Gisborne",
+        "date": "10-01-2024",
+        "rain": 58.4
+    },
+    {
+        "location": "Gisborne",
+        "date": "11-01-2024",
+        "rain": 123.1
+    },
+    {
+        "location": "Gisborne",
+        "date": "12-01-2024",
+        "rain": 16.9
+    },
+    {
+        "location": "Gisborne",
+        "date": "13-01-2024",
+        "rain": 120.7
+    },
+    {
+        "location": "Gisborne",
+        "date": "14-01-2024",
+        "rain": 39.7
+    },
+    {
+        "location": "Gisborne",
+        "date": "15-01-2024",
+        "rain": 194.1
+    },
+    {
+        "location": "Gisborne",
+        "date": "16-01-2024",
+        "rain": 49.9
+    },
+    {
+        "location": "Gisborne",
+        "date": "17-01-2024",
+        "rain": 56.2
+    },
+    {
+        "location": "Gisborne",
+        "date": "18-01-2024",
+        "rain": 169.2
+    },
+    {
+        "location": "Gisborne",
+        "date": "19-01-2024",
+        "rain": 145.1
+    },
+    {
+        "location": "Gisborne",
+        "date": "20-01-2024",
+        "rain": 99.0
+    },
+    {
+        "location": "Gisborne",
+        "date": "21-01-2024",
+        "rain": 182.8
+    },
+    {
+        "location": "Gisborne",
+        "date": "22-01-2024",
+        "rain": 41.3
+    },
+    {
+        "location": "Gisborne",
+        "date": "23-01-2024",
+        "rain": 173.7
+    },
+    {
+        "location": "Gisborne",
+        "date": "24-01-2024",
+        "rain": 34.3
+    },
+    {
+        "location": "Gisborne",
+        "date": "25-01-2024",
+        "rain": 59.1
+    },
+    {
+        "location": "Gisborne",
+        "date": "26-01-2024",
+        "rain": 60.5
+    },
+    {
+        "location": "Gisborne",
+        "date": "27-01-2024",
+        "rain": 136.6
+    },
+    {
+        "location": "Gisborne",
+        "date": "28-01-2024",
+        "rain": 147.7
+    },
+    {
+        "location": "Gisborne",
+        "date": "29-01-2024",
+        "rain": 8.1
+    },
+    {
+        "location": "Gisborne",
+        "date": "30-01-2024",
+        "rain": 81.8
+    },
+    {
+        "location": "Gisborne",
+        "date": "31-01-2024",
+        "rain": 139.9
     }
 ]

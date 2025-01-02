@@ -1,12 +1,14 @@
 // DashboardsPage.js
 import React, { useState } from 'react';
 import { Layout } from 'antd';
-import HeaderComponent from '../components/HeaderComponent';
-import LeftSiderComponent from '../components/LeftSiderComponent';
+import HeaderComponent from '../Components/HeaderComponent';
+import LeftSiderComponent from '../Components/LeftSiderComponent';
 import { setModuleValue } from '../store/moduleSlice'
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from "react-router-dom";
 import DashboardsDemo1 from './DashboardsDemo1'
+import BatchReportDemo1 from './BatchReportDemo1'
+import EditableGraphDemo from './EditableGraphDemo'
 
 
 const siderStyle = {
@@ -73,20 +75,21 @@ function DashboardsPage()
                 </Sider>
 
                 <Content
-                    display='block'
                     style={{
-                        height: '100vh',
+                        minHeight: '100vh',
                         padding: 12,
                         margin: 0,
                         marginLeft: 32,
                         transform: isHovered ? 'translateX(800px)' : 'translateX(0px)',
                         transition: 'transform 0.3s ease-in-out',
-
                     }}
                 >
                     <Routes>
                         <Route path='DashboardsDemo1' element={<DashboardsDemo1 />} />
+                        <Route path='BatchReportDemo1' element={<BatchReportDemo1 />} />
+                        <Route path='EditableGraphDemo' element={<EditableGraphDemo />} />
                     </Routes>
+
                 </Content>
 
 
