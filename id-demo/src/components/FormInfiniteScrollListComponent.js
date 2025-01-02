@@ -115,8 +115,8 @@ function FormInfiniteScrollListComponent()
                     renderItem={(item) => (
                         <List.Item key={item.formId}>
                             <Badge.Ribbon
-                                text={<span style={{ color: item.status === 'Active' ? '#7A5449' : '#3D504A' }}><strong>{item.status}</strong> </span>}
-                                color={item.status === 'Active' ? '#19FAB6' : '#FA4919'}
+                                text={<span style={{ color: item.status === 'Active' ? '#7A5449' : '#7D6161' }}><strong>{item.status}</strong> </span>}
+                                color={item.status === 'Active' ? '#19FAB6' : '#D3D3D3'}
                             >
                                 <Link to={item.link} style={{ display: 'block', width: '100%', height: '100%' }}>
                                     <Card
