@@ -42,6 +42,31 @@ function LineGraphComponent({ name, graphData, height, width, yDomainMin = 0, yD
         items: [{ channel: 'y' }]
     };
 
+    // Customise Label
+    // Calculate the minimum and maximum date from the graphData
+    const dates = graphData.map(item => moment(item.date, 'DD-MM-YYYY HH:mm:ss'));
+    const minDate = moment.min(dates);
+    const maxDate = moment.max(dates);
+
+    // Calculate the time range (difference between the min and max dates)
+    const dateRange = maxDate.diff(minDate, 'days');
+    const getLabelFormat = () =>
+    {
+        if (dateRange < 1)
+        {
+            return 'hh:mm'; // For ranges less than 3 days
+        } else if (dateRange >= 1 && dateRange <= 365)
+        {
+            return 'DD MMM'; // For ranges between 3 days and 6 months
+        } else
+        {
+            return 'MMM YYYY'; // For ranges greater than 6 months
+        }
+    };
+
+    const dataLength = new Set(graphData.map(item => item.location)).size;
+    const labelMod = Math.floor((graphData.length / dataLength) / (graphWidth / 150));
+
     const config = {
         colorField: 'location',
         group: true,
@@ -58,12 +83,24 @@ function LineGraphComponent({ name, graphData, height, width, yDomainMin = 0, yD
             x: {
                 labelFormatter: (val, index) =>
                 {
-                    const day = parseInt(moment(val, 'DD-MM-YYYY').format('DD'), 10);
-                    const month = moment(val, 'DD-MM-YYYY').format('MMM').toUpperCase();
-                    const dataLenth = new Set(graphData.map(item => item.location)).size
-                    const labelMod = Math.floor((graphData.length / dataLenth) / (graphWidth / 150));
-                    console.log(dataLenth, graphWidth, labelMod)
-                    return index % labelMod === 0 ? `${month} \n${day}` : '';
+                    const momentVal = moment(val, 'DD-MM-YYYY');
+                    const day = momentVal.format('DD');
+                    const month = momentVal.format('MMM');
+                    const year = momentVal.format('YYYY');
+                    const time = momentVal.format('HH:mm');
+
+                    const format = getLabelFormat();
+                    switch (format)
+                    {
+                        case 'hh:mm':
+                            return index % labelMod === 0 ? `${time} ${day}` : '';
+                        case 'DD MMM':
+                            return index % labelMod === 0 ? `${day} ${month}` : '';
+                        case 'MMM YYYY':
+                            return index % labelMod === 0 ? `${month} ${year}` : '';
+                        default:
+                            return '';
+                    }
                 },
             },
             y: {
