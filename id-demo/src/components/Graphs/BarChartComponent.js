@@ -71,18 +71,11 @@ function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin 
 
             }
         },
+
     };
 
     return (
-        <div
-            style={{
-                padding: 0, // Reset padding
-                margin: 0,  // Reset margin
-                display: 'flex', // Use flexbox for centering
-                justifyContent: 'center', // Center horizontally
-                alignItems: 'center', // Center vertically if necessary
-            }}
-        >
+        <div>
             <Column {...config} />
         </div>
     )

@@ -9,6 +9,7 @@ import { Route, Routes } from "react-router-dom";
 import DashboardsDemo1 from './DashboardsDemo1'
 import BatchReportDemo1 from './BatchReportDemo1'
 import EditableGraphDemo from './EditableGraphDemo'
+import ProcessrIODemoPage from './ProcessrIODemoPage'
 
 
 const siderStyle = {
@@ -88,6 +89,7 @@ function DashboardsPage()
                         <Route path='DashboardsDemo1' element={<DashboardsDemo1 />} />
                         <Route path='BatchReportDemo1' element={<BatchReportDemo1 />} />
                         <Route path='EditableGraphDemo' element={<EditableGraphDemo />} />
+                        <Route path='ProcessrIODemoPage' element={<ProcessrIODemoPage />} />
                     </Routes>
 
                 </Content>

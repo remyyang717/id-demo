@@ -75,15 +75,7 @@ function LineGraphComponent({ name, graphData, height, width, yDomainMin = 0, yD
 
     return (
 
-        <div
-            style={{
-                padding: 0, // Reset padding
-                margin: 0,  // Reset margin
-                display: 'flex', // Use flexbox for centering
-                justifyContent: 'center', // Center horizontally
-                alignItems: 'center', // Center vertically if necessary
-            }}
-        >
+        <div>
             <Line {...config} />
         </div>
 
