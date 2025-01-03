@@ -8,6 +8,7 @@ function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin 
 {
     const [graphWidth, setGraphWidth] = useState(window.innerWidth * width * 0.3);
     const [graphHeight, setGraphHeight] = useState(window.innerHeight * height * 0.3);
+    const [labelMod, setLabelMod] = useState(0); // State to store labelMod value
 
     // Resize handler that updates chart dimensions based on window size
     useEffect(() =>
@@ -63,9 +64,13 @@ function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin 
             return 'MMM YYYY'; // For ranges greater than 6 months
         }
     };
-
-    const dataLength = new Set(graphData.map(item => item.location)).size;
-    const labelMod = Math.floor((graphData.length / dataLength) / (graphWidth / 150));
+    // Calculate the labelMod whenever graphData or graphWidth changes
+    useEffect(() =>
+    {
+        const dataLength = new Set(graphData.map(item => item.location)).size;
+        const newLabelMod = Math.floor((graphData.length / dataLength) / (graphWidth / 150));
+        setLabelMod(newLabelMod); // Update labelMod state
+    }, [graphData, graphWidth]);
 
     const config = {
         colorField: 'location',
@@ -93,11 +98,11 @@ function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin 
                     switch (format)
                     {
                         case 'hh:mm':
-                            return index % labelMod === 0 ? `${time} ${day}` : '';
+                            return index % labelMod === 0 ? `${time}\n${day}` : '';
                         case 'DD MMM':
-                            return index % labelMod === 0 ? `${day} ${month}` : '';
+                            return index % labelMod === 0 ? `${day}\n${month}` : '';
                         case 'MMM YYYY':
-                            return index % labelMod === 0 ? `${month} ${year}` : '';
+                            return index % labelMod === 0 ? `${month}\n${year}` : '';
                         default:
                             return '';
                     }

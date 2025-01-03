@@ -89,11 +89,11 @@ function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin 
                     switch (format)
                     {
                         case 'hh:mm':
-                            return index % labelMod === 0 ? `${time} ${day}` : '';
+                            return index % labelMod === 0 ? `${time}\n${day}` : '';
                         case 'DD MMM':
-                            return index % labelMod === 0 ? `${day} ${month}` : '';
+                            return index % labelMod === 0 ? `${day}\n${month}` : '';
                         case 'MMM YYYY':
-                            return index % labelMod === 0 ? `${month} ${year}` : '';
+                            return index % labelMod === 0 ? `${month}\n${year}` : '';
                         default:
                             return '';
                     }

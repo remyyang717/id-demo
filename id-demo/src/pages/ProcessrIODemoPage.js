@@ -102,7 +102,7 @@ function ProcessrIODemoPage()
             <Flex wrap style={{ justifyContent: 'space-around' }}>
                 <LineGraphComponent graphData={graphData} height={1} width={3} />
                 <BarChartComponent graphData={graphData} height={1} width={3} />
-                <AreaGraphComponent graphData={graphData} height={1} width={3} yDomainMin={8} yDomainMax={8.5} />
+                <AreaGraphComponent graphData={graphData} height={1} width={3} yDomainMin={8.2} yDomainMax={8.5} />
             </Flex>
         </>
     );
