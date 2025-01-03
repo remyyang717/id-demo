@@ -1,15 +1,19 @@
 import React, { useState, useEffect } from 'react';
-import { Flex } from 'antd';
+import { DatePicker, Space, Button, Flex } from 'antd';
 import LineGraphComponent from '../Components/Graphs/LineGraphComponent'
+import BarChartComponent from '../Components/Graphs/BarChartComponent'
+import AreaGraphComponent from '../Components/Graphs/AreaGraphComponent'
 import axios from 'axios';
 import { format } from 'date-fns';
+import dayjs from 'dayjs';
 
-function GetProcessrIOData(setGraphData)
+
+function GetProcessrIOData(setGraphData, startTime, endTime)
 {
     const requestData = {
         names: ["Device Battery Voltage"],
-        "timestampFromUtc": "2024-12-23T00:00:00",
-        "timestampToUtc": "2025-01-04T00:00:00",
+        "timestampFromUtc": startTime,
+        "timestampToUtc": endTime,
         format: 2
     };
 
@@ -50,29 +54,55 @@ function ProcessrIODemoPage()
 {
     const [graphData, setGraphData] = useState([]);
 
+    //Start time
+    const [startTime, setStartTime] = useState('2025-01-01T00:00:00');
+    const onChange_StartTime = (date, dateString) =>
+    {
+        setStartTime(dateString + "T00:00:00")
+    };
+    //End time
+    const [endTime, setEndTime] = useState('2025-01-03T00:00:00');
+    const onChange_EndTime = (date, dateString) =>
+    {
+        setEndTime(dateString + "T00:00:00")
+    };
+
     // Handler for button click
     const handleClick = () =>
     {
-        GetProcessrIOData(setGraphData); // Fetch data and update state
-        console.log(graphData)
+        GetProcessrIOData(setGraphData, startTime, endTime); // Fetch data and update state
     };
 
 
     useEffect(() =>
     {
-        // Log the updated graph data whenever it changes
-        if (graphData.length > 0)
-        {
-            console.log("Updated graph data:", graphData);
-        }
-    }, [graphData]);
+        console.log('StartTime Updated:', startTime);
+        console.log('EndTime:', endTime);
+    }, [startTime, endTime]);
 
     return (
         <>
-            <button onClick={handleClick}>Get</button> {/* Correctly bind the onClick event */}
-            <Flex wrap style={{ justifyContent: 'space-around' }}>
+            <Space direction='horizontal' size={12}>
+                <DatePicker
+                    defaultValue={dayjs('2025/01/01')}
+                    placeholder='Start Date'
+                    onChange={onChange_StartTime}
+                />
+                <DatePicker
+                    defaultValue={dayjs('2025/01/03')}
+                    placeholder='End Date'
+                    onChange={onChange_EndTime}
+                />
+                <Button onClick={handleClick} color="default" variant="solid">
+                    Retrieve !!!
+                </Button>
+            </Space>
 
-                {graphData.length > 0 && <LineGraphComponent graphData={graphData} height={1} width={3} />}
+
+            <Flex wrap style={{ justifyContent: 'space-around' }}>
+                <LineGraphComponent graphData={graphData} height={1} width={3} />
+                <BarChartComponent graphData={graphData} height={1} width={3} />
+                <AreaGraphComponent graphData={graphData} height={1} width={3} yDomainMin={8} yDomainMax={8.5} />
             </Flex>
         </>
     );

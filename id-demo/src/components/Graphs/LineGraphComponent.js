@@ -35,8 +35,8 @@ function LineGraphComponent({ name, graphData, height, width, yDomainMin = 0, yD
     const tooltipConfig = {
         title: (d) =>
         {
-            const startDate = moment(d.date, 'DD/MM/YYYY').startOf('day').format('DD-MMM HH:mm');
-            const endDate = moment(d.date, 'DD/MM/YYYY').endOf('day').format('DD-MMM HH:mm');
+            const startDate = moment(d.date, 'DD/MM/YYYY hh:mm:ss').startOf('day').format('DD-MMM HH:mm');
+            const endDate = moment(d.date, 'DD/MM/YYYY hh:mm:ss').endOf('day').format('DD-MMM HH:mm');
             return `${startDate} to ${endDate}`;
         },
         items: [{ channel: 'y' }]
@@ -48,8 +48,10 @@ function LineGraphComponent({ name, graphData, height, width, yDomainMin = 0, yD
     const minDate = moment.min(dates);
     const maxDate = moment.max(dates);
 
+
     // Calculate the time range (difference between the min and max dates)
     const dateRange = maxDate.diff(minDate, 'days');
+
     const getLabelFormat = () =>
     {
         if (dateRange < 1)
@@ -64,8 +66,9 @@ function LineGraphComponent({ name, graphData, height, width, yDomainMin = 0, yD
         }
     };
 
-    const dataLength = new Set(graphData.map(item => item.location)).size;
-    const labelMod = Math.floor((graphData.length / dataLength) / (graphWidth / 150));
+    const locations = new Set(graphData.map(item => item.location)).size;
+    const labelMod = Math.floor((graphData.length / locations) / (graphWidth / 150));
+
 
     const config = {
         colorField: 'location',
@@ -100,6 +103,7 @@ function LineGraphComponent({ name, graphData, height, width, yDomainMin = 0, yD
                             return index % labelMod === 0 ? `${month} ${year}` : '';
                         default:
                             return '';
+
                     }
                 },
             },

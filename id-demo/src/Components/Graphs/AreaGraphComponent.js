@@ -1,15 +1,14 @@
 // BarChartComponent.js
 import React, { useState, useEffect } from 'react';
 import moment from 'moment';
-import { Column } from '@ant-design/plots';
+import { Area } from '@ant-design/plots';
 
 
-function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin = 0, yDomainMax = 0, yLabel, tooltipDisplayRange = false })
+function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin = 0, yDomainMax = 0, yLabel })
 {
     const [graphWidth, setGraphWidth] = useState(window.innerWidth * width * 0.3);
     const [graphHeight, setGraphHeight] = useState(window.innerHeight * height * 0.3);
 
-    // Resize handler that updates chart dimensions based on window size
     useEffect(() =>
     {
         const handleResize = () =>
@@ -30,17 +29,15 @@ function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin 
             window.removeEventListener('resize', handleResize);
         };
     }, [height, width]);
+    const areaData = graphData.map(item =>
+    {
+        return {
+            date: item.date,
+            value: item.value
+        };
+    });
 
 
-    const tooltipConfig = {
-        title: (d) =>
-        {
-            const startDate = moment(d.date, 'DD/MM/YYYY hh:mm:ss').startOf('day').format('DD-MMM HH:mm');
-            const endDate = moment(d.date, 'DD/MM/YYYY hh:mm:ss').endOf('day').format('DD-MMM HH:mm');
-            return `${startDate} to ${endDate}`;
-        },
-        items: [{ channel: 'y' }]
-    };
 
     // Customise Label
     // Calculate the minimum and maximum date from the graphData
@@ -67,17 +64,16 @@ function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin 
     const dataLength = new Set(graphData.map(item => item.location)).size;
     const labelMod = Math.floor((graphData.length / dataLength) / (graphWidth / 150));
 
+
+
+
+
     const config = {
-        colorField: 'location',
-        group: true,
         width: graphWidth,
         height: graphHeight,
-        title: name,
-        data: graphData,
+        data: areaData,
         xField: 'date',
         yField: 'value',
-        tooltip: tooltipDisplayRange ? tooltipConfig : {},
-
         axis: {
 
             x: {
@@ -110,7 +106,6 @@ function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin 
         },
         scale: {
             y: {
-                type: 'linear',
                 ...(yDomainMax !== 0 ? { domain: [yDomainMin, yDomainMax] } : {}),
 
             }
@@ -119,7 +114,7 @@ function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin 
 
     return (
         <div>
-            <Column {...config} />
+            <Area {...config} />
         </div>
     )
 };
