@@ -34,13 +34,13 @@ function BoxplotComponent({ name, graphData, height = 1, width = 1, yDomainMin =
 
 
     // Group data by location
-    const groupedData = graphData.reduce((acc, { location, rain }) =>
+    const groupedData = graphData.reduce((acc, { location, value }) =>
     {
         if (!acc[location])
         {
             acc[location] = [];
         }
-        acc[location].push(rain);
+        acc[location].push(value);
         return acc;
     }, {});
 

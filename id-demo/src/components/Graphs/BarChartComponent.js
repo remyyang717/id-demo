@@ -4,7 +4,7 @@ import moment from 'moment';
 import { Column } from '@ant-design/plots';
 
 
-function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin = 0, yDomainMax = 0, yLabel })
+function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin = 0, yDomainMax = 0, yLabel, tooltipDisplayRange = false })
 {
     const [graphWidth, setGraphWidth] = useState(window.innerWidth * width * 0.3);
     const [graphHeight, setGraphHeight] = useState(window.innerHeight * height * 0.3);
@@ -31,6 +31,18 @@ function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin 
         };
     }, [height, width]);
 
+    const tooltipConfig = {
+        title: (d) =>
+        {
+            const startDate = moment(d.date, 'DD/MM/YYYY').startOf('day').format('DD-MMM HH:mm');
+            const endDate = moment(d.date, 'DD/MM/YYYY').endOf('day').format('DD-MMM HH:mm');
+            return `${startDate} to ${endDate}`;
+        },
+        items: [{ channel: 'y' }]
+    };
+
+
+
     const config = {
         colorField: 'location',
         group: true,
@@ -39,17 +51,8 @@ function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin 
         title: name,
         data: graphData,
         xField: 'date',
-        yField: 'rain',
-        tooltip: {
-            title: (d) =>
-            {
-                const startDate = moment(d.date, 'DD/MM/YYYY').startOf('day').format('DD-MMM HH:mm');
-                const endDate = moment(d.date, 'DD/MM/YYYY').endOf('day').format('DD-MMM HH:mm');
-                return `${startDate} to ${endDate}`;
-            },
-            items: [{ channel: 'y' }]
-
-        },
+        yField: 'value',
+        tooltip: tooltipDisplayRange ? tooltipConfig : {},
         axis: {
             x: {
                 labelFormatter: (val) =>

@@ -4,8 +4,7 @@ import rainData_json from '../Data/rainData.json';
 import { Flex, Input, Col, Row, Select } from 'antd';
 import BarChartComponent from '../Components/Graphs/BarChartComponent';
 import LineGraphComponent from '../Components/Graphs/LineGraphComponent';
-import ScatterComponent from '../Components/Graphs/ScatterComponent';
-import BoxplotComponent from '../Components/Graphs/BoxplotComponent';
+
 
 
 function EditableGraphDemo()
@@ -344,8 +343,7 @@ function EditableGraphDemo()
             <Flex wrap style={{ justifyContent: 'space-around' }}>
                 <BarChartComponent name={graphName1} graphData={rainData_json} width={graphWidth1} height={graphHeight1} yDomainMin={graphYMin1} yDomainMax={graphYMax1} yLabel={graphYLabel1} />
                 <LineGraphComponent name={graphName2} graphData={rainData_json} width={graphWidth2} height={graphHeight2} yDomainMin={graphYMin2} yDomainMax={graphYMax2} yLabel={graphYLabel2} />
-                <ScatterComponent name='Scatter Demo' graphData={rainData_json} width={3} height={3} />
-                <BoxplotComponent name='Boxplot Demo' graphData={rainData_json} yDomainMax={300} width={3} height={2} />
+
             </Flex>
         </>
     )

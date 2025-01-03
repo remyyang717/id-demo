@@ -39,8 +39,8 @@ function ScatterComponent({ name, graphData, height = 1, width = 2, yDomainMin =
         width: graphWidth,
         height: graphHeight,
         xField: 'date',
-        yField: 'rain',
-        sizeField: 'rain',
+        yField: 'value',
+        sizeField: 'value',
         shapeField: 'point',
         crosshairs: { type: 'cross' },
         scale: {
