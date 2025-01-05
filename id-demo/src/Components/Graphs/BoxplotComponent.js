@@ -1,8 +1,7 @@
 // BarChartComponent.js
 import React, { useState, useEffect } from 'react';
-import moment from 'moment';
 import { Box } from '@ant-design/plots';
-import Title from 'antd/es/skeleton/Title';
+
 
 
 const calculateQuartiles = (data) =>

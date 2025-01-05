@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Drawer, List, Divider, Input, Avatar, message } from 'antd';
+import { Drawer, List, Divider, Input, Avatar } from 'antd';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setOrgValue } from '../store/orgSlice';

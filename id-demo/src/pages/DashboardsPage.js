@@ -12,17 +12,6 @@ import EditableGraphDemo from './EditableGraphDemo'
 import ProcessrIODemoPage from './ProcessrIODemoPage'
 
 
-const siderStyle = {
-    overflow: 'auto',
-    height: '100vh',
-    position: 'fixed',
-    insetInlineStart: 0,
-    top: 64,
-    bottom: 0,
-    scrollbarWidth: 'thin',
-    scrollbarGutter: 'stable',
-};
-
 const { Sider, Header, Content } = Layout;
 
 

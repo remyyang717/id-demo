@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Layout } from 'antd';
 import HeaderComponent from '../Components/HeaderComponent';
 import TempContentComponent from '../Components/TempContentComponent';
@@ -11,7 +11,7 @@ const { Header, Content } = Layout;
 
 function Home()
 {
-    const [isHovered, setIsHovered] = useState(false);
+
 
 
     return (
@@ -41,7 +41,6 @@ function Home()
                         padding: 12,
                         margin: 0,
                         marginLeft: 32,
-                        transform: isHovered ? 'translateX(560px)' : 'translateX(0px)',
                         transition: 'transform 0.3s ease-in-out',
                     }}
                 >

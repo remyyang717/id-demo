@@ -1,6 +1,6 @@
 // TempContentComponent.js
-import React, { useEffect, useState } from 'react';
-import { Col, Row, Card, List } from 'antd';
+import React from 'react';
+import { Col, Row, Card, } from 'antd';
 import { useSelector } from 'react-redux';
 import ScatterComponent from '../Components/Graphs/ScatterComponent'
 import rainData_json from '../Data/rainData.json';

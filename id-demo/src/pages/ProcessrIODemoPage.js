@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { DatePicker, Space, Button, Flex } from 'antd';
 import LineGraphComponent from '../Components/Graphs/LineGraphComponent'
 import BarChartComponent from '../Components/Graphs/BarChartComponent'
-import AreaGraphComponent from '../Components/Graphs/AreaGraphComponent'
 import axios from 'axios';
 import { format } from 'date-fns';
 import dayjs from 'dayjs';
