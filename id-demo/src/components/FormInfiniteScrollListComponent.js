@@ -46,8 +46,9 @@ function FormInfiniteScrollListComponent()
         loadInitialData(); // Initial load when the component mounts
     }, []);
 
+    const dataToUse = searchTerm.length >= 1 ? formListData : data;
     // Filter data based on the search term
-    const filteredData = data.filter((item) =>
+    const filteredData = dataToUse.filter((item) =>
         item.formName.toLowerCase().includes(searchTerm.toLowerCase())
     );
 
