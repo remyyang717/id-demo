@@ -14,7 +14,6 @@ import
     BlockOutlined
 } from '@ant-design/icons';
 
-const { Search } = Input;
 
 function HeaderComponent()
 {
