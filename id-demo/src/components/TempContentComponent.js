@@ -2,7 +2,7 @@
 import React from 'react';
 import { Col, Row, Card, } from 'antd';
 import { useSelector } from 'react-redux';
-import ScatterComponent from '../Components/Graphs/ScatterComponent'
+import BarChartComponent from '../Components/Graphs/BarChartComponent'
 import rainData_json from '../Data/rainData.json';
 
 
@@ -18,30 +18,9 @@ function TempContentComponent()
 
     return (
         <>
-            <Row style={{
-                height: '100vh'
-            }}>
-                <Col flex={4}>
 
-                </Col>
-                <Col flex={16} style={{
-                    display: 'block',
-                    height: 200,
-                    padding: 10
-                }}>
-                    <Row ><Card title="Org :" bordered={false}>
-                        {org}
-                    </Card>
-                        <Card title="Location :" bordered={false}>
-                            {location}
-                        </Card>
-                    </Row>
-                    <ScatterComponent graphData={rainData_json} />
-                </Col>
-                <Col flex={4}>
+            <BarChartComponent graphData={rainData_json} width={3} height={1} name={"Rain Data"} />
 
-                </Col>
-            </Row>
         </>
     )
 };

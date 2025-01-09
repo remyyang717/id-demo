@@ -72,8 +72,7 @@ function FormInfiniteScrollListComponent()
                 background: '#eef0f0',
                 zIndex: 1000,
                 paddingTop: 16,
-                paddingBottom: 16,
-                paddingLeft: 16,
+                paddingBottom: 16
             }}>
                 <Input
                     style={{

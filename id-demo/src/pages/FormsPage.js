@@ -4,8 +4,10 @@ import HeaderComponent from '../Components/HeaderComponent';
 import LeftSiderComponent from '../Components/LeftSiderComponent';
 import { setModuleValue } from '../store/moduleSlice'
 import { useDispatch } from 'react-redux';
-import FormDemo from '../Asset/FormDemo.jpg'
-
+import { Route, Routes } from "react-router-dom";
+import FormDemo1 from './TempFormPageDemos.js/FormDemo1'
+import FormDemo2 from './TempFormPageDemos.js/FormDemo2'
+import FormDemo3 from './TempFormPageDemos.js/FormDemo3'
 
 
 const { Sider, Header, Content } = Layout;
@@ -72,7 +74,12 @@ function FormsPage()
 
                     }}
                 >
-                    <img src={FormDemo} alt='Form Demo' />
+                    <Routes>
+                        <Route path='FormDemo1' element={<FormDemo1 />} />
+                        <Route path='FormDemo2' element={<FormDemo2 />} />
+                        <Route path='FormDemo3' element={<FormDemo3 />} />
+                    </Routes>
+
                 </Content>
 
 

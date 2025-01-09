@@ -1,9 +1,9 @@
 import React from 'react';
-import { Layout } from 'antd';
+import { Layout, Flex, Card } from 'antd';
 import HeaderComponent from '../Components/HeaderComponent';
-import TempContentComponent from '../Components/TempContentComponent';
-
-
+import HomoDemo from '../Asset/HomeDemo.jpg'
+import TempContentComponent from '../Components/TempContentComponent'
+import { HomeFilled } from '@ant-design/icons';
 
 
 const { Header, Content } = Layout;
@@ -45,7 +45,37 @@ function Home()
                     }}
                 >
 
-                    <TempContentComponent />
+                    <Flex
+                        wrap="wrap"
+                        style={{
+                            justifyContent: 'space-around',
+                            width: '100%',
+                            minHeight: '100%',
+                        }}
+                    >
+                        <Card
+                            style={{
+                                marginTop: '20px',
+                                marginBottom: '30px'
+                            }}
+
+                            title={
+                                <div style={{ display: 'flex', alignItems: 'center' }}>
+                                    <HomeFilled style={{ fontSize: '28px', marginRight: '10px' }} />
+                                    <h2>Welcome to Infrastructure Data</h2>
+                                </div>
+                            } bordered={false}>
+                            We are excited to have you on this journey with us. We hope you enjoy using ID and find it helpful in achieving your goals. Our team is committed to providing you with the best tools and support to make your experience seamless and successful. Feel free to reach out if you need any assistance along the way!
+                        </Card>
+                        <TempContentComponent />
+
+                        <img style={{
+                            clipPath: 'inset(145px 0 0 0)',
+                            marginTop: '-145px'
+                        }}
+                            src={HomoDemo} alt='Form Demo' />
+
+                    </Flex>
 
 
                 </Content>

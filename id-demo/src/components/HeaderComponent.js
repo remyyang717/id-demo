@@ -292,7 +292,6 @@ function HeaderComponent()
                 style={{ marginLeft: 'auto' }}>
 
                 <Avatar
-                    onClick={showModuleLoading}
                     size={38}
                     style={{
                         backgroundColor: '#306CE3',

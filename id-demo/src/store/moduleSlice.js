@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const moduleValueSlice = createSlice({
     name: 'moduleValue',
     initialState: {
-        value: 'Select Module',
+        value: 'Home',
     },
     reducers: {
         setModuleValue: (state, action) =>
