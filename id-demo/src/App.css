@@ -11,12 +11,18 @@
     align-self: center;
 }
 
+
+
 .HeaderPrimary-Button {
-    background-color: transparent;
-    border: transparent;
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+    cursor: pointer;
+    height: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .HeaderPrimary-Button:hover {
-    background-color: #01527e;
-
+    background-color: #248ab2;
 }

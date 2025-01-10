@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Drawer, List, Divider, Input, Avatar } from 'antd';
+import { Drawer, List, Divider, Input, Avatar, Button } from 'antd';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { setOrgValue } from '../store/orgSlice';
@@ -228,64 +228,71 @@ function HeaderComponent()
 
             </svg>
 
-            <a
+            {/* change Org button */}
+            <button
                 onClick={showOrgNamePicker}
-                className="scrollable-text"
                 style={{
+                    background: 'none',
                     color: '#fefefe',
                     fontSize: '24px',
                     fontWeight: 'bold',
+                    border: 'none',
                     alignSelf: 'center',
                     marginRight: '64px',
-                    maxWidth: '280px', // Set the max-width you want
+                    maxWidth: '280px',
                     whiteSpace: 'nowrap',
                     overflow: 'hidden',
                     textOverflow: 'ellipsis',
-                    display: 'inline-block', // Ensure it behaves like an inline element but can have width
-                    cursor: 'pointer', // Optional, to indicate interactivity
+                    display: 'inline-block',
                 }}>
-                {/* Display Org Name */}
-                {orgName}</a>
+                {orgName}
+            </button>
 
+            {/* change location button */}
             <button
-                className='HeaderPrimary-Button'>
+                className='HeaderPrimary-Button'
+                onClick={showLocationLoading}
+
+            >
                 <EnvironmentOutlined style={{
                     color: 'gray',
                     fontSize: '1.5em',
-                    marginRight: '8px'
+                    marginRight: '8px',
                 }} />
-                <a
-                    onClick={showLocationLoading}
+                <span
                     style={{
                         color: '#fefefe',
                         fontSize: '20px',
                         fontWeight: 'bold',
-                        alignSelf: 'center',
-                        marginRight: '16px'
-                    }}>
+                        marginRight: '16px',
+                    }}
+                >
                     {locationName}
-                </a>
+                </span>
             </button>
 
+            {/* change module button */}
             <button
-                className='HeaderPrimary-Button'>
+                className='HeaderPrimary-Button'
+                onClick={showModuleLoading}
+            >
                 <BlockOutlined style={{
                     color: 'gray',
                     fontSize: '1.7em',
-                    marginRight: '8px'
+                    marginRight: '8px',
+                    transition: 'color 0.3s ease', // 图标的颜色过渡效果
                 }} />
-                <a
-
-                    onClick={showModuleLoading}
+                <span
                     style={{
                         color: '#fefefe',
                         fontSize: '20px',
                         fontWeight: 'bold',
-                        alignSelf: 'center',
-                        marginRight: '16px'
-                    }}>
+                        marginRight: '16px',
+                        transition: 'color 0.3s ease', // 文本颜色过渡效果
+                    }}
+                >
                     {moduleName}
-                </a>
+                </span>
             </button>
 
             <div
@@ -305,7 +312,49 @@ function HeaderComponent()
 
 
 
+            {/* Org list drawer */}
+            < Drawer
+                getContainer={() => document.getElementById('org-picker-drawer-container')
+                }
+                title="Pick Organisation"
+                placement="left"
+                closable={false}
+                loading={orgNamePickerloading}
+                onClose={() => setOrgNamePickerOpen(false)}
+                open={orgNamePickerOpen}
+            >
+                <Input
+                    addonBefore={<SearchOutlined />}
+                    className="orgSearchBox"
+                    type="text"
+                    placeholder="Search orgs..."
+                    value={orgSearchQuery}
+                    onChange={(e) => setOrgSearchQuery(e.target.value)}
+                />
 
+
+                <Divider />
+
+                <List>
+                    {filteredOrgs.length > 0 ? (
+                        filteredOrgs.map((org) => (
+                            <List.Item key={org}>
+                                <Button
+                                    ghost='true'
+                                    style={{
+                                        border: 'none',
+                                        color: '#2A3033',
+                                    }}
+                                    onClick={() => handleOrgClick(org)}><strong>{org}</strong></Button>
+                            </List.Item>
+                        ))
+                    ) : (
+                        <List.Item>No orgs found</List.Item> // If no location matches the query
+                    )}
+                </List>
+
+
+            </Drawer >
 
 
             {/* Location list drawer */}
@@ -336,7 +385,13 @@ function HeaderComponent()
                     {filteredLocations.length > 0 ? (
                         filteredLocations.map((location) => (
                             <List.Item key={location}>
-                                <a onClick={() => handleLocationClick(location)}><strong>{location}</strong></a>
+                                <Button
+                                    ghost='true'
+                                    style={{
+                                        border: 'none',
+                                        color: '#2A3033',
+                                    }}
+                                    onClick={() => handleLocationClick(location)}><strong>{location}</strong></Button>
                             </List.Item>
                         ))
                     ) : (
@@ -346,43 +401,7 @@ function HeaderComponent()
 
             </Drawer >
 
-            {/* Org list drawer */}
-            < Drawer
-                getContainer={() => document.getElementById('org-picker-drawer-container')
-                }
-                title="Pick Organisation"
-                placement="left"
-                closable={false}
-                loading={orgNamePickerloading}
-                onClose={() => setOrgNamePickerOpen(false)}
-                open={orgNamePickerOpen}
-            >
-                <Input
-                    addonBefore={<SearchOutlined />}
-                    className="orgSearchBox"
-                    type="text"
-                    placeholder="Search orgs..."
-                    value={orgSearchQuery}
-                    onChange={(e) => setOrgSearchQuery(e.target.value)}
-                />
 
-
-                <Divider />
-
-                <List>
-                    {filteredOrgs.length > 0 ? (
-                        filteredOrgs.map((org) => (
-                            <List.Item key={org}>
-                                <a onClick={() => handleOrgClick(org)}><strong>{org}</strong></a>
-                            </List.Item>
-                        ))
-                    ) : (
-                        <List.Item>No orgs found</List.Item> // If no location matches the query
-                    )}
-                </List>
-
-
-            </Drawer >
 
             {/* Module list drawer */}
             < Drawer
@@ -397,7 +416,13 @@ function HeaderComponent()
                 <List>
                     {modules.map((module) => (
                         < List.Item key={module} >
-                            <Link to={"/" + module} onClick={() => handleModuleClick(module)}>{module}</Link>
+                            <Button
+                                ghost='true'
+                                style={{
+                                    border: 'none',
+                                    color: '#2A3033',
+                                }}>
+                                <Link to={"/" + module} onClick={() => handleModuleClick(module)}><h3>{module}</h3></Link></Button>
                         </List.Item>
                     ))}
 

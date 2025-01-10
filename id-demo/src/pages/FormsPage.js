@@ -5,10 +5,10 @@ import LeftSiderComponent from '../Components/LeftSiderComponent';
 import { setModuleValue } from '../store/moduleSlice'
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from "react-router-dom";
-import FormDemo1 from './TempFormPageDemos.js/FormDemo1'
-import FormDemo2 from './TempFormPageDemos.js/FormDemo2'
-import FormDemo3 from './TempFormPageDemos.js/FormDemo3'
-
+import FormDemo1 from './TempFormPageDemos/FormDemo1'
+import FormDemo2 from './TempFormPageDemos/FormDemo2'
+import FormDemo3 from './TempFormPageDemos/FormDemo3'
+import FormHomeDemo from './TempFormPageDemos/FormHomeDemo'
 
 const { Sider, Header, Content } = Layout;
 
@@ -43,7 +43,6 @@ function FormsPage()
                     collapsible
                     trigger={null}
                     style={{
-
                         backgroundColor: '#eef0f0',
                         transform: isHovered ? 'translateX(0)' : 'translateX(-100%)',
                         transition: 'transform 0.3s ease-in-out',
@@ -75,6 +74,7 @@ function FormsPage()
                     }}
                 >
                     <Routes>
+                        <Route path='' element={<FormHomeDemo />} />
                         <Route path='FormDemo1' element={<FormDemo1 />} />
                         <Route path='FormDemo2' element={<FormDemo2 />} />
                         <Route path='FormDemo3' element={<FormDemo3 />} />

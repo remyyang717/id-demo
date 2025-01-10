@@ -11,3 +11,15 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.HeaderPrimary-Button:hover {
+  background-color: rgb(236, 13, 13);
+}
+
+.HeaderPrimary-Button:hover .anticon {
+  color: #fefefe;
+}
+
+.HeaderPrimary-Button:hover span {
+  color: #3498db;
+}
