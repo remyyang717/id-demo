@@ -67,6 +67,7 @@ function Home()
                             } bordered={false}>
                             We are excited to have you on this journey with us. We hope you enjoy using ID and find it helpful in achieving your goals. Our team is committed to providing you with the best tools and support to make your experience seamless and successful. Feel free to reach out if you need any assistance along the way!
                         </Card>
+
                         <TempContentComponent />
 
                         <img style={{

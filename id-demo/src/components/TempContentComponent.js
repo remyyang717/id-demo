@@ -18,8 +18,10 @@ function TempContentComponent()
 
             <BarChartComponent graphData={rainData_json} width={3} height={1} name={"Rain Data"} />
 
+
         </>
     )
 };
 
 export default TempContentComponent;
+

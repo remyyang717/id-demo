@@ -45,9 +45,9 @@ function FormsPage()
                     style={{
                         backgroundColor: '#eef0f0',
                         transform: isHovered ? 'translateX(0)' : 'translateX(-100%)',
-                        transition: 'transform 0.3s ease-in-out',
-                        position: 'fixed', // Make it fixed on the left side
-                        left: 0, // Align to the left
+                        transition: 'transform 0.3s ease-in-out 0.2s',
+                        position: 'fixed',
+                        left: 0,
                         top: 0,
                         bottom: 0,
                         height: '100vh',
@@ -69,7 +69,7 @@ function FormsPage()
                         margin: 0,
                         marginLeft: 32,
                         transform: isHovered ? 'translateX(800px)' : 'translateX(0px)',
-                        transition: 'transform 0.3s ease-in-out',
+                        transition: 'transform 0.3s ease-in-out 0.2s',
 
                     }}
                 >
