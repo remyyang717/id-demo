@@ -3,8 +3,17 @@ import React, { useState, useEffect } from 'react';
 import moment from 'moment';
 import { Column } from '@ant-design/plots';
 
-
-function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin = 0, yDomainMax = 0, yLabel, tooltipDisplayRange = false })
+function BarChartComponent({
+    name,
+    graphData,
+    height = 1,
+    width = 1,
+    yDomainMin = 0,
+    yDomainMax = 0,
+    yLabel,
+    tooltipDisplayRange = false,
+    yCriticalLineValue,
+})
 {
     const [graphWidth, setGraphWidth] = useState(window.innerWidth * width * 0.3);
     const [graphHeight, setGraphHeight] = useState(window.innerHeight * height * 0.3);
@@ -32,7 +41,6 @@ function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin 
         };
     }, [height, width]);
 
-
     const tooltipConfig = {
         title: (d) =>
         {
@@ -40,12 +48,12 @@ function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin 
             const endDate = moment(d.date, 'DD/MM/YYYY hh:mm:ss').endOf('day').format('DD-MMM HH:mm');
             return `${startDate} to ${endDate}`;
         },
-        items: [{ channel: 'y' }]
+        items: [{ channel: 'y' }],
     };
 
     // Customise Label
     // Calculate the minimum and maximum date from the graphData
-    const dates = graphData.map(item => moment(item.date, 'DD-MM-YYYY HH:mm:ss'));
+    const dates = graphData.map((item) => moment(item.date, 'DD-MM-YYYY HH:mm:ss'));
     const minDate = moment.min(dates);
     const maxDate = moment.max(dates);
 
@@ -64,13 +72,25 @@ function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin 
             return 'MMM YYYY'; // For ranges greater than 6 months
         }
     };
+
     // Calculate the labelMod whenever graphData or graphWidth changes
     useEffect(() =>
     {
-        const dataLength = new Set(graphData.map(item => item.location)).size;
+        const dataLength = new Set(graphData.map((item) => item.location)).size;
         const newLabelMod = Math.floor((graphData.length / dataLength) / (graphWidth / 150));
         setLabelMod(newLabelMod); // Update labelMod state
     }, [graphData, graphWidth]);
+
+    // Conditionally add annotation for critical line
+    const annotations = yCriticalLineValue
+        ? [
+            {
+                type: 'lineY',
+                yField: yCriticalLineValue,
+                style: { stroke: '#F4664A', strokeOpacity: 1, lineWidth: 2 },
+            }
+        ]
+        : [];
 
     const config = {
         colorField: 'location',
@@ -84,7 +104,6 @@ function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin 
         tooltip: tooltipDisplayRange ? tooltipConfig : {},
 
         axis: {
-
             x: {
                 labelFormatter: (val, index) =>
                 {
@@ -110,24 +129,22 @@ function BarChartComponent({ name, graphData, height = 1, width = 1, yDomainMin 
             },
             y: {
                 title: yLabel,
-
-            }
+            },
         },
         scale: {
             y: {
                 type: 'linear',
                 ...(yDomainMax !== 0 ? { domain: [yDomainMin, yDomainMax] } : {}),
-
-            }
+            },
         },
+        annotations: annotations,
     };
 
     return (
         <div>
             <Column {...config} />
         </div>
-    )
-};
-
+    );
+}
 
 export default BarChartComponent;

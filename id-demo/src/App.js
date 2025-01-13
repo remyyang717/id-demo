@@ -4,6 +4,7 @@ import { Route, Routes } from "react-router-dom";
 import Home from './pages/Home';
 import FormsPage from './pages/FormsPage';
 import DashboardsPage from './pages/DashboardsPage';
+import Consents from './pages/ConsentsDemo';
 
 
 function App()
@@ -16,6 +17,7 @@ function App()
         <Route path='/Home' element={<Home />} />
         <Route path='/Forms/*' element={<FormsPage />} />
         <Route path='/Dashboards/*' element={<DashboardsPage />} />
+        <Route path='/Consents/*' element={<Consents />} />
       </Routes>
     </div>
 

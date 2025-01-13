@@ -1,0 +1,182 @@
+[
+    {
+        "location": "Auckland",
+        "date": "01-01-2024",
+        "value": 92
+    },
+    {
+        "location": "Auckland",
+        "date": "01-02-2024",
+        "value": 174
+    },
+    {
+        "location": "Auckland",
+        "date": "01-03-2024",
+        "value": 63
+    },
+    {
+        "location": "Auckland",
+        "date": "01-04-2024",
+        "value": 183
+    },
+    {
+        "location": "Auckland",
+        "date": "01-05-2024",
+        "value": 312
+    },
+    {
+        "location": "Auckland",
+        "date": "01-06-2024",
+        "value": 439
+    },
+    {
+        "location": "Auckland",
+        "date": "01-07-2024",
+        "value": 324
+    },
+    {
+        "location": "Auckland",
+        "date": "01-08-2024",
+        "value": 299
+    },
+    {
+        "location": "Auckland",
+        "date": "01-09-2024",
+        "value": 589
+    },
+    {
+        "location": "Auckland",
+        "date": "01-10-2024",
+        "value": 516
+    },
+    {
+        "location": "Auckland",
+        "date": "01-11-2024",
+        "value": 625
+    },
+    {
+        "location": "Auckland",
+        "date": "01-12-2024",
+        "value": 760
+    },
+    {
+        "location": "Wellington",
+        "date": "01-01-2024",
+        "value": 85
+    },
+    {
+        "location": "Wellington",
+        "date": "01-02-2024",
+        "value": 105
+    },
+    {
+        "location": "Wellington",
+        "date": "01-03-2024",
+        "value": 60
+    },
+    {
+        "location": "Wellington",
+        "date": "01-04-2024",
+        "value": 120
+    },
+    {
+        "location": "Wellington",
+        "date": "01-05-2024",
+        "value": 80
+    },
+    {
+        "location": "Wellington",
+        "date": "01-06-2024",
+        "value": 130
+    },
+    {
+        "location": "Wellington",
+        "date": "01-07-2024",
+        "value": 115
+    },
+    {
+        "location": "Wellington",
+        "date": "01-08-2024",
+        "value": 60
+    },
+    {
+        "location": "Wellington",
+        "date": "01-09-2024",
+        "value": 90
+    },
+    {
+        "location": "Wellington",
+        "date": "01-10-2024",
+        "value": 85
+    },
+    {
+        "location": "Wellington",
+        "date": "01-11-2024",
+        "value": 140
+    },
+    {
+        "location": "Wellington",
+        "date": "01-12-2024",
+        "value": 95
+    },
+    {
+        "location": "Christchurch",
+        "date": "01-01-2024",
+        "value": 80
+    },
+    {
+        "location": "Christchurch",
+        "date": "01-02-2024",
+        "value": 110
+    },
+    {
+        "location": "Christchurch",
+        "date": "01-03-2024",
+        "value": 50
+    },
+    {
+        "location": "Christchurch",
+        "date": "01-04-2024",
+        "value": 125
+    },
+    {
+        "location": "Christchurch",
+        "date": "01-05-2024",
+        "value": 85
+    },
+    {
+        "location": "Christchurch",
+        "date": "01-06-2024",
+        "value": 100
+    },
+    {
+        "location": "Christchurch",
+        "date": "01-07-2024",
+        "value": 130
+    },
+    {
+        "location": "Christchurch",
+        "date": "01-08-2024",
+        "value": 75
+    },
+    {
+        "location": "Christchurch",
+        "date": "01-09-2024",
+        "value": 65
+    },
+    {
+        "location": "Christchurch",
+        "date": "01-10-2024",
+        "value": 90
+    },
+    {
+        "location": "Christchurch",
+        "date": "01-11-2024",
+        "value": 160
+    },
+    {
+        "location": "Christchurch",
+        "date": "01-12-2024",
+        "value": 100
+    }
+]
