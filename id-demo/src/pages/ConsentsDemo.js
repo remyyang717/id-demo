@@ -1,6 +1,6 @@
 // ConsentDemo.js
 import React, { useState } from 'react';
-import { Layout, Flex, Descriptions, Divider, Card, Checkbox, Input, Button, List, Typography, message } from 'antd';
+import { Layout, Flex, Descriptions, Divider, Card, Checkbox, Input, Button, List, Typography, message, Space } from 'antd';
 import HeaderComponent from '../Components/HeaderComponent';
 import LeftSiderComponent from '../Components/LeftSiderComponent';
 import { setModuleValue } from '../store/moduleSlice'
@@ -39,7 +39,7 @@ const items = [
     {
         key: '5',
         label: 'Valid',
-        children: '1 Jan 2024   to   31 Dec 2024',
+        children: <p><strong>1 Jan 2022</strong>   to   <strong>31 Dec 2024</strong></p>,
     },
     {
         key: '6',
@@ -54,11 +54,27 @@ const items = [
     },
     {
         key: '8',
+        label: 'Recent Performance',
+        children: <Space>
+            <Button type="primary" style={{ backgroundColor: 'red', color: 'white' }}>
+                01/08/22
+            </Button>
+            <Button type="primary" style={{ backgroundColor: 'orange', color: 'white' }}>
+                01/08/23
+            </Button>
+            <Button type="primary" style={{ backgroundColor: 'green', color: 'white' }}>
+                01/08/24
+            </Button>
+        </Space>,
+        span: 3
+    },
+    {
+        key: '9',
         label: <strong>Things to know</strong>,
         children: <>
             <IssuesCloseOutlined style={{ color: 'red', fontSize: '1.2em' }} /> This consent is going to expire soon !
             <Divider dashed />
-            This consent is not offline. (Offline consents will NOT track activity or generate results)
+            https://fonterra.infrastructuredata.nz/Consents/2/690
             <Divider dashed />
             Your consent needs at least 9999 condition added for it to be valid.
         </>,
