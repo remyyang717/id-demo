@@ -1,23 +1,25 @@
+// DashboardsPage.js
 import React, { useState } from 'react';
-import { Layout } from 'antd';
-import HeaderComponent from '../Components/HeaderComponent';
-import LeftSiderComponent from '../Components/LeftSiderComponent';
-import { setModuleValue } from '../store/moduleSlice'
+import { Layout, Flex } from 'antd';
+import HeaderComponent from '../../Components/HeaderComponent';
+import LeftSiderComponent from '../../Components/LeftSiderComponent';
+import { setModuleValue } from '../../store/moduleSlice'
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from "react-router-dom";
-import FormDemo1 from './TempFormPageDemos/FormDemo1'
-import FormDemo2 from './TempFormPageDemos/FormDemo2'
-import FormDemo3 from './TempFormPageDemos/FormDemo3'
-import FormHomeDemo from './TempFormPageDemos/FormHomeDemo'
+import DashboardsDemo1 from '../TempDashboardDemos/DashboardsDemo1'
+import BatchReportDemo1 from '../TempBatchReportDemos/BatchReportDemo1'
+import EditableGraphDemo from '../TempDashboardDemos/EditableGraphDemo'
+import ProcessrIODemoPage from '../TempDashboardDemos/ProcessrIODemoPage'
+
 
 const { Sider, Header, Content } = Layout;
 
 
-function FormsPage()
+function DashboardsPage()
 {
     const [isHovered, setIsHovered] = useState(false);
     const dispatch = useDispatch();
-    dispatch(setModuleValue('Forms'));
+    dispatch(setModuleValue('Dashboards'));
 
     return (
         <Layout>
@@ -43,11 +45,12 @@ function FormsPage()
                     collapsible
                     trigger={null}
                     style={{
+
                         backgroundColor: '#eef0f0',
                         transform: isHovered ? 'translateX(0)' : 'translateX(-100%)',
                         transition: 'transform 0.3s ease-in-out 0.2s',
-                        position: 'fixed',
-                        left: 0,
+                        position: 'fixed', // Make it fixed on the left side
+                        left: 0, // Align to the left
                         top: 0,
                         bottom: 0,
                         height: '100vh',
@@ -62,7 +65,6 @@ function FormsPage()
                 </Sider>
 
                 <Content
-                    display='block'
                     style={{
                         minHeight: '100vh',
                         padding: 12,
@@ -70,16 +72,33 @@ function FormsPage()
                         marginLeft: 32,
                         transform: isHovered ? 'translateX(800px)' : 'translateX(0px)',
                         transition: 'transform 0.3s ease-in-out 0.2s',
-
                     }}
                 >
                     <Routes>
-                        <Route path='' element={<FormHomeDemo />} />
-                        <Route path='FormDemo1' element={<FormDemo1 />} />
-                        <Route path='FormDemo2' element={<FormDemo2 />} />
-                        <Route path='FormDemo3' element={<FormDemo3 />} />
-                    </Routes>
+                        <Route path='/' element={
+                            <Flex>
+                                <div style={{
+                                    fontSize: '50px',
+                                    marginLeft: 'auto',
+                                    marginRight: 'auto',
+                                    paddingTop: '20vh',
+                                }}>
+                                    <strong >
 
+                                        Go to check the left bar!
+
+                                    </strong>
+                                </div>
+
+
+
+                            </Flex>
+                        } />
+                        <Route path='DashboardsDemo1' element={<DashboardsDemo1 />} />
+                        <Route path='BatchReportDemo1' element={<BatchReportDemo1 />} />
+                        <Route path='EditableGraphDemo' element={<EditableGraphDemo />} />
+                        <Route path='ProcessrIODemoPage' element={<ProcessrIODemoPage />} />
+                    </Routes>
                 </Content>
 
 
@@ -89,4 +108,4 @@ function FormsPage()
 
     );
 };
-export default FormsPage;
+export default DashboardsPage;

@@ -1,9 +1,9 @@
 //EditableGraphDemo.js
 import React, { useState } from 'react';
-import rainData_json from '../Data/rainData.json';
+import rainData_json from '../../Data/rainData.json';
 import { Flex, Input, Col, Row, Select } from 'antd';
-import BarChartComponent from '../Components/Graphs/BarChartComponent';
-import LineGraphComponent from '../Components/Graphs/LineGraphComponent';
+import BarChartComponent from '../../Components/Graphs/BarChartComponent';
+import LineGraphComponent from '../../Components/Graphs/LineGraphComponent';
 
 
 

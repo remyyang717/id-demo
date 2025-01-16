@@ -1,25 +1,23 @@
-// DashboardsPage.js
 import React, { useState } from 'react';
 import { Layout } from 'antd';
-import HeaderComponent from '../Components/HeaderComponent';
-import LeftSiderComponent from '../Components/LeftSiderComponent';
-import { setModuleValue } from '../store/moduleSlice'
+import HeaderComponent from '../../Components/HeaderComponent';
+import LeftSiderComponent from '../../Components/LeftSiderComponent';
+import { setModuleValue } from '../../store/moduleSlice'
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from "react-router-dom";
-import DashboardsDemo1 from './DashboardsDemo1'
-import BatchReportDemo1 from './BatchReportDemo1'
-import EditableGraphDemo from './EditableGraphDemo'
-import ProcessrIODemoPage from './ProcessrIODemoPage'
-
+import FormDemo1 from '../TempFormPageDemos/FormDemo1'
+import FormDemo2 from '../TempFormPageDemos/FormDemo2'
+import FormDemo3 from '../TempFormPageDemos/FormDemo3'
+import FormHomeDemo from '../TempFormPageDemos/FormHomeDemo'
 
 const { Sider, Header, Content } = Layout;
 
 
-function DashboardsPage()
+function FormsPage()
 {
     const [isHovered, setIsHovered] = useState(false);
     const dispatch = useDispatch();
-    dispatch(setModuleValue('Dashboards'));
+    dispatch(setModuleValue('Forms'));
 
     return (
         <Layout>
@@ -45,12 +43,11 @@ function DashboardsPage()
                     collapsible
                     trigger={null}
                     style={{
-
                         backgroundColor: '#eef0f0',
                         transform: isHovered ? 'translateX(0)' : 'translateX(-100%)',
                         transition: 'transform 0.3s ease-in-out 0.2s',
-                        position: 'fixed', // Make it fixed on the left side
-                        left: 0, // Align to the left
+                        position: 'fixed',
+                        left: 0,
                         top: 0,
                         bottom: 0,
                         height: '100vh',
@@ -65,6 +62,7 @@ function DashboardsPage()
                 </Sider>
 
                 <Content
+                    display='block'
                     style={{
                         minHeight: '100vh',
                         padding: 12,
@@ -72,13 +70,14 @@ function DashboardsPage()
                         marginLeft: 32,
                         transform: isHovered ? 'translateX(800px)' : 'translateX(0px)',
                         transition: 'transform 0.3s ease-in-out 0.2s',
+
                     }}
                 >
                     <Routes>
-                        <Route path='DashboardsDemo1' element={<DashboardsDemo1 />} />
-                        <Route path='BatchReportDemo1' element={<BatchReportDemo1 />} />
-                        <Route path='EditableGraphDemo' element={<EditableGraphDemo />} />
-                        <Route path='ProcessrIODemoPage' element={<ProcessrIODemoPage />} />
+                        <Route path='' element={<FormHomeDemo />} />
+                        <Route path='FormDemo1' element={<FormDemo1 />} />
+                        <Route path='FormDemo2' element={<FormDemo2 />} />
+                        <Route path='FormDemo3' element={<FormDemo3 />} />
                     </Routes>
 
                 </Content>
@@ -90,4 +89,4 @@ function DashboardsPage()
 
     );
 };
-export default DashboardsPage;
+export default FormsPage;

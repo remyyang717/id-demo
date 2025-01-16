@@ -1,11 +1,11 @@
 // DashboardsDemo1.js
 import React from 'react';
-import rainData_json from '../Data/rainData.json';
+import rainData_json from '../../Data/rainData.json';
 import { Flex, } from 'antd';
-import BarChartComponent from '../Components/Graphs/BarChartComponent'
-import LineGraphComponent from '../Components/Graphs/LineGraphComponent'
-import ScatterComponent from '../Components/Graphs/ScatterComponent';
-import BoxplotComponent from '../Components/Graphs/BoxplotComponent';
+import BarChartComponent from '../../Components/Graphs/BarChartComponent'
+import LineGraphComponent from '../../Components/Graphs/LineGraphComponent'
+import ScatterComponent from '../../Components/Graphs/ScatterComponent';
+import BoxplotComponent from '../../Components/Graphs/BoxplotComponent';
 
 function DashboardsDemo1()
 {

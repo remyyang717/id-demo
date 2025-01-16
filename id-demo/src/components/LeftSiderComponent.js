@@ -29,17 +29,17 @@ function LeftSiderComponent()
             >
                 <List>
                     <List.Item>
-                        <Link to="/Dashboards/DashboardsDemo1">Line Graph & Bar Chart Demo</Link>
+                        <Link to="/Dashboards/DashboardsDemo1">Line Graph & Bar Chart Demo 1</Link>
                     </List.Item>
                     <List.Item>
                         <Link to="/Dashboards/EditableGraphDemo">Editable Graph Demo</Link>
                     </List.Item>
                     <List.Item>
-                        <Link to="/Dashboards/ProcessrIODemoPage">Data AcquisitionDemo - Processr IO</Link>
+                        <Link to="/Dashboards/ProcessrIODemoPage">Data Acquisition Demo - Processr IO</Link>
                     </List.Item>
 
                     <List.Item>
-                        <Link to="/Dashboards/BatchReportDemo1">Batch Report Table Demo</Link>
+                        <Link to="/Dashboards/BatchReportDemo1">Batch Report Table Demo 1</Link>
                     </List.Item>
 
                 </List>
