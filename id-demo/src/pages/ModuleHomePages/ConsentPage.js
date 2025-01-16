@@ -1,13 +1,13 @@
-// ConsentDemo.js
+// ConsentPage.js
 import React, { useState } from 'react';
 import { Layout, Flex, Descriptions, Divider, Card, Checkbox, Input, Button, List, Typography, message, Space } from 'antd';
-import HeaderComponent from '../Components/HeaderComponent';
-import LeftSiderComponent from '../Components/LeftSiderComponent';
-import { setModuleValue } from '../store/moduleSlice'
+import HeaderComponent from '../../Components/HeaderComponent';
+import LeftSiderComponent from '../../Components/LeftSiderComponent';
+import { setModuleValue } from '../../store/moduleSlice'
 import { useDispatch } from 'react-redux';
 import { AuditOutlined, IssuesCloseOutlined, RightOutlined, DeleteOutlined } from '@ant-design/icons';
-import BarChartComponent from '../Components/Graphs/BarChartComponent'
-import condition1Data from '../Data/Condition1DemoData.json';
+import BarChartComponent from '../../Components/Graphs/BarChartComponent'
+import condition1Data from '../../Data/Condition1DemoData.json';
 
 
 const { Sider, Header, Content } = Layout;
@@ -34,7 +34,7 @@ const items = [
     {
         key: '4',
         label: 'Owned by',
-        children: <strong>Blake McGregor</strong>,
+        children: <strong>Remy Yang</strong>,
     },
     {
         key: '5',
@@ -82,11 +82,8 @@ const items = [
 ];
 
 
-function ConsentsDemo()
+function ConsentDemo()
 {
-
-
-
     const { Text } = Typography;
 
 
@@ -430,4 +427,4 @@ function ConsentsDemo()
     );
 };
 
-export default ConsentsDemo;
+export default ConsentDemo;

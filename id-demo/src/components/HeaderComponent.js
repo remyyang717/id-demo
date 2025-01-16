@@ -196,7 +196,6 @@ function HeaderComponent()
         'Home',
         'Alarms',
         'Consents',
-        'Licences',
         'Dashboards',
         'Devices',
         'Soft Sensors',
