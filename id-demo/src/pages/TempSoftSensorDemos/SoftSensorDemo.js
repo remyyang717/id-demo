@@ -178,28 +178,28 @@ function SoftSensorDemo()
 
 
 
-                    // Handle Brackets and Quotes Completion
-                    const pairs = {
-                        '(': ')',
-                        '[': ']',
-                        '{': '}',
-                        "'": "'",
-                        '"': '"',
-                    };
-                    if (pairs[e.key])
-                    {
-                        e.preventDefault();
-                        const updatedValue =
-                            codeInputAreaValue.substring(0, start) +
-                            e.key +
-                            pairs[e.key] +
-                            codeInputAreaValue.substring(end);
-                        setCodeInputAreaValue(updatedValue);
-                        setTimeout(() =>
-                        {
-                            textarea.selectionStart = textarea.selectionEnd = start + 1;
-                        });
-                    }
+                    // // Handle Brackets and Quotes Completion
+                    // const pairs = {
+                    //     '(': ')',
+                    //     '[': ']',
+                    //     '{': '}',
+                    //     "'": "'",
+                    //     '"': '"',
+                    // };
+                    // if (pairs[e.key])
+                    // {
+                    //     e.preventDefault();
+                    //     const updatedValue =
+                    //         codeInputAreaValue.substring(0, start) +
+                    //         e.key +
+                    //         pairs[e.key] +
+                    //         codeInputAreaValue.substring(end);
+                    //     setCodeInputAreaValue(updatedValue);
+                    //     setTimeout(() =>
+                    //     {
+                    //         textarea.selectionStart = textarea.selectionEnd = start + 1;
+                    //     });
+                    // }
                 }}
                 autoSize={{ minRows: 7 }}
                 placeholder="Write your Python code here (e.g., def hello():)"
@@ -224,44 +224,74 @@ function SoftSensorDemo()
                 type="primary"
                 style={{
                     marginTop: '16px'
-
                 }}
-                onClick={
-                    async () =>
+                onClick={async () =>
+                {
+                    try
                     {
-                        try
+                        // Load Pyodide
+                        const pyodide = await window.loadPyodide();
+
+                        pyodide.runPython(`
+                import sys
+                from io import StringIO
+                sys.stdout = StringIO()  # Redirect stdout to capture print output
+            `);
+
+                        const loopLimit = 100000;
+
+                        // Define the function at the beginning
+                        let processedCode = `maxLoopCount = 0
+maxLoopLimit = ${loopLimit}
+
+def check_loop_limit():
+    global maxLoopCount
+    maxLoopCount += 1
+    if maxLoopCount > maxLoopLimit:
+        raise RuntimeError("Global loop iteration limit exceeded")
+            `;
+
+                        // Generate preScript dynamically from dataSource
+                        const preScript = dataSource
+                            .map((row) => `${row.tag} = ${JSON.stringify(row.data)}`)
+                            .join('\n');
+
+                        // Combine preScript with user's Python code
+                        const fullScript = `\n${preScript}\n${codeInputAreaValue}`;
+                        let lines = fullScript.split('\n');
+
+                        let outputLines = [];
+
+                        lines.forEach((line, index) =>
                         {
-                            // Load Pyodide
-                            const pyodide = await window.loadPyodide();
+                            let indentLevel = line.match(/^(\s*)/)[0].length;  // Count leading spaces
 
-                            pyodide.runPython(`
-                                import sys
-                                from io import StringIO
-                                sys.stdout = StringIO()  # Redirect stdout to capture print output
-                            `);
-                            // Generate preScript dynamically from dataSource
-                            const preScript = dataSource
-                                .map((row) => `${row.tag} = ${JSON.stringify(row.data)}`)
-                                .join('\n');
+                            // Add the current line to output
+                            outputLines.push(line);
 
-                            // Combine preScript with user's Python code
-                            const fullScript = `${preScript}\n${codeInputAreaValue}`;
+                            // If the line contains a 'for' loop, insert check_loop_limit() on the next line with the same indent
+                            if (line.trim().startsWith("for "))
+                            {
+                                outputLines.push(' '.repeat(indentLevel + 4) + "check_loop_limit()");
+                            }
+                        });
 
-                            // Execute the combined Python code
-                            await pyodide.runPythonAsync(fullScript);
+                        // Join the modified lines into the final output
+                        let modifiedCode = outputLines.join('\n');
 
-                            const result = pyodide.runPython("sys.stdout.getvalue()");
+                        // Execute the combined Python code
+                        await pyodide.runPythonAsync(processedCode + modifiedCode);  // Ensure `check_loop_limit()` is defined first
 
-                            setScriptOutputValue(result); // Set the output to the result
-                        } catch (error)
-                        {
-                            setScriptOutputValue(`Error: ${error.message}`); // Handle any errors
-                        }
+                        const result = pyodide.runPython("sys.stdout.getvalue()");
 
+                        setScriptOutputValue(result); // Set the output to the result
+                    } catch (error)
+                    {
+                        setScriptOutputValue(`Error: ${error.message}`); // Handle any errors
                     }
-                }
+                }}
             >
-                Run
+                Run Python Code
             </Button>
 
             <div
