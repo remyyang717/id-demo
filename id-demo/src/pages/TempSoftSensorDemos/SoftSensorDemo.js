@@ -1,16 +1,49 @@
-import React, { useState } from 'react';
-import { Table, Input, Button, Flex, Divider } from 'antd';
+import React, { useState, useMemo } from 'react';
+import { Table, Input, Button, Flex, Divider, notification } from 'antd';
+import
+{
+    RadiusBottomleftOutlined,
+    RadiusBottomrightOutlined,
+    RadiusUpleftOutlined,
+    RadiusUprightOutlined,
+} from '@ant-design/icons';
+
+const Context = React.createContext({
+    name: 'Default',
+});
 
 function SoftSensorDemo()
 {
     // Initial data source
     const [dataSource, setDataSource] = useState([
-        { key: '1', tag: 'PV_1', data: [1, 2, 3, 4, 5, 6, 7] },
+        { key: '1', tag: 'PV1', data: [1, 2, 3, 4, 5, 6, 7] },
     ]);
     const { TextArea } = Input;
 
     const [codeInputAreaValue, setCodeInputAreaValue] = useState('');
     const [scriptOutputValue, setScriptOutputValue] = useState('');
+
+    const [api, contextHolder] = notification.useNotification();
+    const openNotificationWithIcon = (type) =>
+    {
+        api[type]({
+            message: 'Invalid Input',
+            description: <>
+
+                <br />
+                The tag cannot be blank (must not be empty or contain only spaces).
+                <br />
+                The tag cannot start with a number.
+                <br />
+                The tag can only include letters
+
+            </>,
+            placement: 'bottomRight'
+
+        });
+    };
+
+
 
     // Check if global or dangerous commands are used
     function checkGlobalInString(inputString)
@@ -37,9 +70,22 @@ function SoftSensorDemo()
     // Handle Tag input changes
     const handleTagChange = (key, value) =>
     {
-        setDataSource((prev) =>
-            prev.map((item) => (item.key === key ? { ...item, tag: value } : item))
-        );
+        // Validate if the value starts with a number
+        const isValidTag = !/^\d/.test(value) && /^[a-zA-Z0-9]+$/.test(value);
+
+
+        if (isValidTag)
+        {
+            setDataSource((prev) =>
+                prev.map((item) =>
+                    item.key === key ? { ...item, tag: value } : item
+                )
+            );
+        } else
+        {
+            // Optionally show a message or reset the value
+            openNotificationWithIcon('error')
+        }
     };
 
     // Handle Data input changes
@@ -75,14 +121,18 @@ function SoftSensorDemo()
     // Table columns definition
     const columns = [
         {
-            title: 'Tag',
+            title: 'Tag (Aa !)',
             dataIndex: 'tag',
             key: 'tag',
             render: (text, record) => (
-                <Input
-                    value={record.tag}
-                    onChange={(e) => handleTagChange(record.key, e.target.value)}
-                />
+                <>
+                    {contextHolder}
+                    <Input
+                        value={record.tag}
+                        onChange={(e) => handleTagChange(record.key, e.target.value)}
+                    />
+                </>
+
             ),
         },
         ...Array.from({ length: 7 }, (_, index) => ({
@@ -108,7 +158,7 @@ function SoftSensorDemo()
                     {
                         const newRow = {
                             key: `${dataSource.length + 1}`,
-                            tag: `PV_${dataSource.length + 1}`,
+                            tag: `PV${dataSource.length + 1}`,
                             data: Array(7).fill(''),
                         };
                         setDataSource((prev) => [...prev, newRow]);
@@ -127,36 +177,86 @@ function SoftSensorDemo()
         },
     ];
 
+    //#region codeString (Demo & Test)
     const codeString = `
-# Test for loop without break
-def test_for_loop():
-    print("Testing for loop:")
-    for i in range(5):  # Loop runs 5 times
-        print(f"i = {i}")
+# Test Python String Operations
 
-test_for_loop()
+# String concatenation
+greeting = "Hello"
+name = "Python"
+message = greeting + " " + name
+print("Concatenation:", message)
 
+# String formatting using f-strings
+age = 30
+formatted_message = f"{name} is {age} years old."
+print("Formatted String:", formatted_message)
 
-# Test while loop without break
-def test_while_loop():
-    print("\\nTesting while loop:")
-    i = 0
-    while i < 5:  # Loop runs 5 times
-        print(f"i = {i}")
-        i += 1  # Ensure the loop progresses
+# Using the join method
+words = ["This", "is", "a", "test"]
+sentence = " ".join(words)
+print("Join Method:", sentence)
 
-test_while_loop()
+# String slicing
+text = "Python Programming"
+sliced_text = text[0:6]  # Extract 'Python'
+print("Sliced String:", sliced_text)
 
+# Checking if a string contains a substring
+contains_test = "test" in sentence
+print('Contains "test":', contains_test)
 
-# Test recursive call without break
-def test_recursive_function(i=0):
-    if i >= 5:  # Base case to stop recursion after 5 iterations
-        return
-    print(f"Recursive call {i}")
-    test_recursive_function(i + 1)  # Recursive call
+# String methods: lower, upper, and title
+text = "hello world"
+print("Lowercase:", text.lower())
+print("Uppercase:", text.upper())
+print("Title Case:", text.title())
 
-test_recursive_function()
+# String stripping: removing leading/trailing spaces
+text_with_spaces = "   Python   "
+print("Stripped String:", text_with_spaces.strip())
+
+# Replacing parts of a string
+replaced_text = text.replace("hello", "Goodbye")
+print("Replaced String:", replaced_text)
+
+# String formatting with placeholders
+placeholders_message = "Name: %s, Age: %d" % ("John", 25)
+print("Formatted with placeholders:", placeholders_message)
+
+# Raw strings to handle escape sequences
+raw_string = r"Path\\to\\directory"
+print("Raw String:", raw_string)
+
+# Multiline string
+multi_line_string = '''This is a
+multi-line
+string.'''
+print("Multiline String:", multi_line_string)
+
+# Checking if string starts or ends with a specific substring
+starts_with_hello = message.startswith("Hello")
+ends_with_python = message.endswith("Python")
+print("Starts with 'Hello':", starts_with_hello)
+print("Ends with 'Python':", ends_with_python)
+
+# String length
+length_of_string = len(message)
+print("Length of String:", length_of_string)
+
+# String formatting with .format()
+formatted_string = "Hello, {}. You are {} years old.".format(name, age)
+print("String formatted with .format():", formatted_string)
+
+# String splitting
+split_string = sentence.split()
+print("Split String:", split_string)
+
+# Escape sequences in strings
+escaped_string = "This is a backslash: \"
+print("Escaped String:", escaped_string)
 `;
+    //#endregion
 
     return (
         <div
@@ -184,6 +284,69 @@ test_recursive_function()
             <TextArea
                 value={codeInputAreaValue}
                 onChange={(e) => setCodeInputAreaValue(e.target.value)}
+                onKeyDown={(e) =>
+                {
+                    const textarea = e.target;
+                    const start = textarea.selectionStart;
+                    const end = textarea.selectionEnd;
+
+                    // Handle Tab for Indentation
+                    if (e.key === 'Tab')
+                    {
+                        e.preventDefault();
+                        const indent = '    '; // Use 4 spaces for Python indentation
+                        if (e.shiftKey)
+                        {
+                            // Remove indentation on Shift+Tab
+                            const beforeCursor = codeInputAreaValue.substring(0, start);
+                            const afterCursor = codeInputAreaValue.substring(end);
+                            if (beforeCursor.endsWith(indent))
+                            {
+                                const updatedValue = beforeCursor.slice(0, -indent.length) + afterCursor;
+                                setCodeInputAreaValue(updatedValue);
+                                setTimeout(() =>
+                                {
+                                    textarea.selectionStart = textarea.selectionEnd = start - indent.length;
+                                });
+                            }
+                        } else
+                        {
+                            // Add indentation on Tab
+                            const updatedValue =
+                                codeInputAreaValue.substring(0, start) + indent + codeInputAreaValue.substring(end);
+                            setCodeInputAreaValue(updatedValue);
+                            setTimeout(() =>
+                            {
+                                textarea.selectionStart = textarea.selectionEnd = start + indent.length;
+                            });
+                        }
+                    }
+
+
+
+                    // Handle Brackets and Quotes Completion
+                    const pairs = {
+                        '(': ')',
+                        '[': ']',
+                        '{': '}',
+                        "'": "'",
+                        '"': '"',
+                    };
+                    if (pairs[e.key])
+                    {
+                        e.preventDefault();
+                        const updatedValue =
+                            codeInputAreaValue.substring(0, start) +
+                            e.key +
+                            pairs[e.key] +
+                            codeInputAreaValue.substring(end);
+                        setCodeInputAreaValue(updatedValue);
+                        setTimeout(() =>
+                        {
+                            textarea.selectionStart = textarea.selectionEnd = start + 1;
+                        });
+                    }
+                }}
                 autoSize={{ minRows: 7 }}
                 placeholder="Write your Python code here (e.g., def hello():)"
                 style={{
@@ -249,7 +412,12 @@ def check_loop_limit():
                             outputLines.push(line);
 
                             // If the line contains a 'for' loop or 'while' loop, insert check_loop_limit() on the next line with the same indent
-                            if (line.trim().startsWith("for ") || line.trim().startsWith("while "))
+                            if (line.trim().startsWith("for ")
+                                || line.trim().startsWith("while ")
+                                || line.trim().startsWith("if ")
+                                || line.trim().startsWith("elif ")
+                                || line.trim().startsWith("else ")
+                            )
                             {
                                 outputLines.push(' '.repeat(indentLevel + 4) + "check_loop_limit()");
                             }
