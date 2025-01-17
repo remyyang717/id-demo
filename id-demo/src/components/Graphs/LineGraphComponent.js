@@ -35,8 +35,8 @@ function LineGraphComponent({ name, graphData, height, width, yDomainMin = 0, yD
     const tooltipConfig = {
         title: (d) =>
         {
-            const startDate = moment(d.date, 'DD/MM/YYYY hh:mm:ss').startOf('day').format('DD-MMM HH:mm');
-            const endDate = moment(d.date, 'DD/MM/YYYY hh:mm:ss').endOf('day').format('DD-MMM HH:mm');
+            const startDate = moment(d.date, 'DD/MM/YYYY hh:mm:ss').startOf('day').format('DD-MMM HH:mm:ss');
+            const endDate = moment(d.date, 'DD/MM/YYYY hh:mm:ss').endOf('day').format('DD-MMM HH:mm:ss');
             return `${startDate} to ${endDate}`;
         },
         items: [{ channel: 'y' }]
@@ -86,7 +86,7 @@ function LineGraphComponent({ name, graphData, height, width, yDomainMin = 0, yD
             x: {
                 labelFormatter: (val, index) =>
                 {
-                    const momentVal = moment(val, 'DD-MM-YYYY');
+                    const momentVal = moment(val, 'DD-MM-YYYY hh:mm:ss');
                     const day = momentVal.format('DD');
                     const month = momentVal.format('MMM');
                     const year = momentVal.format('YYYY');
