@@ -7,7 +7,9 @@ import { setModuleValue } from '../../store/moduleSlice'
 import { useDispatch } from 'react-redux';
 import { AuditOutlined, IssuesCloseOutlined, RightOutlined, DeleteOutlined } from '@ant-design/icons';
 import BarChartComponent from '../../Components/Graphs/BarChartComponent'
+import LineGraphComponent from '../../Components/Graphs/LineGraphComponent'
 import condition1Data from '../../Data/Condition1DemoData.json';
+import condition5Data from '../../Data/rainData.json'
 
 
 const { Sider, Header, Content } = Layout;
@@ -340,6 +342,29 @@ function ConsentDemo()
                         <Card title={
                             <Flex>
                                 Condition 5
+                                <span style={{ marginLeft: 'auto' }}>Next Due: 1/3/2025</span>
+                                <span style={{ marginLeft: 'auto' }}>
+                                    <div style={{ display: 'flex', gap: '10px' }}>
+                                        <div style={{ width: '24px', height: '30px', backgroundColor: 'green' }}></div>
+                                        <div style={{ width: '24px', height: '30px', backgroundColor: 'green' }}></div>
+                                        <div style={{ width: '24px', height: '30px', backgroundColor: 'red' }}></div>
+                                    </div>
+                                </span>
+
+                                <span style={{ color: '#4CAF50', fontWeight: 'bold', marginLeft: 'auto' }}>Active</span>
+
+                            </Flex>
+                        }
+                            style={{ width: '100%', marginTop: '16px' }}>
+                            <paragraph>Demo - The daily volume of water used for irrigation purposes shall not exceed 654 liters per day. The consent holder must ensure that water usage is monitored and documented to comply with this limit. In the event that the volume of water used exceeds this limit, the consent holder must immediately report the incident to the relevant authority and take appropriate corrective actions to reduce consumption to within the allowed limit.</paragraph>
+                            <Divider dashed />
+                            <h4>This condition need to compliance with the following:</h4>
+                            <LineGraphComponent name={'Irrigation'} graphData={condition5Data} width={2} height={1} yDomainMax={250} yLabel={'Liters per Day'} />
+                        </Card>
+
+                        <Card title={
+                            <Flex>
+                                Condition 6
                                 <span style={{ marginLeft: 'auto' }}>Next Due: N/A</span>
                                 <span style={{ marginLeft: 'auto' }}>
                                     <div style={{ display: 'flex', gap: '10px' }}>

@@ -1,10 +1,12 @@
 // SoftSensorPage.js
 import React, { useState } from 'react';
-import { Layout, Flex } from 'antd';
+import { Layout } from 'antd';
 import HeaderComponent from '../../Components/HeaderComponent';
 import LeftSiderComponent from '../../Components/LeftSiderComponent';
 import { setModuleValue } from '../../store/moduleSlice'
 import { useDispatch } from 'react-redux';
+import { Route, Routes } from "react-router-dom";
+import SoftSensorDemo from '../TempSoftSensorDemos/SoftSensorDemo';
 
 
 const { Sider, Header, Content } = Layout;
@@ -73,31 +75,11 @@ function SoftSensorPage()
 
                     }}
                 >
-                    <Flex>
-                        <div style={{
-                            fontSize: '50px',
-                            marginLeft: 'auto',
-                            marginRight: 'auto',
-                            marginTop: '10vh',
-                        }}>
-                            <strong >
-                                Dear Viewer,
-                                <br />
-                                <br />
-                                This is Soft Sensor Page
-                                <br />
-                                But nothing here yet!
-                                <br />
-                                <br />
-                                Cheer!
-                                <br />
-                                Remy
-                            </strong>
-                        </div>
+                    <Routes>
+                        <Route path='' element={<SoftSensorDemo />} />
+                        {/* <Route path='FormDemo1' element={<FormDemo1 />} /> */}
 
-
-
-                    </Flex>
+                    </Routes>
 
                 </Content>
 

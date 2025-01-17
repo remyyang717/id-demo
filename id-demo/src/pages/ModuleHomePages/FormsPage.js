@@ -76,7 +76,7 @@ function FormsPage()
                     }}
                 >
                     <Routes>
-                        <Route path='' element={<FormHomeDemo />} />
+                        <Route path='/' element={<FormHomeDemo />} />
                         <Route path='FormDemo1' element={<FormDemo1 />} />
                         <Route path='FormDemo2' element={<FormDemo2 />} />
                         <Route path='FormDemo3' element={<FormDemo3 />} />
