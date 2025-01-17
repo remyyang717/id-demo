@@ -35,10 +35,6 @@ function LeftSiderComponent()
                         <Link to="/Dashboards/EditableGraphDemo">Editable Graph Demo</Link>
                     </List.Item>
                     <List.Item>
-                        <Link to="/Dashboards/ProcessrIODemoPage">Data Acquisition Demo - Processr IO</Link>
-                    </List.Item>
-
-                    <List.Item>
                         <Link to="/Dashboards/BatchReportDemo1">Batch Report Table Demo 1</Link>
                     </List.Item>
 

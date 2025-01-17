@@ -5,6 +5,7 @@ import HeaderComponent from '../../Components/HeaderComponent';
 import LeftSiderComponent from '../../Components/LeftSiderComponent';
 import { setModuleValue } from '../../store/moduleSlice'
 import { useDispatch } from 'react-redux';
+import ProcessrIODemoPage from '../TempDevicePages/ProcessrIODemoPage'
 
 
 const { Sider, Header, Content } = Layout;
@@ -75,21 +76,9 @@ function DevicePage()
                             fontSize: '50px',
                             marginLeft: 'auto',
                             marginRight: 'auto',
-                            marginTop: '10vh',
+                            marginTop: '1vh',
                         }}>
-                            <strong >
-                                Dear Viewer,
-                                <br />
-                                <br />
-                                This is Device page
-                                <br />
-                                But nothing here yet!
-                                <br />
-                                <br />
-                                Cheer!
-                                <br />
-                                Remy
-                            </strong>
+                            <ProcessrIODemoPage />
                         </div>
 
 

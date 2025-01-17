@@ -9,7 +9,7 @@ import { Route, Routes } from "react-router-dom";
 import DashboardsDemo1 from '../TempDashboardDemos/DashboardsDemo1'
 import BatchReportDemo1 from '../TempBatchReportDemos/BatchReportDemo1'
 import EditableGraphDemo from '../TempDashboardDemos/EditableGraphDemo'
-import ProcessrIODemoPage from '../TempDashboardDemos/ProcessrIODemoPage'
+import ProcessrIODemoPage from '../TempDevicePages/ProcessrIODemoPage'
 
 
 const { Sider, Header, Content } = Layout;
