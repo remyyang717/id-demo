@@ -18,6 +18,7 @@ const { Sider, Header, Content } = Layout;
 function DashboardsPage()
 {
     const [isHovered, setIsHovered] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     const dispatch = useDispatch();
     dispatch(setModuleValue('Dashboards'));
 
@@ -43,35 +44,37 @@ function DashboardsPage()
                     width={800}
                     theme='light'
                     collapsible
-                    trigger={null}
+                    onClick={() => setIsOpen(true)}
                     style={{
-
                         backgroundColor: '#eef0f0',
-                        transform: isHovered ? 'translateX(0)' : 'translateX(-100%)',
-                        transition: 'transform 0.3s ease-in-out 0.2s',
-                        position: 'fixed', // Make it fixed on the left side
-                        left: 0, // Align to the left
+                        transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
+                        transition: 'transform 0.3s ease-in-out',
+                        position: 'fixed',
+                        left: 0,
                         top: 0,
                         bottom: 0,
                         height: '100vh',
                     }}
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
+                    onMouseEnter={() => setIsHovered(true)} // Keep Sider open while hovering
+                    onMouseLeave={() =>
+                    {
+                        setIsHovered(false);
+                        setIsOpen(false); // Close Sider when the mouse leaves
+                    }}
                 >
-                    <div>
-
-                    </div>
                     <LeftSiderComponent />
                 </Sider>
 
                 <Content
+                    display='block'
                     style={{
                         minHeight: '100vh',
                         padding: 12,
                         margin: 0,
                         marginLeft: 32,
-                        transform: isHovered ? 'translateX(800px)' : 'translateX(0px)',
-                        transition: 'transform 0.3s ease-in-out 0.2s',
+                        transform: isOpen ? 'translateX(800px)' : 'translateX(0px)',
+                        transition: 'transform 0.3s ease-in-out',
+
                     }}
                 >
                     <Routes>
@@ -85,7 +88,7 @@ function DashboardsPage()
                                 }}>
                                     <strong >
 
-                                        Go to check the left bar!
+                                        Go to check/click the left bar!
 
                                     </strong>
                                 </div>

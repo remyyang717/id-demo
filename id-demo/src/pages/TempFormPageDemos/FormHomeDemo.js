@@ -609,51 +609,58 @@ function FormHomeDemo()
 
 
     return (
-        <Flex
-
+        <div
             style={{
-                justifyContent: 'space-around'
-            }}>
+                maxWidth: 1500,
+                marginLeft: 'auto',
+                marginRight: 'auto'
+            }}
 
-            <Flex wrap='wrap'
+        >
+
+            <Flex
                 style={{
-                    justifyContent: 'space-around',
-                    width: '90%',
-
+                    justifyContent: 'space-around'
                 }}>
 
-                <Flex style={{
-                    justifyContent: 'space-around',
-                    width: '49%',
-                    minWidth: '700px',
-                    minHeight: '100%'
-                }}>
-
-                    <Tabs defaultActiveKey="1" items={favouriteForms} centered />
-                </Flex>
-
-                <Flex
+                <Flex wrap='wrap'
                     style={{
                         justifyContent: 'space-around',
-                        width: '49%',
-                        minWidth: '700px',
-                        minHeight: '100%'
-
+                        width: '90%',
 
                     }}>
 
-                    <Tabs defaultActiveKey="1" items={scheduledForms} onChange={onChange} centered />
+                    <Flex style={{
+                        justifyContent: 'space-around',
+                        width: '49%',
+                        minWidth: '500px'
+                    }}>
+
+                        <Tabs defaultActiveKey="1" items={favouriteForms} centered />
+                    </Flex>
+
+                    <Flex
+                        style={{
+                            justifyContent: 'space-around',
+                            width: '49%',
+                            minWidth: '500px'
+                        }}>
+
+                        <Tabs defaultActiveKey="1" items={scheduledForms} onChange={onChange} centered />
+
+                    </Flex>
+
+
 
                 </Flex>
 
 
-
-            </Flex>
-
-
+            </Flex >
+        </div>
 
 
-        </Flex >
+
+
     )
 };
 

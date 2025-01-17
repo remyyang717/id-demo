@@ -114,6 +114,7 @@ function ConsentDemo()
 
 
     const [isHovered, setIsHovered] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
     const dispatch = useDispatch();
     dispatch(setModuleValue('Consents'));
 
@@ -139,23 +140,24 @@ function ConsentDemo()
                     width={800}
                     theme='light'
                     collapsible
-                    trigger={null}
+                    onClick={() => setIsOpen(true)}
                     style={{
                         backgroundColor: '#eef0f0',
-                        transform: isHovered ? 'translateX(0)' : 'translateX(-100%)',
-                        transition: 'transform 0.3s ease-in-out 0.2s',
+                        transform: isOpen ? 'translateX(0)' : 'translateX(-100%)',
+                        transition: 'transform 0.3s ease-in-out',
                         position: 'fixed',
                         left: 0,
                         top: 0,
                         bottom: 0,
                         height: '100vh',
                     }}
-                    onMouseEnter={() => setIsHovered(true)}
-                    onMouseLeave={() => setIsHovered(false)}
+                    onMouseEnter={() => setIsHovered(true)} // Keep Sider open while hovering
+                    onMouseLeave={() =>
+                    {
+                        setIsHovered(false);
+                        setIsOpen(false); // Close Sider when the mouse leaves
+                    }}
                 >
-                    <div>
-
-                    </div>
                     <LeftSiderComponent />
                 </Sider>
 
@@ -166,14 +168,11 @@ function ConsentDemo()
                         padding: 12,
                         margin: 0,
                         marginLeft: 32,
-                        transform: isHovered ? 'translateX(800px)' : 'translateX(0px)',
-                        transition: 'transform 0.3s ease-in-out 0.2s',
+                        transform: isOpen ? 'translateX(800px)' : 'translateX(0px)',
+                        transition: 'transform 0.3s ease-in-out',
 
                     }}
                 >
-
-
-
                     <div
                         wrap='wrap'
                         style={{
