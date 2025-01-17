@@ -1,4 +1,3 @@
-// SoftSensorDemo.js
 import React, { useState } from 'react';
 import { Table, Input, Button, Flex, Divider } from 'antd';
 
@@ -12,6 +11,28 @@ function SoftSensorDemo()
 
     const [codeInputAreaValue, setCodeInputAreaValue] = useState('');
     const [scriptOutputValue, setScriptOutputValue] = useState('');
+
+    // Check if global or dangerous commands are used
+    function checkGlobalInString(inputString)
+    {
+        const globalPattern = /\bglobal\b/i;
+        const dangerousPatterns = [/\beval\b/i, /\bFunction\b/i, /\bsetTimeout\b/i, /\bsetInterval\b/i];
+
+        if (globalPattern.test(inputString))
+        {
+            throw new Error("Usage of 'global' is not allowed.");
+        }
+
+        dangerousPatterns.forEach((pattern) =>
+        {
+            if (pattern.test(inputString))
+            {
+                throw new Error("Dangerous function usage detected (eval/Function/setTimeout/setInterval).");
+            }
+        });
+
+        console.log("No dangerous commands detected. Code is safe.");
+    }
 
     // Handle Tag input changes
     const handleTagChange = (key, value) =>
@@ -106,7 +127,36 @@ function SoftSensorDemo()
         },
     ];
 
+    const codeString = `
+# Test for loop without break
+def test_for_loop():
+    print("Testing for loop:")
+    for i in range(5):  # Loop runs 5 times
+        print(f"i = {i}")
 
+test_for_loop()
+
+
+# Test while loop without break
+def test_while_loop():
+    print("\\nTesting while loop:")
+    i = 0
+    while i < 5:  # Loop runs 5 times
+        print(f"i = {i}")
+        i += 1  # Ensure the loop progresses
+
+test_while_loop()
+
+
+# Test recursive call without break
+def test_recursive_function(i=0):
+    if i >= 5:  # Base case to stop recursion after 5 iterations
+        return
+    print(f"Recursive call {i}")
+    test_recursive_function(i + 1)  # Recursive call
+
+test_recursive_function()
+`;
 
     return (
         <div
@@ -120,8 +170,6 @@ function SoftSensorDemo()
                 justifyContent: 'space-around',
             }}
         >
-
-
             <Table
                 dataSource={dataSource}
                 columns={columns}
@@ -130,77 +178,12 @@ function SoftSensorDemo()
                 style={{ width: '100%' }}
             />
 
-
-            <Divider style={{ marginTop: 36 }}
-                orientation="mid">Script Input Area</Divider>
+            <Divider style={{ marginTop: 36 }} orientation="mid">Script Input Area</Divider>
 
 
             <TextArea
                 value={codeInputAreaValue}
                 onChange={(e) => setCodeInputAreaValue(e.target.value)}
-                onKeyDown={(e) =>
-                {
-                    const textarea = e.target;
-                    const start = textarea.selectionStart;
-                    const end = textarea.selectionEnd;
-
-                    // Handle Tab for Indentation
-                    if (e.key === 'Tab')
-                    {
-                        e.preventDefault();
-                        const indent = '    '; // Use 4 spaces for Python indentation
-                        if (e.shiftKey)
-                        {
-                            // Remove indentation on Shift+Tab
-                            const beforeCursor = codeInputAreaValue.substring(0, start);
-                            const afterCursor = codeInputAreaValue.substring(end);
-                            if (beforeCursor.endsWith(indent))
-                            {
-                                const updatedValue = beforeCursor.slice(0, -indent.length) + afterCursor;
-                                setCodeInputAreaValue(updatedValue);
-                                setTimeout(() =>
-                                {
-                                    textarea.selectionStart = textarea.selectionEnd = start - indent.length;
-                                });
-                            }
-                        } else
-                        {
-                            // Add indentation on Tab
-                            const updatedValue =
-                                codeInputAreaValue.substring(0, start) + indent + codeInputAreaValue.substring(end);
-                            setCodeInputAreaValue(updatedValue);
-                            setTimeout(() =>
-                            {
-                                textarea.selectionStart = textarea.selectionEnd = start + indent.length;
-                            });
-                        }
-                    }
-
-
-
-                    // // Handle Brackets and Quotes Completion
-                    // const pairs = {
-                    //     '(': ')',
-                    //     '[': ']',
-                    //     '{': '}',
-                    //     "'": "'",
-                    //     '"': '"',
-                    // };
-                    // if (pairs[e.key])
-                    // {
-                    //     e.preventDefault();
-                    //     const updatedValue =
-                    //         codeInputAreaValue.substring(0, start) +
-                    //         e.key +
-                    //         pairs[e.key] +
-                    //         codeInputAreaValue.substring(end);
-                    //     setCodeInputAreaValue(updatedValue);
-                    //     setTimeout(() =>
-                    //     {
-                    //         textarea.selectionStart = textarea.selectionEnd = start + 1;
-                    //     });
-                    // }
-                }}
                 autoSize={{ minRows: 7 }}
                 placeholder="Write your Python code here (e.g., def hello():)"
                 style={{
@@ -215,10 +198,6 @@ function SoftSensorDemo()
                     overflow: 'auto',
                 }}
             />
-
-
-
-
 
             <Button
                 type="primary"
@@ -238,16 +217,16 @@ function SoftSensorDemo()
                 sys.stdout = StringIO()  # Redirect stdout to capture print output
             `);
 
-                        const loopLimit = 100000;
+                        const loopLimit = 70000;
 
                         // Define the function at the beginning
-                        let processedCode = `maxLoopCount = 0
-maxLoopLimit = ${loopLimit}
+                        let processedCode = `maxLoopCount_d3xqZl91 = 0
+maxLoopLimit_wpLk7gXv = ${loopLimit}
 
 def check_loop_limit():
-    global maxLoopCount
-    maxLoopCount += 1
-    if maxLoopCount > maxLoopLimit:
+    global maxLoopCount_d3xqZl91
+    maxLoopCount_d3xqZl91 += 1
+    if maxLoopCount_d3xqZl91 > maxLoopLimit_wpLk7gXv:
         raise RuntimeError("Global loop iteration limit exceeded")
             `;
 
@@ -269,8 +248,8 @@ def check_loop_limit():
                             // Add the current line to output
                             outputLines.push(line);
 
-                            // If the line contains a 'for' loop, insert check_loop_limit() on the next line with the same indent
-                            if (line.trim().startsWith("for "))
+                            // If the line contains a 'for' loop or 'while' loop, insert check_loop_limit() on the next line with the same indent
+                            if (line.trim().startsWith("for ") || line.trim().startsWith("while "))
                             {
                                 outputLines.push(' '.repeat(indentLevel + 4) + "check_loop_limit()");
                             }
@@ -278,6 +257,8 @@ def check_loop_limit():
 
                         // Join the modified lines into the final output
                         let modifiedCode = outputLines.join('\n');
+
+                        checkGlobalInString(modifiedCode);
 
                         // Execute the combined Python code
                         await pyodide.runPythonAsync(processedCode + modifiedCode);  // Ensure `check_loop_limit()` is defined first
@@ -311,8 +292,34 @@ def check_loop_limit():
             >
                 {scriptOutputValue || 'Your output will appear here...'}
             </div>
+            <div style={{ marginTop: '170px' }}>
+                <h1>Test for Loop, While Loop, and Recursion</h1>
+                <pre>
+                    <code><strong>{codeString}</strong></code>
+                </pre>
+            </div>
+            <div style={{
+                marginTop: 100,
+                fontSize: 20
+            }}>
+                <h2 style={{ color: '#333' }}>User Code Execution Limitations</h2>
+                <p style={{ color: '#555' }}>
+                    To ensure security and system stability, the following actions are <strong>not allowed</strong>:
+                </p>
+                <ul style={{ color: '#555' }}>
+                    <li><strong>Global Variables</strong>: Do not use <code>global</code> to modify global variables.</li>
+                    <li><strong>Dangerous Functions</strong>: Avoid using <code>eval()</code>, <code>Function()</code>, <code>setTimeout()</code>, <code>setInterval()</code>, <code>XMLHttpRequest</code>, and <code>WebSocket</code>.</li>
+                    <li><strong>Excessive Recursion</strong>: Recursion depth is limited to avoid stack overflow.</li>
+                    <li><strong>Sensitive Objects</strong>: Do not access or modify <code>window</code>, <code>document</code>, or <code>localStorage</code>.</li>
+                    <li><strong>Dynamic Code Execution</strong>: Dynamic code execution via <code>eval</code> or <code>Function</code> is prohibited.</li>
+                </ul>
+                <h4 style={{ color: '#333' }}>Consequences</h4>
+                <p style={{ color: '#555' }}>
+                    Violations will result in immediate error reporting and code termination.
+                </p>
+            </div>
         </div >
     );
-};
+}
 
 export default SoftSensorDemo;
