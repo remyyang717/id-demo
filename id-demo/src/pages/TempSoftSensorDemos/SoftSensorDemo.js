@@ -1,16 +1,7 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState } from 'react';
 import { Table, Input, Button, Flex, Divider, notification } from 'antd';
-import
-{
-    RadiusBottomleftOutlined,
-    RadiusBottomrightOutlined,
-    RadiusUpleftOutlined,
-    RadiusUprightOutlined,
-} from '@ant-design/icons';
 
-const Context = React.createContext({
-    name: 'Default',
-});
+
 
 function SoftSensorDemo()
 {
@@ -251,10 +242,6 @@ print("String formatted with .format():", formatted_string)
 # String splitting
 split_string = sentence.split()
 print("Split String:", split_string)
-
-# Escape sequences in strings
-escaped_string = "This is a backslash: \"
-print("Escaped String:", escaped_string)
 `;
     //#endregion
 

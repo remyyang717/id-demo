@@ -15,7 +15,6 @@ const { Sider, Header, Content } = Layout;
 
 function SoftSensorPage()
 {
-    const [isHovered, setIsHovered] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const dispatch = useDispatch();
     dispatch(setModuleValue('Soft Sensors'));
@@ -53,10 +52,8 @@ function SoftSensorPage()
                         bottom: 0,
                         height: '100vh',
                     }}
-                    onMouseEnter={() => setIsHovered(true)} // Keep Sider open while hovering
                     onMouseLeave={() =>
                     {
-                        setIsHovered(false);
                         setIsOpen(false); // Close Sider when the mouse leaves
                     }}
                 >

@@ -17,7 +17,6 @@ const { Sider, Header, Content } = Layout;
 
 function DashboardsPage()
 {
-    const [isHovered, setIsHovered] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const dispatch = useDispatch();
     dispatch(setModuleValue('Dashboards'));
@@ -55,10 +54,8 @@ function DashboardsPage()
                         bottom: 0,
                         height: '100vh',
                     }}
-                    onMouseEnter={() => setIsHovered(true)} // Keep Sider open while hovering
                     onMouseLeave={() =>
                     {
-                        setIsHovered(false);
                         setIsOpen(false); // Close Sider when the mouse leaves
                     }}
                 >

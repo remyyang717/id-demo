@@ -13,7 +13,6 @@ const { Sider, Header, Content } = Layout;
 
 function AlarmPage()
 {
-    const [isHovered, setIsHovered] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const dispatch = useDispatch();
     dispatch(setModuleValue('Alarms'));
@@ -51,10 +50,8 @@ function AlarmPage()
                         bottom: 0,
                         height: '100vh',
                     }}
-                    onMouseEnter={() => setIsHovered(true)} // Keep Sider open while hovering
                     onMouseLeave={() =>
                     {
-                        setIsHovered(false);
                         setIsOpen(false); // Close Sider when the mouse leaves
                     }}
                 >
