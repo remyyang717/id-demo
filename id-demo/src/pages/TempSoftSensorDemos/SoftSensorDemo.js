@@ -341,7 +341,7 @@ for i in range(3):
                 {
                     try
                     {
-                        const pyodide = await processSoftSensorPythonStringWithDataSource(codeInputAreaValue, dataSource);
+                        const pyodide = await processSoftSensorPythonStringWithDataSource(codeInputAreaValue, "ss", dataSource);
                         const result = pyodide.runPython("sys.stdout.getvalue()");
                         setScriptOutputValue(result); // Set the result to the state
                     } catch (error)

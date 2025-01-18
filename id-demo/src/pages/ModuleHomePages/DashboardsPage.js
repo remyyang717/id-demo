@@ -6,11 +6,11 @@ import LeftSiderComponent from '../../Components/LeftSiderComponent';
 import { setModuleValue } from '../../store/moduleSlice'
 import { useDispatch } from 'react-redux';
 import { Route, Routes } from "react-router-dom";
-import DashboardsDemo1 from '../TempDashboardDemos/DashboardsDemo1'
-import BatchReportDemo1 from '../TempBatchReportDemos/BatchReportDemo1'
+import DashboardsDemo from '../TempDashboardDemos/DashboardsDemo'
+import BatchReportDemo from '../TempBatchReportDemos/BatchReportDemo'
 import EditableGraphDemo from '../TempDashboardDemos/EditableGraphDemo'
 import ProcessrIODemoPage from '../TempDevicePages/ProcessrIODemoPage'
-
+import TableGeneratorDemo from '../TempBatchReportDemos/TableGeneratorDemo'
 
 const { Sider, Header, Content } = Layout;
 
@@ -94,10 +94,12 @@ function DashboardsPage()
 
                             </Flex>
                         } />
-                        <Route path='DashboardsDemo1' element={<DashboardsDemo1 />} />
-                        <Route path='BatchReportDemo1' element={<BatchReportDemo1 />} />
+                        <Route path='DashboardsDemo' element={<DashboardsDemo />} />
+                        <Route path='BatchReportDemo' element={<BatchReportDemo />} />
                         <Route path='EditableGraphDemo' element={<EditableGraphDemo />} />
                         <Route path='ProcessrIODemoPage' element={<ProcessrIODemoPage />} />
+                        <Route path='TableGeneratorDemo' element={<TableGeneratorDemo />} />
+
                     </Routes>
                 </Content>
 

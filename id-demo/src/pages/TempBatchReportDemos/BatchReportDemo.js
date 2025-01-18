@@ -30,7 +30,7 @@ const dates = generateDatesInRange('2024-12-01', '2024-12-31');
 
 
 
-function BatchReportDemo1()
+function BatchReportDemo()
 {
     const [selectedCell, setSelectedCell] = useState(null);  // State to track the clicked cell
 
@@ -119,4 +119,4 @@ function BatchReportDemo1()
     );
 };
 
-export default BatchReportDemo1;
+export default BatchReportDemo;

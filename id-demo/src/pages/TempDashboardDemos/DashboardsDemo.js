@@ -7,7 +7,7 @@ import LineGraphComponent from '../../Components/Graphs/LineGraphComponent'
 import ScatterComponent from '../../Components/Graphs/ScatterComponent';
 import BoxplotComponent from '../../Components/Graphs/BoxplotComponent';
 
-function DashboardsDemo1()
+function DashboardsDemo()
 {
 
 
@@ -34,4 +34,4 @@ function DashboardsDemo1()
     )
 };
 
-export default DashboardsDemo1;
+export default DashboardsDemo;
