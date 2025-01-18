@@ -341,7 +341,8 @@ for i in range(3):
                 {
                     try
                     {
-                        const result = await processSoftSensorPythonStringWithDataSource(codeInputAreaValue, dataSource);
+                        const pyodide = await processSoftSensorPythonStringWithDataSource(codeInputAreaValue, dataSource);
+                        const result = pyodide.runPython("sys.stdout.getvalue()");
                         setScriptOutputValue(result); // Set the result to the state
                     } catch (error)
                     {
@@ -356,7 +357,6 @@ for i in range(3):
             <div
                 style={{
                     width: '100%',
-                    overflowWrap: 'break-word',
                     marginTop: '16px',
                     padding: '10px',
                     backgroundColor: '#E8E8E8',

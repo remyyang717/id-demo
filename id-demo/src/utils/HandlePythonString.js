@@ -21,10 +21,10 @@ function checkGlobalInString(inputString)
 }
 
 
-
-// A function to calculate the sum of an array
-// dataSource will looks like this  ([{ key: '1', tag: 'PV1', data: [1, 2, 3, 4, 5, 6, 7] },]);
-export const processSoftSensorPythonStringWithDataSource = async (pythonString, dataSource) =>
+// This function executes Python code within the Pyodide environment, dynamically integrating 
+// Variables from the provided `dataSource` and adding safeguards for excessive loop iterations.
+// DataSource will looks like this  ([{ key: '1', tag: 'PV1', data: [1, 2, 3, 4, 5, 6, 7] },]);
+export const processSoftSensorPythonStringWithDataSource = async (pythonString, dataSource = null) =>
 {
     try
     {
@@ -50,13 +50,15 @@ def check_loop_limit():
         raise RuntimeError("Global loop iteration limit exceeded")
 `;
 
-        // Generate preScript dynamically from dataSource
+        // Generate preScript dynamically from dataSource for loading pre-data variables
         const preScript = dataSource
-            .map((row) => `${row.tag} = ${JSON.stringify(row.data)}`)
-            .join('\n');
+            ? dataSource.map((row) => `${row.tag} = ${JSON.stringify(row.data)}`).join('\n')
+            : ""; // If dataSource is null, set preScript to an empty string
 
         // Combine preScript with user's Python code
         const fullScript = `\n${preScript}\n${pythonString}`;
+
+
         let lines = fullScript.split('\n');
 
         let outputLines = [];
@@ -85,9 +87,7 @@ def check_loop_limit():
         // Execute the combined Python code
         await pyodide.runPythonAsync(processedCode + modifiedCode);  // Ensure `check_loop_limit()` is defined first
 
-        const result = pyodide.runPython("sys.stdout.getvalue()");
-
-        return result;
+        return pyodide;
     }
     catch (error)
     {
