@@ -98,13 +98,25 @@ function TableGeneratorDemo()
                 }}
                 onClick={async () =>
                 {
-
                     const result = await processSoftSensorPythonStringWithDataSource(codeInputAreaValue, "tg");
 
-                    setScriptOutputValue(result.result); // Set the result to the state
-                    setColumns(result.columns)
-                    setDataSource(result.datasource)
-                    setTableDisplay(true)
+                    if (typeof result === "object" && result !== null)
+                    {
+                        // If result is an object, set result, columns, dataSource, and display the table
+                        setScriptOutputValue(result.result); // Set the result to the state
+                        setColumns(result.columns); // Set the table columns
+                        setDataSource(result.datasource); // Set the table dataSource
+                        setTableDisplay(true); // Display the table
+                    } else if (typeof result === "string")
+                    {
+                        // If result is a string, set it as the script output value
+                        setScriptOutputValue(result);
+                        setTableDisplay(false);
+                    } else
+                    {
+                        setScriptOutputValue("An unexpected error occurred.");
+                    }
+
                 }
                 }
             >

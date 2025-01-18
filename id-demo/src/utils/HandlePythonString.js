@@ -107,8 +107,16 @@ def check_loop_limit():
             }
         })();
 
+        // Remove all comments
+        const uncommented = pythonString
+            // Remove single-line comments (starting with #)
+            .replace(/#.*$/gm, "")
+            // Remove docstrings (triple double quotes or triple single quotes)
+            .replace(/("""[\s\S]*?"""|'''[\s\S]*?''')/g, "")
+            // Trim excess newlines
+            .replace(/^\s*[\r\n]/gm, "");
 
-        let lines = pythonString.split('\n');
+        let lines = uncommented.split('\n');
 
         let outputLines = [];
 
@@ -144,51 +152,45 @@ def check_loop_limit():
             case "ss":
                 return pyodide.runPython("sys.stdout.getvalue()");
             case "tg":
-                try
-                {
-                    // Execute Python code and retrieve stdout
-                    const result = await pyodide.runPython("sys.stdout.getvalue()");
 
-                    // Retrieve and convert columns_hj3g6fg4
-                    const columnsPython = pyodide.globals.get("columns_hj3g6fg4");
-                    const columns = Array.from(columnsPython).map((item) =>
+                // Execute Python code and retrieve stdout
+                const result = await pyodide.runPython("sys.stdout.getvalue()");
+                console.log(result)
+
+                // Retrieve and convert columns_hj3g6fg4
+                const columnsPython = pyodide.globals.get("columns_hj3g6fg4");
+                const columns = Array.from(columnsPython).map((item) =>
+                {
+                    return {
+                        title: item.get("title"),
+                        dataIndex: item.get("dataIndex"),
+                        key: item.get("key"),
+                    };
+                });
+
+                // Retrieve and convert datasource_d5g6r95bf
+                const datasourcePython = pyodide.globals.get("datasource_d5g6r95bf");
+                const datasource = Array.from(datasourcePython).map((item) =>
+                {
+                    const jsObject = {};
+                    const pyKeys = Array.from(item.keys());
+                    const pyValues = Array.from(item.values());
+
+                    pyKeys.forEach((key, index) =>
                     {
-                        return {
-                            title: item.get("title"),
-                            dataIndex: item.get("dataIndex"),
-                            key: item.get("key"),
-                        };
+                        jsObject[key] = pyValues[index];
                     });
 
-                    // Retrieve and convert datasource_d5g6r95bf
-                    const datasourcePython = pyodide.globals.get("datasource_d5g6r95bf");
-                    const datasource = Array.from(datasourcePython).map((item) =>
-                    {
-                        const jsObject = {};
-                        const pyKeys = Array.from(item.keys());
-                        const pyValues = Array.from(item.values());
+                    return jsObject;
+                });
 
-                        pyKeys.forEach((key, index) =>
-                        {
-                            jsObject[key] = pyValues[index];
-                        });
+                // Return all data in an object
+                return {
+                    result,
+                    columns,
+                    datasource,
+                };
 
-                        return jsObject;
-                    });
-
-                    // Return all data in an object
-                    return {
-                        result,
-                        columns,
-                        datasource,
-                    };
-                } catch (error)
-                {
-                    console.error("Error:", error.message);
-                    return {
-                        error: error.message,
-                    };
-                }
 
             default:
                 return "";
