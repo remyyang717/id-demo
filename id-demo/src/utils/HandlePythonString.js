@@ -5,7 +5,7 @@ const TableGeneratorPreString = `
 columns_hj3g6fg4 = []
 datasource_d5g6r95bf = []
 
-def setHeader(column_names):
+def setHeader(*column_names):
     global columns_hj3g6fg4  # Declare the global variable
     
     # Create column definitions
@@ -66,7 +66,7 @@ function checkGlobalInString(inputString)
 // This function executes Python code within the Pyodide environment, dynamically integrating 
 // Variables from the provided `dataSource` and adding safeguards for excessive loop iterations.
 // DataSource will looks like this  ([{ key: '1', tag: 'PV1', data: [1, 2, 3, 4, 5, 6, 7] },]);
-export const processSoftSensorPythonStringWithDataSource = async (pythonString, type, dataSource = null) =>
+export const processSoftSensorPythonStringWithDataSource = async (pythonString, type = "", dataSource = "") =>
 {
     try
     {
@@ -92,7 +92,7 @@ def check_loop_limit():
 `;
 
         // Use switch to determine the value of preScript
-        const preScript = (() =>
+        let preScript = (() =>
         {
             switch (type)
             {
@@ -101,12 +101,11 @@ def check_loop_limit():
                         ? dataSource.map((row) => `${row.tag} = ${JSON.stringify(row.data)}`).join('\n')
                         : "";
                 case "tg":
-                    return TableGeneratorPreString; // Add your code for "tg"
+                    return TableGeneratorPreString;
                 default:
-                    return ""; // Default case
+                    return "";
             }
         })();
-
 
 
         let lines = pythonString.split('\n');
@@ -134,13 +133,69 @@ def check_loop_limit():
 
         checkGlobalInString(modifiedCode);
 
-        // Execute the combined Python code
-        await pyodide.runPythonAsync(maxLoopGuard + preScript + modifiedCode);  // Ensure `check_loop_limit()` is defined first
+        const ExecutePythonString = maxLoopGuard + preScript + '\n' + modifiedCode
 
-        return pyodide;
+
+        // Execute the combined Python code
+        await pyodide.runPythonAsync(ExecutePythonString);  // Ensure `check_loop_limit()` is defined first
+
+        switch (type)
+        {
+            case "ss":
+                return pyodide.runPython("sys.stdout.getvalue()");
+            case "tg":
+                try
+                {
+                    // Execute Python code and retrieve stdout
+                    const result = await pyodide.runPython("sys.stdout.getvalue()");
+
+                    // Retrieve and convert columns_hj3g6fg4
+                    const columnsPython = pyodide.globals.get("columns_hj3g6fg4");
+                    const columns = Array.from(columnsPython).map((item) =>
+                    {
+                        return {
+                            title: item.get("title"),
+                            dataIndex: item.get("dataIndex"),
+                            key: item.get("key"),
+                        };
+                    });
+
+                    // Retrieve and convert datasource_d5g6r95bf
+                    const datasourcePython = pyodide.globals.get("datasource_d5g6r95bf");
+                    const datasource = Array.from(datasourcePython).map((item) =>
+                    {
+                        const jsObject = {};
+                        const pyKeys = Array.from(item.keys());
+                        const pyValues = Array.from(item.values());
+
+                        pyKeys.forEach((key, index) =>
+                        {
+                            jsObject[key] = pyValues[index];
+                        });
+
+                        return jsObject;
+                    });
+
+                    // Return all data in an object
+                    return {
+                        result,
+                        columns,
+                        datasource,
+                    };
+                } catch (error)
+                {
+                    console.error("Error:", error.message);
+                    return {
+                        error: error.message,
+                    };
+                }
+
+            default:
+                return "";
+        }
     }
     catch (error)
     {
-        return `Error: ${error.message}`; // Handle any errors
+        return `Error in utils: ${error.message}`; // Handle any errors
     }
 };

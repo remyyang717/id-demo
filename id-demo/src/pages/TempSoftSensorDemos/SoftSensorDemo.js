@@ -339,15 +339,11 @@ for i in range(3):
                 }}
                 onClick={async () =>
                 {
-                    try
-                    {
-                        const pyodide = await processSoftSensorPythonStringWithDataSource(codeInputAreaValue, "ss", dataSource);
-                        const result = pyodide.runPython("sys.stdout.getvalue()");
-                        setScriptOutputValue(result); // Set the result to the state
-                    } catch (error)
-                    {
-                        setScriptOutputValue(`Error: ${error.message}`); // Handle and display any errors
-                    }
+
+                    const result = await processSoftSensorPythonStringWithDataSource(codeInputAreaValue, "ss", dataSource);
+
+                    setScriptOutputValue(result); // Set the result to the state
+
                 }
                 }
             >
