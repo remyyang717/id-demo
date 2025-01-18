@@ -107,7 +107,7 @@ function BarChartComponent({
             x: {
                 labelFormatter: (val, index) =>
                 {
-                    const momentVal = moment(val, 'DD-MM-YYYY');
+                    const momentVal = moment(val, 'DD-MM-YYYY  hh:mm:ss');
                     const day = momentVal.format('DD');
                     const month = momentVal.format('MMM');
                     const year = momentVal.format('YYYY');

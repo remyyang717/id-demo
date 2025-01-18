@@ -46,7 +46,7 @@ function ScatterComponent({ name, graphData, height = 1, width = 2, yDomainMin =
         scale: {
             x: { nice: true, },
             y: { nice: true, domainMax: 240 },
-            size: { type: 'log', range: [height + width, height * width * 5] },
+            size: { type: 'log', range: [height + width, height * width * 2.5] },
         },
         style: { fillOpacity: 0.3, lineWidth: 1 },
         axis: {

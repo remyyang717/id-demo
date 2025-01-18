@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Table, Input, Button, Flex, Divider, notification } from 'antd';
+import { processSoftSensorPythonStringWithDataSource } from '../../utils/HandlePythonString'
 
 
 
@@ -34,29 +35,6 @@ function SoftSensorDemo()
         });
     };
 
-
-
-    // Check if global or dangerous commands are used
-    function checkGlobalInString(inputString)
-    {
-        const globalPattern = /\bglobal\b/i;
-        const dangerousPatterns = [/\beval\b/i, /\bFunction\b/i, /\bsetTimeout\b/i, /\bsetInterval\b/i];
-
-        if (globalPattern.test(inputString))
-        {
-            throw new Error("Usage of 'global' is not allowed.");
-        }
-
-        dangerousPatterns.forEach((pattern) =>
-        {
-            if (pattern.test(inputString))
-            {
-                throw new Error("Dangerous function usage detected (eval/Function/setTimeout/setInterval).");
-            }
-        });
-
-        console.log("No dangerous commands detected. Code is safe.");
-    }
 
     // Handle Tag input changes
     const handleTagChange = (key, value) =>
@@ -170,78 +148,107 @@ function SoftSensorDemo()
 
     //#region codeString (Demo & Test)
     const codeString = `
-# Test Python String Operations
+# 1. Simple for loop
+for i in range(3):  # Iterate from 0 to 2
+    print(f"Simple for loop i: {i}")
 
-# String concatenation
-greeting = "Hello"
-name = "Python"
-message = greeting + " " + name
-print("Concatenation:", message)
+# 2. Simple while loop
+x = 0
+while x < 3:  # Loop while x is less than 3
+    print(f"Simple while loop x: {x}")
+    x += 1  # Increment x
 
-# String formatting using f-strings
-age = 30
-formatted_message = f"{name} is {age} years old."
-print("Formatted String:", formatted_message)
+# 3. Simple recursion
+def factorial(n):  # Define a recursive func to calculate factorial
+    if n == 0:
+        return 1  # Base case: factorial of 0 is 1
+    else:
+        return n * factorial(n - 1)  # Recursive case
 
-# Using the join method
-words = ["This", "is", "a", "test"]
-sentence = " ".join(words)
-print("Join Method:", sentence)
+print("Factorial of 5:", factorial(5))  # Call the func and print the result
 
-# String slicing
-text = "Python Programming"
-sliced_text = text[0:6]  # Extract 'Python'
-print("Sliced String:", sliced_text)
+# 4. Nested for loop with a while loop inside
+for i in range(3):
+    print(f"Outer loop i: {i}")  # Print the current index of the outer loop
+    for j in range(2):
+        print(f"  Inner loop j: {j}")  # Print the current index of the inner loop
+        while j < 1:
+            print(f"    While loop j: {j}")  # While loop condition inside the nested loop
+            break  # Exit the while loop after one iteration
 
-# Checking if a string contains a substring
-contains_test = "test" in sentence
-print('Contains "test":', contains_test)
+# 5. For loop with an if-else block
+for i in range(5):
+    if i % 2 == 0:  # Check if the number is even
+        print(f"Even number: {i}")
+    else:  # Otherwise, it's odd
+        print(f"Odd number: {i}")
 
-# String methods: lower, upper, and title
-text = "hello world"
-print("Lowercase:", text.lower())
-print("Uppercase:", text.upper())
-print("Title Case:", text.title())
+# 6. While loop with a break condition
+while True:
+    x = 10
+    if x > 5:  # Condition to break the loop
+        print("Breaking while loop")
+        break  # Exit the infinite loop
 
-# String stripping: removing leading/trailing spaces
-text_with_spaces = "   Python   "
-print("Stripped String:", text_with_spaces.strip())
+# 7. Inline for and while loops
+for i in range(3): print(f"Inline for loop i: {i}")  # Inline for loop
+while False: print("This will not execute")  # Inline while loop (never executes)
 
-# Replacing parts of a string
-replaced_text = text.replace("hello", "Goodbye")
-print("Replaced String:", replaced_text)
+if 3 > 1: print("Inline if statement")  # Inline if statement
 
-# String formatting with placeholders
-placeholders_message = "Name: %s, Age: %d" % ("John", 25)
-print("Formatted with placeholders:", placeholders_message)
+# 8. Nested for and while loops with a condition
+for i in range(2):
+    for j in range(3):
+        while j < 2:
+            if i == 1:  # Nested condition inside the loops
+                print(f"Nested loop: i={i}, j={j}")
+            break  # Exit the while loop
 
-# Raw strings to handle escape sequences
-raw_string = r"Path\\to\\directory"
-print("Raw String:", raw_string)
+# 9. Nested for loop with break and continue
+for i in range(3):
+    for j in range(3):
+        if j == 2:
+            print(f"Breaking inner loop at j={j}")
+            break  # Exit the inner loop
+        elif j == 1:
+            print(f"Continuing inner loop at j={j}")
+            continue  # Skip the rest of the inner loop for this iteration
+        print(f"Inner loop iteration j={j}")
+    print(f"Outer loop iteration i={i}")
 
-# Multiline string
-multi_line_string = '''This is a
-multi-line
-string.'''
-print("Multiline String:", multi_line_string)
+# 10. List comprehension with nested for loops
+result = [i * j for i in range(3) for j in range(3) if j % 2 == 0]  # Create a list of products where j is even
+print("List comprehension result:", result)
 
-# Checking if string starts or ends with a specific substring
-starts_with_hello = message.startswith("Hello")
-ends_with_python = message.endswith("Python")
-print("Starts with 'Hello':", starts_with_hello)
-print("Ends with 'Python':", ends_with_python)
+# 11. While loop with a condition and break
+while True:
+    x = 5
+    if x == 5:  # Condition to break the loop
+        print("Breaking infinite loop")
+        break  # Exit the loop
 
-# String length
-length_of_string = len(message)
-print("Length of String:", length_of_string)
+# 12. If-elif-else block
+if 4 > 3:
+    print("If block")  # This block executes because the condition is true
+elif 3 > 2:
+    print("Elif block")  # Skipped because the first condition is true
+else:
+    print("Else block")  # Skipped because one of the above conditions is true
 
-# String formatting with .format()
-formatted_string = "Hello, {}. You are {} years old.".format(name, age)
-print("String formatted with .format():", formatted_string)
+# Inline if-else statement
+print("Inline if-else:", "True case" if 3 > 2 else "False case")  # Inline if-else syntax
 
-# String splitting
-split_string = sentence.split()
-print("Split String:", split_string)
+# 13. Complex nested for and if-else blocks
+for i in range(3):
+    if i % 2 == 0:  # Outer loop condition
+        for j in range(2):
+            if j == 1:  # Inner loop condition
+                print(f"Nested if: i={i}, j={j}")
+            else:  # Inner loop else block
+                print(f"Nested else: i={i}, j={j}")
+    else:  # Outer loop else block
+        print(f"Outer else: i={i}")
+
 `;
     //#endregion
 
@@ -309,30 +316,6 @@ print("Split String:", split_string)
                         }
                     }
 
-
-
-                    // Handle Brackets and Quotes Completion
-                    const pairs = {
-                        '(': ')',
-                        '[': ']',
-                        '{': '}',
-                        "'": "'",
-                        '"': '"',
-                    };
-                    if (pairs[e.key])
-                    {
-                        e.preventDefault();
-                        const updatedValue =
-                            codeInputAreaValue.substring(0, start) +
-                            e.key +
-                            pairs[e.key] +
-                            codeInputAreaValue.substring(end);
-                        setCodeInputAreaValue(updatedValue);
-                        setTimeout(() =>
-                        {
-                            textarea.selectionStart = textarea.selectionEnd = start + 1;
-                        });
-                    }
                 }}
                 autoSize={{ minRows: 7 }}
                 placeholder="Write your Python code here (e.g., def hello():)"
@@ -358,80 +341,22 @@ print("Split String:", split_string)
                 {
                     try
                     {
-                        // Load Pyodide
-                        const pyodide = await window.loadPyodide();
-
-                        pyodide.runPython(`
-                import sys
-                from io import StringIO
-                sys.stdout = StringIO()  # Redirect stdout to capture print output
-            `);
-
-                        const loopLimit = 70000;
-
-                        // Define the function at the beginning
-                        let processedCode = `maxLoopCount_d3xqZl91 = 0
-maxLoopLimit_wpLk7gXv = ${loopLimit}
-
-def check_loop_limit():
-    global maxLoopCount_d3xqZl91
-    maxLoopCount_d3xqZl91 += 1
-    if maxLoopCount_d3xqZl91 > maxLoopLimit_wpLk7gXv:
-        raise RuntimeError("Global loop iteration limit exceeded")
-            `;
-
-                        // Generate preScript dynamically from dataSource
-                        const preScript = dataSource
-                            .map((row) => `${row.tag} = ${JSON.stringify(row.data)}`)
-                            .join('\n');
-
-                        // Combine preScript with user's Python code
-                        const fullScript = `\n${preScript}\n${codeInputAreaValue}`;
-                        let lines = fullScript.split('\n');
-
-                        let outputLines = [];
-
-                        lines.forEach((line, index) =>
-                        {
-                            let indentLevel = line.match(/^(\s*)/)[0].length;  // Count leading spaces
-
-                            // Add the current line to output
-                            outputLines.push(line);
-
-                            // If the line contains a 'for' loop or 'while' loop, insert check_loop_limit() on the next line with the same indent
-                            if (line.trim().startsWith("for ")
-                                || line.trim().startsWith("while ")
-                                || line.trim().startsWith("if ")
-                                || line.trim().startsWith("elif ")
-                                || line.trim().startsWith("else ")
-                            )
-                            {
-                                outputLines.push(' '.repeat(indentLevel + 4) + "check_loop_limit()");
-                            }
-                        });
-
-                        // Join the modified lines into the final output
-                        let modifiedCode = outputLines.join('\n');
-
-                        checkGlobalInString(modifiedCode);
-
-                        // Execute the combined Python code
-                        await pyodide.runPythonAsync(processedCode + modifiedCode);  // Ensure `check_loop_limit()` is defined first
-
-                        const result = pyodide.runPython("sys.stdout.getvalue()");
-
-                        setScriptOutputValue(result); // Set the output to the result
+                        const result = await processSoftSensorPythonStringWithDataSource(codeInputAreaValue, dataSource);
+                        setScriptOutputValue(result); // Set the result to the state
                     } catch (error)
                     {
-                        setScriptOutputValue(`Error: ${error.message}`); // Handle any errors
+                        setScriptOutputValue(`Error: ${error.message}`); // Handle and display any errors
                     }
-                }}
+                }
+                }
             >
                 Run Python Code
             </Button>
 
             <div
                 style={{
+                    width: '100%',
+                    overflowWrap: 'break-word',
                     marginTop: '16px',
                     padding: '10px',
                     backgroundColor: '#E8E8E8',
@@ -441,14 +366,14 @@ def check_loop_limit():
                     fontFamily: 'Monospace fonts',
                     lineHeight: '1.5',
                     fontSize: '16px',
-                    whiteSpace: 'pre-wrap', // Preserve formatting like line breaks
+                    whiteSpace: 'pre-wrap',
                     minHeight: '100px',
                 }}
             >
                 {scriptOutputValue || 'Your output will appear here...'}
             </div>
             <div style={{ marginTop: '170px' }}>
-                <h1>Test for Loop, While Loop, and Recursion</h1>
+                <h1>Test for Loop, While Loop, Recursion and more ~</h1>
                 <pre>
                     <code><strong>{codeString}</strong></code>
                 </pre>
