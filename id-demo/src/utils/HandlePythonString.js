@@ -57,7 +57,6 @@ function checkGlobalInString(inputString)
         }
     });
 
-    console.log("No dangerous commands detected. Code is safe.");
 }
 
 
@@ -72,6 +71,7 @@ export const processSoftSensorPythonStringWithDataSource = async (pythonString, 
     {
         // Load Pyodide
         const pyodide = await window.loadPyodide();
+        await pyodide.loadPackage("pytz")
 
         pyodide.runPython(`
 import sys
@@ -81,7 +81,11 @@ sys.stdout = StringIO()  # Redirect stdout to capture print output
 
 
         // Define the function at the beginning
-        let maxLoopGuard = `maxLoopCount_d3xqZl91 = 0
+        let maxLoopGuard = `
+from datetime import datetime
+import pytz
+
+maxLoopCount_d3xqZl91 = 0
 maxLoopLimit_wpLk7gXv = ${loopLimit}
 
 def check_loop_limit():
@@ -155,7 +159,6 @@ def check_loop_limit():
 
                 // Execute Python code and retrieve stdout
                 const result = await pyodide.runPython("sys.stdout.getvalue()");
-                console.log(result)
 
                 // Retrieve and convert columns_hj3g6fg4
                 const columnsPython = pyodide.globals.get("columns_hj3g6fg4");
