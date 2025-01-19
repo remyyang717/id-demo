@@ -15,6 +15,13 @@ function SoftSensorDemo()
     const [codeInputAreaValue, setCodeInputAreaValue] = useState('');
     const [scriptOutputValue, setScriptOutputValue] = useState('');
 
+    // Calculate line numbers dynamically
+    const lineNumbers = Array.from(
+        { length: Math.max(7, codeInputAreaValue.split('\n').length) },
+        (_, index) => index + 1
+    );
+
+
     const [api, contextHolder] = notification.useNotification();
     const openNotificationWithIcon = (type) =>
     {
@@ -274,63 +281,88 @@ for i in range(3):
 
             <Divider style={{ marginTop: 36 }} orientation="mid">Script Input Area</Divider>
 
+            <div style={{ display: 'flex', alignItems: 'flex-start', position: 'relative', width: '100%' }}>
+                {/* Line numbers */}
+                <div
+                    style={{
+                        position: 'absolute', // Position absolutely within the parent
+                        top: 0,
+                        left: 0,
+                        transform: 'translateX(-100%)',
+                        padding: '10px',
+                        fontSize: '16px',
+                        backgroundColor: 'transparent',
+                        borderRight: 'none',
+                        textAlign: 'right',
+                        fontFamily: 'monospace',
+                        lineHeight: '2', // Match the line height of TextArea
+                        color: '#595959',
+                        minWidth: '30px',
+                    }}
+                >
+                    {lineNumbers.map((number) => (
+                        <div key={number}>{number}</div>
+                    ))}
+                </div>
 
-            <TextArea
-                value={codeInputAreaValue}
-                onChange={(e) => setCodeInputAreaValue(e.target.value)}
-                onKeyDown={(e) =>
-                {
-                    const textarea = e.target;
-                    const start = textarea.selectionStart;
-                    const end = textarea.selectionEnd;
-
-                    // Handle Tab for Indentation
-                    if (e.key === 'Tab')
+                <TextArea
+                    value={codeInputAreaValue}
+                    onChange={(e) => setCodeInputAreaValue(e.target.value)}
+                    onKeyDown={(e) =>
                     {
-                        e.preventDefault();
-                        const indent = '    '; // Use 4 spaces for Python indentation
-                        if (e.shiftKey)
+                        const textarea = e.target;
+                        const start = textarea.selectionStart;
+                        const end = textarea.selectionEnd;
+
+                        // Handle Tab for Indentation
+                        if (e.key === 'Tab')
                         {
-                            // Remove indentation on Shift+Tab
-                            const beforeCursor = codeInputAreaValue.substring(0, start);
-                            const afterCursor = codeInputAreaValue.substring(end);
-                            if (beforeCursor.endsWith(indent))
+                            e.preventDefault();
+                            const indent = '    '; // Use 4 spaces for Python indentation
+                            if (e.shiftKey)
                             {
-                                const updatedValue = beforeCursor.slice(0, -indent.length) + afterCursor;
+                                // Remove indentation on Shift+Tab
+                                const beforeCursor = codeInputAreaValue.substring(0, start);
+                                const afterCursor = codeInputAreaValue.substring(end);
+                                if (beforeCursor.endsWith(indent))
+                                {
+                                    const updatedValue = beforeCursor.slice(0, -indent.length) + afterCursor;
+                                    setCodeInputAreaValue(updatedValue);
+                                    setTimeout(() =>
+                                    {
+                                        textarea.selectionStart = textarea.selectionEnd = start - indent.length;
+                                    });
+                                }
+                            } else
+                            {
+                                // Add indentation on Tab
+                                const updatedValue =
+                                    codeInputAreaValue.substring(0, start) + indent + codeInputAreaValue.substring(end);
                                 setCodeInputAreaValue(updatedValue);
                                 setTimeout(() =>
                                 {
-                                    textarea.selectionStart = textarea.selectionEnd = start - indent.length;
+                                    textarea.selectionStart = textarea.selectionEnd = start + indent.length;
                                 });
                             }
-                        } else
-                        {
-                            // Add indentation on Tab
-                            const updatedValue =
-                                codeInputAreaValue.substring(0, start) + indent + codeInputAreaValue.substring(end);
-                            setCodeInputAreaValue(updatedValue);
-                            setTimeout(() =>
-                            {
-                                textarea.selectionStart = textarea.selectionEnd = start + indent.length;
-                            });
                         }
-                    }
 
-                }}
-                autoSize={{ minRows: 7 }}
-                placeholder="Write your Python code here (e.g., def hello():)"
-                style={{
-                    fontFamily: 'monospace',
-                    backgroundColor: '#C2C2C2',
-                    border: '1px solid #333333',
-                    color: '#333333',
-                    borderRadius: '4px',
-                    padding: '10px',
-                    fontSize: '16px',
-                    lineHeight: '1.5',
-                    overflow: 'auto',
-                }}
-            />
+                    }}
+                    autoSize={{ minRows: 7 }}
+                    placeholder="Write your Python code here (e.g., def hello():)"
+                    style={{
+                        fontFamily: 'monospace',
+                        backgroundColor: '#C2C2C2',
+                        border: '1px solid #333333',
+                        color: '#333333',
+                        borderRadius: '4px',
+                        padding: '10px',
+                        fontSize: '16px',
+                        lineHeight: '2',
+                        overflow: 'auto',
+                    }}
+                />
+            </div>
+
 
             <Button
                 type="primary"
