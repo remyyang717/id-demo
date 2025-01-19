@@ -29,7 +29,7 @@ function LeftSiderComponent()
             >
                 <List>
                     <List.Item>
-                        <Link to="/Dashboards/DashboardsDemo">Line Graph & Bar Chart Demo</Link>
+                        <Link to="/Dashboards/DashboardsDemo">Graph Gallery</Link>
                     </List.Item>
                     <List.Item>
                         <Link to="/Dashboards/EditableGraphDemo">Editable Graph Demo</Link>
