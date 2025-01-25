@@ -6,6 +6,7 @@ import LeftSiderComponent from '../../Components/LeftSiderComponent';
 import { setModuleValue } from '../../store/moduleSlice'
 import { useDispatch } from 'react-redux';
 import ProcessrIODemoPage from '../TempDevicePages/ProcessrIODemoPage'
+import HorizonsDemoPage from '../TempDevicePages/HorizonsDemoPage'
 
 
 const { Sider, Header, Content } = Layout;
@@ -78,7 +79,9 @@ function DevicePage()
                             marginRight: 'auto',
                             marginTop: '1vh',
                         }}>
+                            <HorizonsDemoPage />
                             <ProcessrIODemoPage />
+
                         </div>
 
 
