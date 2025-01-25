@@ -7,7 +7,6 @@ import LineGraphComponent from '../../Components/Graphs/LineGraphComponent'
 import ScatterComponent from '../../Components/Graphs/ScatterComponent';
 import BoxplotComponent from '../../Components/Graphs/BoxplotComponent';
 import { Column, Pie, Waterfall, DualAxes, Box, Liquid, Gauge, RadialBar } from '@ant-design/plots';
-import GaugeChart from '@ant-design/plots/es/components/gauge';
 
 function DashboardsDemo()
 {
