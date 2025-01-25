@@ -7,6 +7,8 @@ import { format } from 'date-fns';
 import dayjs from 'dayjs';
 
 
+
+
 function GetProcessrIOData(setGraphData, startTime, endTime)
 {
     const requestData = {
@@ -15,6 +17,8 @@ function GetProcessrIOData(setGraphData, startTime, endTime)
         "timestampToUtc": endTime,
         format: 2
     };
+
+
 
     axios.post('/api/v1/DataPoints/byDeviceId/746', requestData, {
         headers: {
@@ -100,7 +104,6 @@ function ProcessrIODemoPage()
 
             <Flex wrap style={{ justifyContent: 'space-around' }}>
                 <LineGraphComponent graphData={graphData} height={1} width={3} />
-                <BarChartComponent graphData={graphData} height={1} width={3} />
             </Flex>
         </>
     );

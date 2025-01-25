@@ -1,49 +1,99 @@
 // HorizonsDemoPage.js
 import React, { useState, useEffect } from 'react';
-import { DatePicker, Space, Button, Flex } from 'antd';
+import { DatePicker, Space, Button, Flex, Table } from 'antd';
 import LineGraphComponent from '../../Components/Graphs/LineGraphComponent'
-import BarChartComponent from '../../Components/Graphs/BarChartComponent'
+
 import axios from 'axios';
 import { format } from 'date-fns';
-import dayjs from 'dayjs';
+
 
 const requestData = {
-    headers: {
-        'service': 'Hilltop',
-        'request': 'GetData',
-        'timeInterval': 'P7D%2Fnow',
-        'interval': 'raw',
-        'alignment': '14%3A00',
-        'site': 'Manawatu%20at%20Teachers%20College',
-        'measurement': 'Flow%20%5BWater%20Level%5D',
-        'chartType': 'GetData',
-        'request': '0',
+    params: {
+        service: 'Hilltop',
+        request: 'GetData',
+        timeInterval: '26-01-2025/29-01-2025', // [P{x}D/now]past x day to now
+        interval: 'raw',  // [raw]   [1hour]   [24 hours]
+        alignment: '00:00',
+        site: 'Manawatu at Teachers College',  // Ensure this is encoded
+        measurement: 'Flow [Water Level]',  // Ensure this is encoded
+        chartType: '0',
     }
 };
 
 
-
-// Make the POST request
-axios.post('/api/hilltop/data', requestData)
-    .then(response =>
+const columns = [
     {
-        console.log('Response:', response);
-    })
-    .catch(error =>
+        title: 'Date & Time',
+        dataIndex: 'date',
+        key: 'date',
+    },
     {
-        console.error('Error:', error);
-    });
+        title: 'Flow l/s',
+        dataIndex: 'value',
+        key: 'value',
+    },
+];
 
 function HorizonsDemoPage()
 {
+    const [Data, setData] = useState([]);
+
+
+
+    useEffect(() =>
+    {
+        // Make the GET request with query parameters only once when the component mounts
+        axios.get('api/hilltop/data', requestData)
+            .then(response =>
+            {
+                // Parse the XML response
+                const xml = response.data;
+                const parser = new DOMParser();
+                const xmlDoc = parser.parseFromString(xml, "application/xml");
+
+                // Extract the data (assuming we're extracting time and flow values)
+                const entries = xmlDoc.getElementsByTagName('E');
+                const parsedData = Array.from(entries).map((entry, index) =>
+                {
+                    const formattedTime = format(new Date(entry.getElementsByTagName('T')[0].textContent), 'dd-MM-yyyy HH:mm');
+                    const flow = entry.getElementsByTagName('I1')[0].textContent;
+                    return {
+                        key: index + 1,
+                        location: 'Manawatu at Teachers College',  // Static location
+                        date: formattedTime,                       // Reformatted time
+                        value: flow                                // Flow value
+                    };
+                });
+
+                // Update state with the parsed data
+                setData(parsedData);
+                console.log(parsedData)
+            })
+            .catch(error =>
+            {
+                console.error('Error fetching or parsing the XML data:', error);
+            });
+    }, []);
 
 
     return (
         <>
-            <p></p>
-            {/* <Flex wrap style={{ justifyContent: 'space-around' }}>
-                <LineGraphComponent graphData={graphData} height={1} width={3} />
-            </Flex> */}
+
+            <Flex wrap style={{ justifyContent: 'space-around' }}>
+                <LineGraphComponent graphData={Data} height={1} width={3} />
+
+                <Table bordered
+                    pagination={false}
+                    dataSource={Data}
+                    columns={columns}
+                    scroll={{
+                        y: window.innerHeight * 0.5,
+                    }}
+                    style={{
+                        width: window.innerWidth * 0.3,
+                    }}
+                />
+            </Flex>
         </>
     );
 }
