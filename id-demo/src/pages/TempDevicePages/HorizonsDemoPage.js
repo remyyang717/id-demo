@@ -175,7 +175,7 @@ function HorizonsDemoPage()
             <Space direction='horizontal' size={12}>
                 <Select
                     defaultValue={siteCollection[0]?.value} // Default value based on first item in Collection
-                    style={{ width: 'auto' }}
+                    style={{ width: 200 }}
                     options={siteCollection} // Dynamically generated options
                     onChange={handleSelectChange}
                 />
