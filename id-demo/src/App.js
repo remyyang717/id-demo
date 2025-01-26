@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css'
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, Navigate } from "react-router-dom";
+import LoginPage from './pages/LoginPage'
 import Home from './pages/Home';
 import FormsPage from './pages/ModuleHomePages/FormsPage';
 import DashboardsPage from './pages/ModuleHomePages/DashboardsPage';
@@ -20,7 +21,9 @@ function App()
 
     <div className="app">
       <Routes>
-        <Route path='/' element={<Home />} />
+        <Route path="/" element={<Navigate to="/Login" />} />
+
+        <Route path='/Login' element={<LoginPage />} />
         <Route path='/Home' element={<Home />} />
         <Route path='/Forms/*' element={<FormsPage />} />
         <Route path='/Dashboards/*' element={<DashboardsPage />} />
