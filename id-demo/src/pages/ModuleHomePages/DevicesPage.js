@@ -5,7 +5,9 @@ import HeaderComponent from '../../Components/HeaderComponent';
 import LeftSiderComponent from '../../Components/LeftSiderComponent';
 import { setModuleValue } from '../../store/moduleSlice'
 import { useDispatch } from 'react-redux';
-import ProcessrIODemoPage from '../TempDevicePages/ProcessrIODemoPage'
+// import ProcessrIODemoPage from '../TempDevicePages/ProcessrIODemoPage'
+import HorizonsDemoPage from '../TempDevicePages/HorizonsDemoPage'
+
 
 
 const { Sider, Header, Content } = Layout;
@@ -72,13 +74,19 @@ function DevicePage()
                     }}
                 >
                     <Flex>
+
+
                         <div style={{
                             fontSize: '50px',
                             marginLeft: 'auto',
                             marginRight: 'auto',
                             marginTop: '1vh',
                         }}>
-                            <ProcessrIODemoPage />
+
+                            {/* <ProcessrIODemoPage /> */}
+                            <HorizonsDemoPage />
+
+
                         </div>
 
 
