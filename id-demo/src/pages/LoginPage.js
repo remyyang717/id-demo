@@ -10,7 +10,7 @@ function LoginPage()
     const [videoSrc, setVideoSrc] = useState("/bg1.mp4");
     const navigate = useNavigate();
 
-    const [showSVG, setShowSVG] = useState(true);
+    const [showSVG, setShowSVG] = useState(false);
     const toggleSVG = () =>
     {
         setShowSVG((prev) => !prev); // 切换状态
@@ -22,7 +22,7 @@ function LoginPage()
     {
         api.info({
             message: `Set a New Password`,
-            description: 'Yo, how can you forgot your password?',
+            description: 'You will receive an email to reset your password',
             placement,
         });
     };
@@ -35,7 +35,7 @@ function LoginPage()
 
     const onBackGroudChange = (checked) =>
     {
-        setVideoSrc(checked ? "/bg1.mp4" : "/bg2.mp4");
+        setVideoSrc(checked ? "/bg2.mp4" : "/bg1.mp4");
         console.log(videoSrc);
 
     };
@@ -47,11 +47,9 @@ function LoginPage()
             <div style={{ position: "relative" }}>
                 <Switch
                     style={{ zIndex: 9, }}
-                    defaultChecked
                     onChange={onBackGroudChange} />
                 <Switch
                     style={{ zIndex: 9, }}
-                    defaultChecked
                     onChange={toggleSVG} />
 
                 <div style={{
@@ -137,7 +135,7 @@ function LoginPage()
                             name="username"
                             style={{
                                 width: 350,
-                                fontSize: "1.2rem",
+                                fontSize: "1.1rem",
                                 margin: '10px 20px 10px 20px'
                             }}
                             placeholder="Email Address"
@@ -164,7 +162,7 @@ function LoginPage()
                             prefix={<SafetyCertificateOutlined style={{ marginRight: 10, color: 'rgba(0,0,0,.25)' }} />}
                             style={{
                                 width: 350,
-                                fontSize: "1.2rem",
+                                fontSize: "1.1rem",
                                 margin: '10px 20px 10px 20px'
                             }}
                             placeholder="Password"
@@ -188,7 +186,7 @@ function LoginPage()
                                 placement='bottom'
                                 title={
 
-                                    <Link onClick={() => openNotification('bottomLeft')}> {contextHolder} Forgot Your Password?</Link>
+                                    <Link onClick={() => openNotification('bottomLeft')}> {contextHolder} Forgotten your password?</Link>
                                 }>
                                 <QuestionCircleOutlined
                                     style={{
