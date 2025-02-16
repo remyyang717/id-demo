@@ -342,7 +342,7 @@ while True:
                         borderRight: 'none',
                         textAlign: 'right',
                         fontFamily: 'monospace',
-                        lineHeight: '2', // Match the line height of TextArea
+                        lineHeight: '1.5', // Match the line height of TextArea
                         color: '#595959',
                         minWidth: '30px',
                     }}
@@ -404,7 +404,7 @@ while True:
                         borderRadius: '4px',
                         padding: '10px',
                         fontSize: '16px',
-                        lineHeight: '2',
+                        lineHeight: '1.5',
                         overflow: 'auto',
                     }}
                 />
