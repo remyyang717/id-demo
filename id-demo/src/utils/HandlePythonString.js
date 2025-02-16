@@ -201,6 +201,13 @@ def check_loop_limit():
     }
     catch (error)
     {
-        return `Error in utils: ${error.message}`; // Handle any errors
+        console.log(error.message)
+        const lines = error.message.split("\n");
+        const startIndex = lines.findIndex(line => line.includes('File "<exec>"'));
+        const filteredLines = startIndex !== -1 ? lines.slice(startIndex + 1) : lines;
+        const cleanedLines = filteredLines.map(line => line.replace(/\bon line \d+\b/, ''));
+        const cleanedErrorMessage = cleanedLines.join("\n");
+        return cleanedErrorMessage
     }
+
 };

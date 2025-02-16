@@ -12,7 +12,7 @@ function SoftSensorDemo()
     ]);
     const { TextArea } = Input;
 
-    const [codeInputAreaValue, setCodeInputAreaValue] = useState('');
+    const [codeInputAreaValue, setCodeInputAreaValue] = useState('print(PV1)');
     const [scriptOutputValue, setScriptOutputValue] = useState('');
 
     // Calculate line numbers dynamically
@@ -23,7 +23,7 @@ function SoftSensorDemo()
 
 
     const [api, contextHolder] = notification.useNotification();
-    const openNotificationWithIcon = (type) =>
+    const openTagNotification = (type) =>
     {
         api[type]({
             message: 'Invalid Input',
@@ -42,29 +42,50 @@ function SoftSensorDemo()
         });
     };
 
+    const openDatagNotification = (type) =>
+    {
+        api[type]({
+            message: 'Invalid Input',
+            description:
+                <>
+                    Data can not be empty.
+                    <br />
+                    Value is replaced with 0.
+                </>,
+            placement: 'bottomRight'
 
-    // Handle Tag input changes
+        });
+    };
+
+
+    // Handle Tag 
     const handleTagChange = (key, value) =>
+    {
+        setDataSource((prev) =>
+            prev.map((item) =>
+                item.key === key ? { ...item, tag: value } : item
+            )
+        );
+    };
+
+    const handleTagBlur = (key, value) =>
     {
         // Validate if the value starts with a number
         const isValidTag = !/^\d/.test(value) && /^[a-zA-Z0-9]+$/.test(value);
 
-
-        if (isValidTag)
+        if (!isValidTag)
         {
             setDataSource((prev) =>
                 prev.map((item) =>
-                    item.key === key ? { ...item, tag: value } : item
+                    item.key === key ? { ...item, tag: "PV" + key } : item
                 )
             );
-        } else
-        {
-            // Optionally show a message or reset the value
-            openNotificationWithIcon('error')
+
+            openTagNotification('error')
         }
     };
 
-    // Handle Data input changes
+    // Handle Data input
     const handleDataChange = (key, index, value) =>
     {
         setDataSource((prev) =>
@@ -72,12 +93,46 @@ function SoftSensorDemo()
                 item.key === key
                     ? {
                         ...item,
-                        data: item.data.map((d, i) => (i === index ? value : d)),
+                        data: item.data.map((d, i) =>
+                            i === index
+                                ? value.trim() === ""
+                                    ? null
+                                    : Number(value)
+                                : d
+                        ),
                     }
                     : item
             )
         );
+
     };
+
+    const handleDataBlur = (key, index, value) =>
+    {
+
+        const isValidNumber = isFinite(value) && value.trim() != ""
+        if (!isValidNumber)
+        {
+            setDataSource((prev) =>
+                prev.map((item) =>
+                    item.key === key
+                        ? {
+                            ...item,
+                            data: item.data.map((d, i) =>
+                                i === index
+                                    ? 0
+                                    : d
+                            ),
+                        }
+                        : item
+                )
+            );
+
+
+            openDatagNotification('error');
+        }
+    };
+
 
     // Generate random data for a specific row
     const handleGenerateRandomData = (key) =>
@@ -106,6 +161,7 @@ function SoftSensorDemo()
                     <Input
                         value={record.tag}
                         onChange={(e) => handleTagChange(record.key, e.target.value)}
+                        onBlur={(e) => handleTagBlur(record.key, e.target.value)}
                     />
                 </>
 
@@ -116,11 +172,16 @@ function SoftSensorDemo()
             dataIndex: `data${index}`,
             key: `data${index}`,
             render: (text, record) => (
-                <Input
-                    type="number"
-                    value={record.data[index]}
-                    onChange={(e) => handleDataChange(record.key, index, e.target.value)}
-                />
+                <>
+                    {contextHolder}
+                    <Input
+                        type="number"
+                        value={record.data[index]}
+                        onChange={(e) => handleDataChange(record.key, index, e.target.value)}
+                        onBlur={(e) => handleDataBlur(record.key, index, e.target.value)}
+                    />
+                </>
+
             ),
         })),
         {
@@ -155,6 +216,52 @@ function SoftSensorDemo()
 
     //#region codeString (Demo & Test)
     const codeString = `
+# Average
+average = sum(PV1) / len(PV1)
+print("Average:", average)
+
+# Sum
+total = sum(PV1)
+print("Sum:", total)
+
+# Min and Max
+minimum = min(PV1)
+maximum = max(PV1)
+print("Min:", minimum)
+print("Max:", maximum)
+
+# Length
+length = len(PV1)
+print("Length:", length)
+
+# Loop through the list
+print("Loop through the list:")
+for num in PV1:
+    print(num)
+
+# Filter even numbers
+even_numbers = [num for num in PV1 if num % 2 == 0]
+print("Even numbers:", even_numbers)
+
+# Square each number
+squared_numbers = [num ** 2 for num in PV1]
+print("Squared numbers:", squared_numbers)
+
+# Check if a number is in the list
+if 4 in PV1:
+    print("4 is in the list.")
+else:
+    print("4 is not in the list.")
+
+# Sort the list
+sorted_list = sorted(PV1)  # default ascending
+print("Sorted (ascending):", sorted_list)
+
+sorted_desc = sorted(PV1, reverse=True) 
+print("Sorted (descending):", sorted_desc)
+
+
+
 # 1. Simple for loop
 for i in range(3):  # Iterate from 0 to 2
     print(f"Simple for loop i: {i}")
@@ -196,67 +303,7 @@ while True:
     if x > 5:  # Condition to break the loop
         print("Breaking while loop")
         break  # Exit the infinite loop
-
-# 7. Inline for and while loops
-for i in range(3): print(f"Inline for loop i: {i}")  # Inline for loop
-while False: print("This will not execute")  # Inline while loop (never executes)
-
-if 3 > 1: print("Inline if statement")  # Inline if statement
-
-# 8. Nested for and while loops with a condition
-for i in range(2):
-    for j in range(3):
-        while j < 2:
-            if i == 1:  # Nested condition inside the loops
-                print(f"Nested loop: i={i}, j={j}")
-            break  # Exit the while loop
-
-# 9. Nested for loop with break and continue
-for i in range(3):
-    for j in range(3):
-        if j == 2:
-            print(f"Breaking inner loop at j={j}")
-            break  # Exit the inner loop
-        elif j == 1:
-            print(f"Continuing inner loop at j={j}")
-            continue  # Skip the rest of the inner loop for this iteration
-        print(f"Inner loop iteration j={j}")
-    print(f"Outer loop iteration i={i}")
-
-# 10. List comprehension with nested for loops
-result = [i * j for i in range(3) for j in range(3) if j % 2 == 0]  # Create a list of products where j is even
-print("List comprehension result:", result)
-
-# 11. While loop with a condition and break
-while True:
-    x = 5
-    if x == 5:  # Condition to break the loop
-        print("Breaking infinite loop")
-        break  # Exit the loop
-
-# 12. If-elif-else block
-if 4 > 3:
-    print("If block")  # This block executes because the condition is true
-elif 3 > 2:
-    print("Elif block")  # Skipped because the first condition is true
-else:
-    print("Else block")  # Skipped because one of the above conditions is true
-
-# Inline if-else statement
-print("Inline if-else:", "True case" if 3 > 2 else "False case")  # Inline if-else syntax
-
-# 13. Complex nested for and if-else blocks
-for i in range(3):
-    if i % 2 == 0:  # Outer loop condition
-        for j in range(2):
-            if j == 1:  # Inner loop condition
-                print(f"Nested if: i={i}, j={j}")
-            else:  # Inner loop else block
-                print(f"Nested else: i={i}, j={j}")
-    else:  # Outer loop else block
-        print(f"Outer else: i={i}")
-
-`;
+                `;
     //#endregion
 
     return (
