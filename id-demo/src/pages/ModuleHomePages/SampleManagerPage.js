@@ -15,7 +15,7 @@ function SampleManagerPage()
 {
     const [isOpen, setIsOpen] = useState(false);
     const dispatch = useDispatch();
-    dispatch(setModuleValue('Sample Manager'));
+    dispatch(setModuleValue('SampleManager'));
 
     return (
         <Layout>
@@ -36,6 +36,7 @@ function SampleManagerPage()
             <Layout >
 
                 <Sider
+                    trigger={null}
                     width={800}
                     theme='light'
                     collapsible

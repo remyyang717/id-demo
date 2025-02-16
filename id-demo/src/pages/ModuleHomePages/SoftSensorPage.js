@@ -17,7 +17,7 @@ function SoftSensorPage()
 {
     const [isOpen, setIsOpen] = useState(false);
     const dispatch = useDispatch();
-    dispatch(setModuleValue('Soft Sensors'));
+    dispatch(setModuleValue('SoftSensors'));
 
     return (
         <Layout>
@@ -38,6 +38,7 @@ function SoftSensorPage()
             <Layout >
 
                 <Sider
+                    trigger={null}
                     width={800}
                     theme='light'
                     collapsible

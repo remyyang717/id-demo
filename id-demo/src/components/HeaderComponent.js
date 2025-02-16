@@ -198,11 +198,11 @@ function HeaderComponent()
         'Consents',
         'Dashboards',
         'Devices',
-        'Soft Sensors',
+        'SoftSensors',
         'Forms',
         'Geospatial',
         'Messaging',
-        'Sample Manager',
+        'SampleManager',
         'Tasks'
 
     ];

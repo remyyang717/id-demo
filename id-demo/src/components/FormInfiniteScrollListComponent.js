@@ -63,6 +63,8 @@ function FormInfiniteScrollListComponent()
                 padding: '0 16px',
                 border: '1px solid rgba(140, 140, 140, 0.35)',
                 paddingTop: '64px',
+                overscrollBehavior: 'contain',
+                touchAction: 'pan-y',
             }}
         >
             {/* Sticky Search Bar and Count */}

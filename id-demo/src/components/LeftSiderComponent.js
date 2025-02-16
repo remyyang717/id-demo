@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import FormInfiniteScrollListComponent from './FormInfiniteScrollListComponent'
+import SoftSensorInfiniteScrollListComponent from './SoftSensorInfiniteScrollListComponent'
 import { List } from 'antd';
 
 
@@ -45,6 +46,9 @@ function LeftSiderComponent()
 
             </div>
 
+        ),
+        SoftSensors: (
+            <SoftSensorInfiniteScrollListComponent />
         )
     };
 

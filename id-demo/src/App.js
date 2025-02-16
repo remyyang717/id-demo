@@ -30,10 +30,10 @@ function App()
         <Route path='/Consents/*' element={<Consents />} />
         <Route path='/Alarms/*' element={<Alarms />} />
         <Route path='/Devices/*' element={<Devices />} />
-        <Route path='/Soft Sensors/*' element={<SoftSensors />} />
+        <Route path='/SoftSensors/*' element={<SoftSensors />} />
         <Route path='/Geospatial/*' element={<Geospatial />} />
         <Route path='/Messaging/*' element={<Messaging />} />
-        <Route path='/Sample Manager/*' element={<SampleManager />} />
+        <Route path='/SampleManager/*' element={<SampleManager />} />
         <Route path='/Tasks/*' element={<Tasks />} />
       </Routes>
     </div>

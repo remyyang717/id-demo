@@ -39,6 +39,7 @@ function DevicePage()
             <Layout >
 
                 <Sider
+                    trigger={null}
                     width={800}
                     theme='light'
                     collapsible
