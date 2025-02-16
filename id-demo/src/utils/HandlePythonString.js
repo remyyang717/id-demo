@@ -205,8 +205,13 @@ def check_loop_limit():
         const lines = error.message.split("\n");
         const startIndex = lines.findIndex(line => line.includes('File "<exec>"'));
         const filteredLines = startIndex !== -1 ? lines.slice(startIndex + 1) : lines;
-        const cleanedLines = filteredLines.map(line => line.replace(/\bon line \d+\b/, ''));
+        const cleanedLines = filteredLines.map(line =>
+            line.replace(/\bon line \d+\b/, '')
+                .replace(/\(.* line \d+\)/, '')
+        );
+
         const cleanedErrorMessage = cleanedLines.join("\n");
+        // Should only return string error message
         return cleanedErrorMessage
     }
 
