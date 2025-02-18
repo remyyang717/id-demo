@@ -5,6 +5,7 @@ import LineGraphComponent from '../../Components/Graphs/LineGraphComponent'
 import dayjs from 'dayjs';
 import axios from 'axios';
 import { format } from 'date-fns';
+import Link from 'antd/es/typography/Link';
 
 
 const sites =
@@ -220,6 +221,8 @@ function HorizonsDemoPage()
                 <Button onClick={handleClick} color="default" variant="solid">
                     Retrieve !!!
                 </Button>
+
+                <Link href='https://envirodata.horizons.govt.nz/?siteName=Manawatu%20at%20Teachers%20College' target="_blank"> https://envirodata.horizons.govt.nz/?siteName=Manawatu%20at%20Teachers%20College</Link>
             </Space>
 
 
